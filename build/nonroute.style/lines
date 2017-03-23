@@ -1,0 +1,147 @@
+# ------------------------------------------------------------------------------------
+# Preprocessing
+# ------------------------------------------------------------------------------------
+
+# -----	Generic rules for track quality
+
+highway=track | highway=cycleway | highway=footway | highway=bridleway | highway=byway | highway=unsurfaced | highway=path { set offroad=yes; }
+surface=dirt | surface=grass | surface=mud { set difficult=yes; }
+tracktype=grade5 { set difficult=yes; }
+bicycle=impassable | bicycle:mtb=impassable | bicycle:hybrid=difficult | bicycle:hybrid=impassable { set difficult=yes; }
+
+# -----	Generic rules for "cyclable roads" - those which are particularly good for cycling
+#		c1,c2 etc. - 'points' for cyclability
+#		c_override -  not suited for cycling
+
+#traffic=low { set c1=yes; }
+#scenic=yes { set c2=yes; }
+#traffic=high { set c_override=yes; }
+#c1=yes & c2=yes & c_override!=* { set cyclable=yes; }
+
+# ----- Downgrade tracks where bicycles are banned
+#		(ignore motorway/trunk as this'll look stupid)
+
+bicycle=no & ( highway!=motorway & highway!=trunk ) { set highway=footway; }
+access=private { set highway=private; }
+
+# -----	Route names
+
+# Build name with '(NO ACCESS)' appended if it has no access
+highway=* & access=no { name 
+	'${ncn_ref|highway-symbol:box} R${rcn_ref} ${name} (${ref}) (NO ACCESS)' |
+	'${ncn_ref|highway-symbol:box} R${rcn_ref} ${name} (NO ACCESS)' |
+	'${ncn_ref|highway-symbol:box} R${rcn_ref} (${ref}) (NO ACCESS)' |
+	'${ncn_ref|highway-symbol:box}  R${rcn_ref} (NO ACCESS)' |
+	'${ncn_ref|highway-symbol:box} ${name} (${ref}) (NO ACCESS)' |
+	'${ncn_ref|highway-symbol:box}  ${name} (NO ACCESS)' |
+	'${ncn_ref|highway-symbol:box}  (${ref}) (NO ACCESS)' |
+	'${ncn_ref|highway-symbol:box} (NO ACCESS)' |
+	'${rcn_ref|highway-symbol:box} ${name} (${ref}) (NO ACCESS)' |
+	'${rcn_ref|highway-symbol:box}  ${name} (NO ACCESS)' |
+	'${rcn_ref|highway-symbol:box}  (${ref}) (NO ACCESS)' |
+	'${rcn_ref|highway-symbol:box} (NO ACCESS)' |
+	'${name} (${ref}) (NO ACCESS)' |
+	'${name} (NO ACCESS)' |
+	'${ref} (NO ACCESS)' }
+
+highway=* & access=no { echo "${name} - ${highway}, No Access" }
+
+highway=* { name 
+	'${ncn_ref|highway-symbol:box} R${rcn_ref} ${name} (${ref})' |
+	'${ncn_ref|highway-symbol:box} R${rcn_ref} ${name}' |
+	'${ncn_ref|highway-symbol:box} R${rcn_ref} (${ref})' |
+	'${ncn_ref|highway-symbol:box}  R${rcn_ref}' |
+	'${ncn_ref|highway-symbol:box} ${name} (${ref})' |
+	'${ncn_ref|highway-symbol:box}  ${name}' |
+	'${ncn_ref|highway-symbol:box}  (${ref})' |
+	'${ncn_ref|highway-symbol:box}' |
+	'${rcn_ref|highway-symbol:box} ${name} (${ref})' |
+	'${rcn_ref|highway-symbol:box}  ${name}' |
+	'${rcn_ref|highway-symbol:box}  (${ref})' |
+	'${rcn_ref|highway-symbol:box}' |
+	'${name} (${ref})' |
+	'${name}' |
+	'${ref}' }
+
+
+# ------------------------------------------------------------------------------------
+# Cycle routes
+# ------------------------------------------------------------------------------------
+
+(ncn=yes | ncn_ref=*) & offroad=yes 		[0x02 road_class=4 road_speed=7 resolution 16]
+(rcn=yes | rcn_ref=*) & offroad=yes			[0x04 road_class=4 road_speed=7 resolution 16]
+(ncn=yes | ncn_ref=*) & national_byway=yes  [0x06 road_class=4 road_speed=7 resolution 16]
+(rcn=yes | rcn_ref=*) & national_byway=yes  [0x07 road_class=4 road_speed=7 resolution 16]
+(ncn=yes | ncn_ref=*) & difficult=yes		[0x18 resolution 16]
+(rcn=yes | rcn_ref=*) & difficult=yes		[0x19 resolution 16]
+(ncn=yes | ncn_ref=*)						[0x01 road_class=4 road_speed=7 resolution 16]
+(rcn=yes | rcn_ref=*)						[0x03 road_class=4 road_speed=7 resolution 16]
+national_byway=yes				    		[0x05 road_class=4 road_speed=7 resolution 16]
+
+# ------------------------------------------------------------------------------------
+# Standard roads
+# ------------------------------------------------------------------------------------
+
+# Roads
+highway=motorway [0x01 resolution 16]
+highway=motorway_link [0x10004 resolution 16]
+highway=trunk  [0x02 resolution 16]
+highway=trunk_link [0x1000a resolution 16]
+highway=primary [0x1000c resolution 18]
+highway=primary_link [0x0C resolution 18]
+highway=secondary [0x04 resolution 20]
+highway=tertiary [0x05 resolution 20]
+highway=unclassified | highway=minor [0x06 resolution 20]
+highway=residential | highway=living_street | highway=service [0x07 resolution 22]
+
+highway=track & access=no [0x10510 resolution 22]
+highway=track & bridge=yes [0x1010a resolution 22 continue]
+highway=track [0x09 resolution 22]
+
+highway=path & access=no [0x10510 resolution 22]
+highway=path & bridge=yes [0x1010a resolution 22 continue]
+highway=path & bridge=boardwalk [0x1010c resolution 22 continue]
+highway=path & bicycle=designated [0x0d resolution 22]
+highway=path [0x0a resolution 22]
+
+highway=footway & bridge=yes [0x1010a resolution 22 continue]
+highway=footway & bridge=boardwalk [0x1010c resolution 22 continue]
+highway=footway [0x0b resolution 22]
+
+highway=steps [0x11 resolution 22]
+
+highway=cycleway & access=no [0x10510 resolution 22]
+highway=cycleway & bridge=yes [0x1010a resolution 22 continue]
+highway=cycleway [0x0d resolution 22]
+
+# ------------------------------------------------------------------------------------
+# Contours - needs improving
+# ------------------------------------------------------------------------------------
+
+# Contours take their name from the elevation setting.
+contour=elevation | contour_ext=elevation
+	{ name '${ele|conv:m=>ft}'; }
+	[0x21 resolution 20]
+
+
+# ------------------------------------------------------------------------------------
+# Miscellaneous stuff
+# ------------------------------------------------------------------------------------
+
+railway=* & tunnel=yes [0x10406 resolution 18]
+railway=light_rail [0x14 resolution 18]
+railway=rail [0x14 resolution 18]
+railway=disused [0x15 resolution 18]
+railway=subway [0x14 resolution 20]
+railway=tram [0x14 resolution 20]
+railway=narrow_gauge [0x14 resolution 20]
+route=ferry [0x1a resolution 18]
+natural=coastline [0x17 resolution 12]
+waterway=stream [0x18 resolution 22]
+waterway=dam 	[0x19 resolution 23]
+waterway=canal [0x1f resolution 20]
+waterway=drain [0x1f resolution 22]
+waterway=river [0x1f resolution 18]
+
+natural=cliff [0x10501 resolution 22]
+

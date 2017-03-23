@@ -1,0 +1,18 @@
+#
+# This file contains information about the style.
+# It is completely optional.
+# 
+
+
+# A short one line description of the style
+#
+summary: Garmin 520 Offroad Run and Bike map
+
+# Version of the style itself
+#
+version=1.0
+
+# A longer description of the style.
+description {
+Garmin 520 offroad running and biking map by Rob Alley. No routing information. Based on Cyclemap by Richard Fairhurst, which in turn was initially based on Munky style by Andy Gates.
+}
