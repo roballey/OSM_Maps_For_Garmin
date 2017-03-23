@@ -1,1 +1,6 @@
 input
+tools
+*.swp
+osmmap.img
+osmmap.tdb
+maps/*/*.typ
