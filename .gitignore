@@ -1,6 +1,8 @@
 input
 tools
+work
 *.swp
 osmmap.img
 osmmap.tdb
 maps/*/*.typ
+build/x*.typ
