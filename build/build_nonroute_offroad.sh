@@ -12,8 +12,11 @@
 #     - Script this so the user can select to just perform a subset of operations
 #     - Pass in a name for the area for which map is built (e.g. oceania_nz_ni) and use this for final file name
 
-# Convert OSM files to Garmin image files
-#    - Assumes split OSM pbf files have been put in the directory osmsplitmaps
+# first remove any previously generated Garmin image files so as to not pollute the output
+rm work/garminsplitmaps/*.img
+
+# Convert split OSM files to split Garmin image files
+#    - Assumes split OSM pbf files have been put in the directory work/osmsplitmaps
 java -Xmx1024m -jar tools/mkgmap-r3834/mkgmap.jar --remove-short-arcs --add-pois-to-areas --style-file=build/nonroute.style --precomp-sea=input/sea.zip --generate-sea --output-dir=work/garminsplitmaps work/osmsplitmaps/*.pbf
 
 # Combine all the Garmin image files to a single Garmin gmapsupp image file, applying the offroad type rules
