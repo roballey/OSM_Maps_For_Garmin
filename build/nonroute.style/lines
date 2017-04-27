@@ -26,26 +26,16 @@ access=private { set highway=private; }
 
 # -----	Route names
 
-# Build name with '(NO ACCESS)' appended if it has no access
-highway=* & access=no { name 
-	'${ncn_ref|highway-symbol:box} R${rcn_ref} ${name} (${ref}) (NO ACCESS)' |
-	'${ncn_ref|highway-symbol:box} R${rcn_ref} ${name} (NO ACCESS)' |
-	'${ncn_ref|highway-symbol:box} R${rcn_ref} (${ref}) (NO ACCESS)' |
-	'${ncn_ref|highway-symbol:box}  R${rcn_ref} (NO ACCESS)' |
-	'${ncn_ref|highway-symbol:box} ${name} (${ref}) (NO ACCESS)' |
-	'${ncn_ref|highway-symbol:box}  ${name} (NO ACCESS)' |
-	'${ncn_ref|highway-symbol:box}  (${ref}) (NO ACCESS)' |
-	'${ncn_ref|highway-symbol:box} (NO ACCESS)' |
-	'${rcn_ref|highway-symbol:box} ${name} (${ref}) (NO ACCESS)' |
-	'${rcn_ref|highway-symbol:box}  ${name} (NO ACCESS)' |
-	'${rcn_ref|highway-symbol:box}  (${ref}) (NO ACCESS)' |
-	'${rcn_ref|highway-symbol:box} (NO ACCESS)' |
+# Build name with '(NO ACCESS)' appended if it is a path, track or cycleway with no access
+(highway=path | highway=track | highway=cycleway) & access=no { name 
 	'${name} (${ref}) (NO ACCESS)' |
 	'${name} (NO ACCESS)' |
 	'${ref} (NO ACCESS)' }
 
-highway=* & access=no { echo "${name} - ${highway}, No Access" }
+# Display the paths that have '(NO ACCESS)' appended to their name
+(highway=path | highway=track | highway=cycleway) & access=no { echo "${name} - ${highway}, No Access" }
 
+# Build names for all highways that weren't matched above
 highway=* { name 
 	'${ncn_ref|highway-symbol:box} R${rcn_ref} ${name} (${ref})' |
 	'${ncn_ref|highway-symbol:box} R${rcn_ref} ${name}' |
@@ -94,11 +84,11 @@ highway=tertiary [0x05 resolution 20]
 highway=unclassified | highway=minor [0x06 resolution 20]
 highway=residential | highway=living_street | highway=service [0x07 resolution 22]
 
-highway=track & access=no [0x10510 resolution 22]
+highway=track & access=no [0x10510 resolution 16]
 highway=track & bridge=yes [0x1010a resolution 22 continue]
 highway=track [0x09 resolution 22]
 
-highway=path & access=no [0x10510 resolution 22]
+highway=path & access=no [0x10510 resolution 16]
 highway=path & bridge=yes [0x1010a resolution 22 continue]
 highway=path & bridge=boardwalk [0x1010c resolution 22 continue]
 highway=path & bicycle=designated [0x0d resolution 22]
@@ -110,7 +100,7 @@ highway=footway [0x0b resolution 22]
 
 highway=steps [0x11 resolution 22]
 
-highway=cycleway & access=no [0x10510 resolution 22]
+highway=cycleway & access=no [0x10510 resolution 16]
 highway=cycleway & bridge=yes [0x1010a resolution 22 continue]
 highway=cycleway [0x0d resolution 22]
 
