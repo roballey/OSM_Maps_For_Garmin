@@ -6,6 +6,7 @@ Todo:
    - Change build*.sh scripts to be proper scripts that accept arguments etc.
    - Add a script to download the source data from OSM (Either: 1. Download from extract.bbike.org or 2. Use geofabrik and convert with osmosis?
    - Add contours (perhaps generate two different maps?)
+   - Improve waterfall icon
 
 Done:   
    - Improve detection of closed tracks/paths
