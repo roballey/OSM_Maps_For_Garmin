@@ -9,15 +9,6 @@ surface=dirt | surface=grass | surface=mud { set difficult=yes; }
 tracktype=grade5 { set difficult=yes; }
 bicycle=impassable | bicycle:mtb=impassable | bicycle:hybrid=difficult | bicycle:hybrid=impassable { set difficult=yes; }
 
-# -----	Generic rules for "cyclable roads" - those which are particularly good for cycling
-#		c1,c2 etc. - 'points' for cyclability
-#		c_override -  not suited for cycling
-
-#traffic=low { set c1=yes; }
-#scenic=yes { set c2=yes; }
-#traffic=high { set c_override=yes; }
-#c1=yes & c2=yes & c_override!=* { set cyclable=yes; }
-
 # ----- Downgrade tracks where bicycles are banned
 #		(ignore motorway/trunk as this'll look stupid)
 
@@ -75,12 +66,13 @@ highway=motorway [0x01 resolution 16]
 highway=motorway_link [0x10004 resolution 16]
 highway=trunk  [0x02 resolution 16]
 highway=trunk_link [0x1000a resolution 16]
-highway=primary [0x1000c resolution 18]
-highway=primary_link [0x0C resolution 18]
+highway=primary [0x03 resolution 18]
+highway=primary_link [0x1000c resolution 18]
 highway=secondary [0x04 resolution 20]
 highway=tertiary [0x05 resolution 20]
 highway=unclassified | highway=minor [0x06 resolution 20]
-highway=residential | highway=living_street | highway=service [0x07 resolution 22]
+highway=residential | highway=living_street [0x07 resolution 20]
+highway=service [0x08 resolution 22]
 
 highway=track & access=no [0x10510 resolution 20]
 highway=track & bridge=yes [0x1010a resolution 22 continue]
@@ -132,4 +124,6 @@ waterway=drain [0x1f resolution 22]
 waterway=river [0x1f resolution 18]
 
 natural=cliff [0x10501 resolution 22]
+
+barrier=fence {echo "Fendce" }[0x26 resolution 22]
 
