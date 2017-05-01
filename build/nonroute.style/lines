@@ -125,5 +125,5 @@ waterway=river [0x1f resolution 18]
 
 natural=cliff [0x10501 resolution 22]
 
-barrier=fence {echo "Fendce" }[0x26 resolution 22]
+barrier=fence [0x26 resolution 22]
 
