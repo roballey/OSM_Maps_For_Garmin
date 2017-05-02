@@ -54,3 +54,5 @@ highway=pedestrian & area=yes [0x13 resolution 20]
 highway=* & area=yes [0x05 resolution 21]
 
 waterway=riverbank [0x46 resolution 20]
+
+man_made=bridge [0x0d00 resolution 18]
