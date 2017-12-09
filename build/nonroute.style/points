@@ -31,6 +31,7 @@ barrier=kissing_gate [0x1207 resolution 22]
 highway=bus_stop [0x2f17 resolution 21]
 highway=crossing [0x6406 resolution 20]
 highway=ford [0x6501 resolution 18]
+ford=yes [0x6501 resolution 18]
 
 man_made=tower {name '${name}'} [0x6411 resolution 22 default_name 'Tower']
 man_made=lighthouse [0x1206 resolution 22]
