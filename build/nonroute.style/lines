@@ -56,6 +56,7 @@ national_byway=yes				    		[0x05 road_class=4 road_speed=7 resolution 16]
 # ------------------------------------------------------------------------------------
 
 # Roads
+highway=motorway & tunnel=yes [0x10401 resolution 16]
 highway=motorway [0x01 resolution 16]
 highway=motorway_link [0x10004 resolution 16]
 highway=trunk  [0x02 resolution 16]
