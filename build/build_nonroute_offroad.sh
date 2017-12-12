@@ -10,10 +10,11 @@
 # first remove any previously generated Garmin image files so as to not pollute the output
 rm work/garminsplitmaps/*.img
 
-# Convert split OSM files to split Garmin image files
+# Convert split OSM files and countours to split Garmin image files
 #    - Assumes split OSM pbf files have been put in the directory work/osmsplitmaps
-echo "Converting split OSM files into Garmin Image files ..."
-java -Xmx1024m -jar tools/mkgmap-r3834/mkgmap.jar --remove-short-arcs --add-pois-to-areas --style-file=build/nonroute.style --precomp-sea=input/sea.zip --generate-sea --output-dir=work/garminsplitmaps work/osmsplitmaps/*.pbf
+#    - Assumes contour pbf files have been put in the directory work/contours
+echo "Converting split OSM files and contours into Garmin Image files ..."
+java -Xmx1024m -jar tools/mkgmap-r3834/mkgmap.jar --remove-short-arcs --add-pois-to-areas --style-file=build/nonroute.style --precomp-sea=input/sea.zip --generate-sea --output-dir=work/garminsplitmaps work/osmsplitmaps/*.pbf work/contours/*.pbf
 
 # Combine all the Garmin image files to a single Garmin gmapsupp image file, applying the offroad type rules
 echo "Combining Garmin Image files ..."
