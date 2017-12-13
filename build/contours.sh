@@ -7,7 +7,7 @@ region="oceania_nz_ni"
 contour_dir="work/contours/${region}"
 
 # Create directory (including parent directories) if it doesn't exist
-mkdir -p ${garmin_work_dir}
+mkdir -p ${contour_dir}
 
 pushd ${contour_dir}
 
