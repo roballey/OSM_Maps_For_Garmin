@@ -33,7 +33,7 @@ echo "Converting split OSM files and contours into Garmin Image files ..."
 java -Xmx1024m -jar tools/mkgmap-r3834/mkgmap.jar \
                     --remove-short-arcs \
                     --add-pois-to-areas \
-                    --style-file=build/${style}.style \
+                    --style-file=styles/${style}.style \
                     --precomp-sea=input/sea.zip \
                     --generate-sea \
                     --output-dir=${garmin_work_dir} \
