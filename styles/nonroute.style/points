@@ -28,7 +28,6 @@ amenity=shelter {name '${name}'} [0x2b05 resolution 22 default_name "Shelter"]
 barrier=gate [0x1207 resolution 22]
 barrier=kissing_gate [0x1207 resolution 22]
 
-highway=bus_stop [0x2f17 resolution 21]
 highway=crossing [0x6406 resolution 20]
 ford=yes [0x6501 resolution 22]
 
