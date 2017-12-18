@@ -18,7 +18,7 @@ echo "Generating contour pbf files from SRTM data..."
 phyghtmap \
  --step=50 \
  --line-cat=400,100 \
- --polygon=../../../input/oceania_nz_ni.poly \
+ --polygon=../../osmsplitmaps/${region}/areas.poly \
  --hgtdir=../../../hgt \
  --pbf \
  --output-prefix=contour
