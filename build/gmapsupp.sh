@@ -53,13 +53,13 @@ java -Xmx1024m -jar tools/mkgmap-r3834/mkgmap.jar \
 rm -f ${output_dir}/*
 
 # Combine all the Garmin image files to a single Garmin gmapsupp image file, applying the type rules
-echo "Combining Garmin Image files and applying type rules from ${type}.txt ..."
+echo "Combining Garmin Image files and applying type rules from ${type}.typ	..."
 java -Xmx1024m -jar tools/mkgmap-r3834/mkgmap.jar \
                     --gmapsupp \
                     --product-id=1 \
                     --output-dir=${output_dir} \
                     ${garmin_work_dir}/*.img \
-                    build/${type}.txt
+                    build/${type}.typ
 
 #
 # Build the tdb file and copy in the typ file, both required if using QLANDKARTE to view maps on the PC
