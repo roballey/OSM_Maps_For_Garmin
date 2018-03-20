@@ -4,5 +4,6 @@ work
 *.swp
 osmmap.img
 osmmap.tdb
-maps/*/*.typ
+maps/**/*.typ
 build/x*.typ
+type/*.typ
