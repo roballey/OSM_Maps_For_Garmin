@@ -54,8 +54,8 @@ leisure=track & area=yes [0x19 resolution 21]
 leisure=water_park [0x09 resolution 21]
 
 place=village [0x03 resolution 19]
-place=island & name=* [0x53 resolution 19]
-place=islet & name=* [0x53 resolution 20]
+place=island & name=* [0x10100 resolution 19]
+place=islet & name=* [0x10100 resolution 20]
 
 shop=* [0x08 resolution 22]
 
