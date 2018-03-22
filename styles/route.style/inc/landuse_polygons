@@ -1,6 +1,6 @@
 landuse=allotments [0x4e resolution 21]
 landuse=cemetery|landuse=cemetary|amenity=grave_yard [0x1a resolution 21]
-landuse=commercial [0x0c resolution 19]
+landuse=commercial [0x08 resolution 19]
 landuse=construction [0x0c resolution 21]
 landuse=farm |landuse=farmland [0x4e resolution 20]
 landuse=farmyard [0x10 resolution 22]
@@ -25,3 +25,4 @@ military=range [0x04 resolution 20]
 
 natural=scrub [0x4f resolution 20]
 natural=wood [0x50 resolution 20]
+natural=bare_rock [0x10101 resolution 20]

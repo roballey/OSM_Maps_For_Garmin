@@ -118,10 +118,11 @@ amenity=convention_center [0x2c09 resolution 24]
 amenity=community_centre [0x3005 resolution 24]
 amenity=community_center [0x3005 resolution 24]
 amenity=courthouse [0x3004 resolution 24]
-amenity=drinking_water [0x5000 resolution 24 default_name 'Water']
+amenity=drinking_water [0x5000 resolution 24]
 amenity=embassy & country=* { set name='${country} ${name|def:}' } [0x3003 resolution 24]
 amenity=embassy & country!=* [0x3003 resolution 24 default_name 'Embassy']
-amenity=emergency_phone [0x2f12 resolution 24 default_name 'Emergency Phone']
+amenity=emergency_phone [0x2f12 resolution 24 default_name 'SOS']
+emergency=phone [0x2f12 resolution 24 default_name 'SOS']
 amenity=ferry_terminal [0x2f08 resolution 22]
 amenity=fast_food [0x2a07 resolution 24]
 amenity=fire_station [0x3008 resolution 24]
@@ -150,18 +151,19 @@ amenity=school [0x2c05 resolution 24]
 # amenity=shelter is ambiguous; when possible, consider using other tags:
 #  tourism=lean_to or tourism=picnic_site
 #  shelter=yes on highway=bus_stop or highway=tram_stop or railway=halt
-amenity=shelter [0x2b06 resolution 24 default_name 'Shelter']
+amenity=shelter [0x2b06 resolution 24]
 # amenity=supermarket is superceded by shop=supermarket
 amenity=supermarket [0x2e02 resolution 24]
 amenity=taxi [0x2f17 resolution 24]
-amenity=telephone [0x2f12 resolution 24 default_name 'Telephone']
+amenity=telephone [0x2f12 resolution 24]
 amenity=theatre [0x2d01 resolution 24]
 amenity=toilets & highway=rest_area [0x2f0c resolution 24]
-amenity=toilets [0x4e00 resolution 24 default_name 'Toilets' ]
+amenity=toilets [0x4e00 resolution 24]
 amenity=townhall [0x3003 resolution 24]
 amenity=university [0x2c05 resolution 24]
 # amenity=zoo is superceded by tourism=zoo
 amenity=zoo [0x2c07 resolution 24]
+amenity=bench [0x6605 resolution 24]
 
 landuse=military [0x640b resolution 24]
 landuse=village_green & name=* [0x2c06 resolution 24]
@@ -169,7 +171,7 @@ landuse=village_green & name=* [0x2c06 resolution 24]
 healthcare=hospital | amenity=hospital | amenity=clinic [0x3002 resolution 22]
 healthcare=* | amenity=dentist | amenity=doctors [0x3002 resolution 24]
 
-highway=motorway_junction [0x2100 resolution 24]
+# highway=motorway_junction [0x2100 resolution 24]
 
 highway=services & mkgmap:area2poi!=true [0x210f resolution 24 default_name 'Services']
 
@@ -183,14 +185,15 @@ leisure=golf_course [0x2d05 resolution 24]
 leisure=ice_rink [0x2d08 resolution 24]
 leisure=marina [0x4300 resolution 24]
 leisure=nature_reserve & name=* [0x6612 resolution 24]
-leisure=park [0x2c06 resolution 24]
+#leisure=park [0x2c06 resolution 24]
 leisure=pitch { name '${name} (${sport})' | '${name}' } [0x2c08 resolution 24]
-leisure=playground [0x2c06 resolution 24]
+#leisure=playground [0x2c06 resolution 24]
 leisure=recreation_ground [0x2c08 resolution 24]
 leisure=sports_center | leisure=sports_centre { name '${name} (${sport})' | '${name}' } [0x2d0a resolution 24]
 leisure=stadium { name '${name} (${sport})' | '${name}' } [0x2c08 resolution 24]
 leisure=track { name '${name} (${sport})' | '${name}' } [0x2c08 resolution 24]
 leisure=water_park [0x2d09 resolution 24]
+leisure=picnic_table [0x4a00 resolution 24]
 
 man_made=tower|man_made=mast|landmark=chimney [0x6411 resolution 24]
 
@@ -270,6 +273,11 @@ tourism=zoo [0x2c07 resolution 24]
 
 barrier=bollard | barrier=bus_trap | barrier=gate [0x660f resolution 24]
 barrier=block | barrier=cycle_barrier | barrier=stile | barrier=kissing_gate [0x660f resolution 24]
+
+ford=yes [0x6501 resolution 22]
+natural=waterfall [0x6508 resolution 22]
+# Only render named trees
+natural=tree & name=* {name '${name}'} [0x6619 resolution 24]
 
 include 'inc/water_points';
 include 'inc/landuse_points';
