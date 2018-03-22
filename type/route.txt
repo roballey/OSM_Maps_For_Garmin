@@ -1029,6 +1029,44 @@ BorderWidth=0
 Useorientation=N
 Xpm="0 0 1 0"
 "0 c #72CEFF"
+[end]
+
+[_line]
+Type=0x20
+;AB2
+;typ=6
+String1=0x4,Contour_minor
+UseOrientation=Y
+Xpm="32 1 2 1"
+"0 c #B5B5B5"
+"1 c none"
+"01010101010101010101010101010101"
+[end]
+
+[_line]
+Type=0x21
+;ACB
+;typ=7
+LineWidth=1
+BorderWidth=0
+String1=0x4,Contour_medium
+UseOrientation=Y
+Xpm="0 0 2 0"
+"0 c #B5B5B5"
+"1 c #000000"
+
+[end]
+
+[_line] 
+Type=0x22
+;AE5
+;typ=6
+LineWidth=2
+BorderWidth=0
+UseOrientation=Y
+String1=0x4,Contour_major
+Xpm="0 0 1 0"
+"0 c #B5B5B5"
 
 [end]
 
@@ -1044,7 +1082,6 @@ String2=0x04,runway
 Useorientation=N
 Xpm="0 0 1 0"
 "0 c #A0A0A0"
-
 [end]
 
 [_line]
