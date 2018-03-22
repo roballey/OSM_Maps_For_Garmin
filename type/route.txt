@@ -24,6 +24,8 @@ Type=0x4E,4
 Type=0x4F,4
 Type=0x50,4
 Type=0x55,4
+Type=0x05,5
+Type=0x1B,5
 Type=0x1D,5
 Type=0x38,5
 Type=0x39,5
@@ -31,7 +33,7 @@ Type=0x3C,5
 Type=0x3D,5
 Type=0x46,5
 Type=0x47,5
-Type=0x05,5
+Type=0x53,5
 Type=0x13,6
 Type=0x18,6
 Type=0x1A,6
@@ -300,6 +302,16 @@ Xpm="32 32 2 1"
 "00000000000000000000000000000000"
 "00000000000000000000000000000000"
 ;12345678901234567890123456789012
+[end]
+
+[_polygon]
+Type=0x1b
+;polygon type:6
+;&340 DBlk:&870
+String1=0x4,Beach
+ExtendedLabels=N
+Xpm="0 0 1 0"
+"0 c #E1E11E"
 [end]
 
 [_polygon]
@@ -575,6 +587,16 @@ Xpm="32 32 2 1"
 "00000000000000000000000000000000"
 "00000000000000000000000000000000"
 ;12345678901234567890123456789012
+[end]
+
+[_polygon]
+Type=0x53
+;polygon type:6
+;&5D1 DBlk:&898
+String1=0x4,Sand
+ExtendedLabels=N
+Xpm="0 0 1 0"
+"0 c #FEEF85"
 [end]
 
 [_polygon]

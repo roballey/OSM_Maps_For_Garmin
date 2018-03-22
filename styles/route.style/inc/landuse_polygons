@@ -26,3 +26,10 @@ military=range [0x04 resolution 20]
 natural=scrub [0x4f resolution 20]
 natural=wood [0x50 resolution 20]
 natural=bare_rock [0x10101 resolution 20]
+
+natural=beach & natural!=bay [0x1b resolution 20]
+natural=dune & natural!=bay [0x1b resolution 20]
+natural=sand [0x53 resolution 20]
+surface=sand  & natural!=bay [0x53 resolution 20]
+
+
