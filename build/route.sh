@@ -77,7 +77,6 @@ java -Xmx1024m -jar tools/mkgmap-r3834/mkgmap.jar \
                     --generate-sea \
                     --output-dir=${tmp_dir} \
                     ${osm_dir}/*.pbf \
-                    ${contour_dir}/*.pbf \
                     type/${type}.typ
 
 echo "Copyingoutputs into ${output_dir}"
