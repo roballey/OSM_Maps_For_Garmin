@@ -16,8 +16,8 @@ rm *.pbf
 
 echo "Generating contour pbf files from SRTM data..."
 phyghtmap \
- --step=50 \
- --line-cat=400,100 \
+ --step=20 \
+ --line-cat=200,100 \
  --polygon=../../osmsplitmaps/${region}/areas.poly \
  --hgtdir=../../../hgt \
  --pbf \
