@@ -175,6 +175,8 @@ healthcare=* | amenity=dentist | amenity=doctors [0x3002 resolution 24]
 
 highway=services & mkgmap:area2poi!=true [0x210f resolution 24 default_name 'Services']
 
+highway=trailhead [0x6412 resolution 24 default_name "Trailhead"]
+
 historic=museum [0x2c02 resolution 24]
 historic=archaeological_site | historic=ruins [0x2c02 resolution 24]
 historic=memorial [0x2c02 resolution 24]
@@ -200,8 +202,11 @@ man_made=tower|man_made=mast|landmark=chimney [0x6411 resolution 24]
 # Edge 705 displays 0x650a,0x6511,0x6512,0x6513,0x6603,0x6614 as hollow white circles, no menu
 natural=cave_entrance [0x6601 resolution 24]
 natural=cliff [0x6607 resolution 24]
-#natural=peak {name '${name|def:}${ele|height:m=>ft|def:}' } [0x6616 resolution 24]
-natural=peak {name '${name|def:}${ele}' } [0x6616 resolution 22]
+##natural=peak {name '${name|def:}${ele|height:m=>ft|def:}' } [0x6616 resolution 24]
+#natural=peak {name '${name|def:}${ele}' } [0x6616 resolution 22]
+natural=peak & ele ~'[\d\s]*m' {name '${name} (${ele})' | '${ele}'} 	[0x6616 resolution 20] 
+natural=peak & ele ~'[\d\s]*ft' {name '${name} (${ele})'| '${ele}'} 	[0x6616 resolution 20]
+natural=peak {name '${name} (${ele}m)' | '${ele}m' | '${name}' } 	[0x6616 resolution 20 default_name ' '] 
 natural=rock [0x6614 resolution 24]
 natural=volcano [0x2c0c resolution 24]
 
