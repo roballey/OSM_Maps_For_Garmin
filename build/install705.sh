@@ -7,4 +7,4 @@ style="route"
 # Setup path to output files
 output_dir="maps/${style}/${region}"
 
-cp ${output_dir}/gmapsupp.img /media/rob/92E4-4983/GARMIN/gmapbmap.img
+cp ${output_dir}/gmapsupp.img /media/rob/92E4-4983/GARMIN/gmapsupp.img
