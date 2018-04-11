@@ -105,8 +105,8 @@ fi
 java -Xmx1024m -jar tools/mkgmap-r3834/mkgmap.jar \
                      --country-name="New Zealand" \
                      --country-abbr="NZ" \
-                     --series-name="Robs2" \
-                     --family-name="RobsOSM" \
+                     --series-name="${type}" \
+                     --family-name="OSM" \
                      --index \
                      --housenumbers \
                     --route \
