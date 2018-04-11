@@ -175,7 +175,7 @@ healthcare=* | amenity=dentist | amenity=doctors [0x3002 resolution 24]
 
 highway=services & mkgmap:area2poi!=true [0x210f resolution 24 default_name 'Services']
 
-highway=trailhead [0x6412 resolution 24 default_name "Trailhead"]
+highway=trailhead [0x6412 resolution 18 default_name "Trailhead"]
 
 historic=museum [0x2c02 resolution 24]
 historic=archaeological_site | historic=ruins [0x2c02 resolution 24]
