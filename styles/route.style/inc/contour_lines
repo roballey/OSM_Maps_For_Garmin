@@ -11,3 +11,11 @@ contour=elevation & contour_ext=elevation_major
 contour=elevation | contour_ext=elevation
 	{ name '${ele|conv:m=>ft}'; }
 	[0x21 resolution 20]
+
+# Contours from LINZ shapefiles
+t50_fid=* & elevation~'\d*00'
+	{ name '${elevation|conv:m=>ft}'; }
+	[0x22 resolution 20]
+t50_fid=* & elevation~'\d*0'
+	{ name '${elevation|conv:m=>ft}'; }
+	[0x20 resolution 23]
