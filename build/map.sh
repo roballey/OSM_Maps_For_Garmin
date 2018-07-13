@@ -88,7 +88,7 @@ rm -f ${tmp_dir}/*
 rm -f ${output_dir}/*
 
 echo "Converting type file from ${type}.txt to ${type}.typ ..."
-java -Xmx1024m -jar tools/mkgmap-r3834/mkgmap.jar --output-dir=type type/${type}.txt
+java -Xmx1024m -jar tools/mkgmap-r*/mkgmap.jar --output-dir=type type/${type}.txt
 
 echo "Converting split OSM files into a Garmin Image file using style ${style}.style and applying type rules from ${type}.typ ..."
 
@@ -102,7 +102,7 @@ else
 fi
 
 # Combine all the split OSM files to a single Garmin gmapsupp image file, using specified style and applying the type rules
-java -Xmx1024m -jar tools/mkgmap-r3834/mkgmap.jar \
+java -Xmx1024m -jar tools/mkgmap-r*/mkgmap.jar \
                      --country-name="New Zealand" \
                      --country-abbr="NZ" \
                      --series-name="${type}" \
@@ -131,7 +131,7 @@ echo "Copyingoutputs into ${output_dir}"
 mv ${tmp_dir}/gmapsupp.img ${output_dir}
 
 # Build the tdb file and copy in the typ file, both required if using QLANDKARTE to view maps on the PC
-java -jar tools/mkgmap-r3834/mkgmap.jar --tdbfile --output-dir=${output_dir}/ ${output_dir}/gmapsupp.img 
+java -jar tools/mkgmap-r*/mkgmap.jar --tdbfile --output-dir=${output_dir}/ ${output_dir}/gmapsupp.img 
 cp type/${type}.typ ${output_dir}
 
 # Show size of resulting Garmin image file
