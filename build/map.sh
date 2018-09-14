@@ -14,7 +14,6 @@ show_help() {
   echo "  -r <REGION> : Specify the region to be generated, defaults to 'oceania_nz_ni'"
   echo "  -s <STYLE> : Specify the style to be used to generate"
   echo "  -t <TYPE> : Specify the type file to be used when rendering the image"
-
 }
 
 # Set the name of the region being generated
@@ -59,10 +58,23 @@ done
 osm_dir="work/osmsplitmaps/${region}"
 contour_dir="work/contours/${region}"
 
+# Setup path to output files
+output_dir="maps/${style}/${region}"
+
+echo "=================================================================================================="
+echo "Converting OSM to Garmin for region ${region} using style ${style} and type ${type} rendering rules"
+if [ $contour = 1 ]
+then
+  echo "Including contours..."
+else
+  echo "No contours..."
+fi
+echo "=================================================================================================="
+
 # Check style files exist
 if [ ! -d styles/${style}.style ]
 then
-  echo "Style files 'styles/${style}.style' does not exist"
+  echo "Style files directory 'styles/${style}.style' does not exist"
   exit 1
 fi
 
@@ -73,45 +85,39 @@ then
   exit 1
 fi
 
-# Setup path to output files
-output_dir="maps/${style}/${region}"
-
-echo "=================================================================================================="
-echo "Converting OSM to Garmin for region ${region} using style ${style} and type ${type} rendering rules"
-echo "=================================================================================================="
+if [ $contour = 1 ]
+then
+  if [ ! -d ${contour_dir} ]
+  then
+    echo "Contour files directory '${contour_dir}' does not exist"
+    exit 1
+  fi
+  inputs="${osm_dir}/*.pbf ${contour_dir}/*.pbf"
+  output_img="${output_dir}/gmapsupp_contours.img"
+else
+  inputs="${osm_dir}/*.pbf"
+  output_img="${output_dir}/gmapsupp.img"
+fi
 
 # Create directories (including parent directories) if they dont exist
 echo "Building directories"
 mkdir -p ${output_dir}
 mkdir -p ${tmp_dir}
 
-# TBD: Determine if these options from OpenTopoMaps are required
-# max-jobs
-# latin1
-# family-id=6868
-# min-size-polygon=8
-# polygon-size-limits=24:12, 18:10, 16:8, 14:4, 12:2, 11:0
-
 echo "Cleaning old files"
 # Remove previously generated temporary files so as to not pollute the output
 rm -f ${tmp_dir}/*
 
 # Remove previously generated Garmin image files so as to not pollute the output
-rm -f ${output_dir}/*
+rm -f ${output_img}
+rm -f ${output_dir}/${type}.typ
+rm -f ${output_dir}/*.tdb
 
 echo "Converting type file from ${type}.txt to ${type}.typ ..."
 java -Xmx1024m -jar tools/mkgmap-r*/mkgmap.jar --output-dir=type type/${type}.txt
 
 echo "Converting split OSM files into a Garmin Image file using style ${style}.style and applying type rules from ${type}.typ ..."
 
-if [ $contour = 1 ]
-then
-  echo "   Including contours..."
-  inputs="${osm_dir}/*.pbf ${contour_dir}/*.pbf"
-else
-  echo "   No contours..."
-  inputs="${osm_dir}/*.pbf"
-fi
 
 # Combine all the split OSM files to a single Garmin gmapsupp image file, using specified style and applying the type rules
 java -Xmx1024m -jar tools/mkgmap-r*/mkgmap.jar \
@@ -138,13 +144,15 @@ java -Xmx1024m -jar tools/mkgmap-r*/mkgmap.jar \
                     ${inputs} \
                     type/${type}.typ
 
-echo "Copyingoutputs into ${output_dir}"
+echo "Copying outputs into ${output_dir}"
 # Move the resulting Garmin image file into the output directory
-mv ${tmp_dir}/gmapsupp.img ${output_dir}
+mv ${tmp_dir}/gmapsupp.img ${output_img}
 
 # Build the tdb file and copy in the typ file, both required if using QLANDKARTE to view maps on the PC
-java -jar tools/mkgmap-r*/mkgmap.jar --tdbfile --output-dir=${output_dir}/ ${output_dir}/gmapsupp.img 
+java -jar tools/mkgmap-r*/mkgmap.jar --tdbfile --output-dir=${output_dir}/ ${output_img}
 cp type/${type}.typ ${output_dir}
 
 # Show size of resulting Garmin image file
-ls -lh ${output_dir}/gmapsupp.img
+ls -lh ${output_img}
+
+echo "Image file is '${output_img}'"
