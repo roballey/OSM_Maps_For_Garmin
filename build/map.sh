@@ -7,7 +7,14 @@
 ##############################################################################
 
 show_help() {
-  echo TBD
+  echo "Generate a Garmin image file from OSM pbf files"
+  echo "Options:"
+  echo "  -c  : Include contours in generated image"
+  echo "  -h  : Show this help"
+  echo "  -r <REGION> : Specify the region to be generated, defaults to 'oceania_nz_ni'"
+  echo "  -s <STYLE> : Specify the style to be used to generate"
+  echo "  -t <TYPE> : Specify the type file to be used when rendering the image"
+
 }
 
 # Set the name of the region being generated
@@ -19,9 +26,6 @@ style="route"
 # Set the type rules that are to be applied when rendering the image file on the Garmin device
 type="route"
 
-# Setup paths to the input files
-osm_dir="work/osmsplitmaps/${region}"
-contour_dir="work/contours/${region}"
 tmp_dir="work/tmp"
 
 # Default to not including contours unless over ridden on command line
@@ -36,6 +40,8 @@ while getopts hcs:t: opt; do
             ;;
         c)  contour=1
             ;;
+        r)  region=$OPTARG
+            ;;
         s)  style=$OPTARG
             ;;
         t)  type=$OPTARG
@@ -46,6 +52,12 @@ while getopts hcs:t: opt; do
             ;;
     esac
 done
+
+# TODO: Set the --country-name and --country-abbr passed to mkgmap if region is changed
+
+# Setup paths to the input files
+osm_dir="work/osmsplitmaps/${region}"
+contour_dir="work/contours/${region}"
 
 # Check style files exist
 if [ ! -d styles/${style}.style ]
