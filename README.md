@@ -20,23 +20,16 @@ i) Download splitter from http://www.mkgmap.org.uk/download/splitter.html and in
 ii) Download mkgmap from http://www.mkgmap.org.uk/download/mkgmap.html and install in 'tools'
 iii) Download sea.zip from http://www.mkgmap.org.uk/download/splitter.html and install in 'input'
 
-###Contour Steps
--------------
-The following steps are only required if you wish to add contour lines to the generated maps.  The steps do not need to be performed everytime maps are generated as unlike OSM data the DEM data used to generate the contours does not often change.
+Only if you want to include contours:
 
-####Building contours from SRTM data:
-
-i) TBD
-
-####Building contours from LINZ data:
-
-i) TBD
+iv) Download phyghtmap from http://katze.tfiu.de/projects/phyghtmap/ and install in 'tools'
 
 ###Generation Steps
 ----------------
-1) Download an OSM extract as a PBF file and place it in the input directory
+1) Download an OSM extract as a PBF file and place it in the 'input' directory
 2) Split the PBF file into multiple parts with 'build/split.sh'
-3) Generate the Garmin image file with 'build/map.sh', by default this will build a routeable map without contours
+3) If including contours, perform the steps from 'Generating Contours' below
+4) Generate the Garmin image file with 'build/map.sh', by default this will build a routeable map without contours
 
    map.sh options:
 
@@ -45,5 +38,25 @@ i) TBD
      -t=<TYPE>    Use <TYPE> type rules when rendering the Garmin map
 
 
+###Generating Contours
+-------------------
+The following steps are only required if you wish to add contour lines to the generated maps.  The steps do not need to be performed every time maps are generated as unlike OSM data the DEM data used to generate the contours does not often change.
+
+####Building contours from SRTM data:
+
+Use this step to download SRTM data and build a PBF file of contours from the data.
+TBD: Does contours.sh need to be modified to allow specifying earthexplorer username and password?
+
+i) Generate the contours with 'build/contours.sh'
+
+NOTE: Generate contours after splitting the source OSM PBF file into multiple parts as phygtmap uses the polygon file generated
+during splitting to define the area extent for the contours.
+
+####Building contours from LINZ data:
+
+i) TBD
+
 ##Generating For Other regions
 ----------------------------
+TBD
+
