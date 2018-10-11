@@ -45,16 +45,16 @@ The following steps are only required if you wish to add contour lines to the ge
 #### Building contours from SRTM data:
 
 Use this step to download SRTM data and build a PBF file of contours from the data.
-* TBD: Does contours.sh need to be modified to allow specifying earthexplorer username and password?
 
 1. Generate the contours with 'build/contours.sh'
 
+* TBD: Does contours.sh need to be modified to allow specifying earthexplorer username and password?
 * NOTE: Generate contours after splitting the source OSM PBF file into multiple parts as phygtmap uses the polygon file generated
 during splitting to define the area extent for the contours.
 
 #### Building contours from LINZ data:
 
-1. Download LINZ contour data (TBD: Wheer? How?)
+1. Download LINZ contour data (TBD: Where? How?)
 1. Convert LINZ contour data (TBD: How?)
 1. Generate the contours with 'build/contours.sh'
 
