@@ -28,7 +28,7 @@ Only if you want to include contours:
 ----------------
 1. Download an OSM extract as a PBF file and place it in the 'input' directory
 1. Split the PBF file into multiple parts with 'build/split.sh'
-1. If including contours, perform the steps from 'Generating Contours' below
+1. If including contours, perform the steps from '[Generating Contours](#generating-contours)' below
 1. Generate the Garmin image file with 'build/map.sh', by default this will build a routeable map without contours
 
    map.sh options:
