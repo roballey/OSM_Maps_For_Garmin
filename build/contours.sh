@@ -1,3 +1,4 @@
+#! /bin/sh
 # Build PBF files of contour lines from SRTM data. The SRTM data will be downloaded into the hgtdir directory if it is not already there
 # This script is based on: https://wiki.openstreetmap.org/wiki/OSM_Map_on_Garmin/Contours_using_phygtmap
 

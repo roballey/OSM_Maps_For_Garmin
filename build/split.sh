@@ -1,3 +1,4 @@
+#! /bin/sh
 #
 # Split single PBF file into multiple files for processing via mkgmap
 #

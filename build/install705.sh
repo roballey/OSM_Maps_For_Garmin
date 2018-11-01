@@ -1,3 +1,4 @@
+#! /bin/sh
 # Set the name of the region being generated
 region="oceania_nz_ni"
 

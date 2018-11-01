@@ -1,3 +1,4 @@
+#! /bin/sh
 ##############################################################################
 #
 # Generate a routeable Garmin gmapsupp.img file from (split) OSM pbf files
