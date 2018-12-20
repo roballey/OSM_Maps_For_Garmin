@@ -121,7 +121,7 @@ echo "Converting split OSM files into a Garmin Image file using style ${style}.s
 
 
 # Combine all the split OSM files to a single Garmin gmapsupp image file, using specified style and applying the type rules
-java -Xmx1024m -jar tools/mkgmap-r*/mkgmap.jar \
+java -Xmx2000m -jar tools/mkgmap-r*/mkgmap.jar \
                      --country-name="New Zealand" \
                      --country-abbr="NZ" \
                      --series-name="${type}" \

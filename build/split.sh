@@ -36,4 +36,4 @@ osm_work_dir="work/osmsplitmaps/${region}"
 mkdir -p ${osm_work_dir}
 
 rm -f ${osm_work_dir}/*
-java -Xmx1024m -jar tools/splitter-*/splitter.jar input/${region}.pbf --output-dir=${osm_work_dir}
+java -Xmx2000m -jar tools/splitter-*/splitter.jar input/${region}.pbf --output-dir=${osm_work_dir}
