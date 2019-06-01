@@ -78,14 +78,30 @@ highway=cycleway & bridge=yes [0x1010a resolution 22 continue]
 highway=cycleway [0x0d resolution 22]
 
 # ------------------------------------------------------------------------------------
-# Contours - needs improving
+# Contours - just copied from route.style but included directly instead of a seperate file
 # ------------------------------------------------------------------------------------
 
 # Contours take their name from the elevation setting.
+contour=elevation & contour_ext=elevation_minor
+	{ name '${ele|conv:m=>ft}'; }
+	[0x20 resolution 23]
+contour=elevation & contour_ext=elevation_medium
+	{ name '${ele|conv:m=>ft}'; }
+	[0x21 resolution 21]
+contour=elevation & contour_ext=elevation_major
+	{ name '${ele|conv:m=>ft}'; }
+	[0x22 resolution 20]
 contour=elevation | contour_ext=elevation
 	{ name '${ele|conv:m=>ft}'; }
 	[0x21 resolution 20]
 
+# Contours from LINZ shapefiles
+t50_fid=* & elevation~'\d*00'
+	{ name '${elevation|conv:m=>ft}'; }
+	[0x22 resolution 20]
+t50_fid=* & elevation~'\d*0'
+	{ name '${elevation|conv:m=>ft}'; }
+	[0x20 resolution 23]
 
 # ------------------------------------------------------------------------------------
 # Miscellaneous stuff
@@ -109,4 +125,3 @@ waterway=river [0x1f resolution 18]
 natural=cliff [0x10501 resolution 22]
 
 barrier=fence [0x26 resolution 22]
-
