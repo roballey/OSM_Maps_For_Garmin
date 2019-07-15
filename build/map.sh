@@ -3,8 +3,6 @@
 #
 # Generate a routeable Garmin gmapsupp.img file from (split) OSM pbf files
 # 
-# Using style and typ from OpenTopoMap to generate routable image file.
-#
 ##############################################################################
 
 show_help() {
@@ -13,8 +11,8 @@ show_help() {
   echo "  -c  : Include contours in generated image"
   echo "  -h  : Show this help"
   echo "  -r <REGION> : Specify the region to be generated, defaults to 'oceania_nz_ni'"
-  echo "  -s <STYLE> : Specify the style to be used to generate"
-  echo "  -t <TYPE> : Specify the type file to be used when rendering the image"
+  echo "  -s <STYLE> : Specify the style to be used to generate, defaults to 'route'"
+  echo "  -t <TYPE> : Specify the type file to be used when rendering the image, defaults to 'route'"
 }
 
 # Set the name of the region being generated
@@ -32,7 +30,7 @@ tmp_dir="work/tmp"
 contour=0
 
 # Parse command line options
-while getopts hcs:t: opt; do
+while getopts hcr:s:t: opt; do
     case $opt in
         h)
             show_help

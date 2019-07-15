@@ -14,7 +14,7 @@ show_help() {
 region="oceania_nz_ni"
 
 # Parse command line options
-while getopts hcs:t: opt; do
+while getopts hr: opt; do
     case $opt in
         h)
             show_help
