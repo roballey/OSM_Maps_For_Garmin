@@ -15,18 +15,16 @@ show_help() {
   echo "  -t <TYPE> : Specify the type file to be used when rendering the image, defaults to 'route'"
 }
 
-# Set the name of the region being generated
+mem="1024m"
+
+# FIXME: Replace region with <CONTINENT>, <COUNTRY> and optional <REGION>.  
+#        Put output files in a hierarchical directory structure
+#        Set the --country-name and --country-abbr passed to mkgmap based on <COUNTRY>
+
+# Set defaults (can be overridden with command line arguments)
 region="oceania_nz_ni"
-
-# Set the default style that is to be applied when converting from OSM to Garmin
 style="route"
-
-# Set the type rules that are to be applied when rendering the image file on the Garmin device
 type="route"
-
-tmp_dir="work/tmp"
-
-# Default to not including contours unless over ridden on command line
 contour=0
 
 # Parse command line options
@@ -51,7 +49,8 @@ while getopts hcr:s:t: opt; do
     esac
 done
 
-# TODO: Set the --country-name and --country-abbr passed to mkgmap if region is changed
+# Setup path to working directory
+tmp_dir="work/tmp"
 
 # Setup paths to the input files
 osm_dir="work/osmsplitmaps/${region}"
@@ -99,10 +98,12 @@ else
 fi
 
 # Create directories (including parent directories) if they dont exist
+echo "-------------------------------------------------------"
 echo "Building directories"
 mkdir -p ${output_dir}
 mkdir -p ${tmp_dir}
 
+echo "-------------------------------------------------------"
 echo "Cleaning old files"
 # Remove previously generated temporary files so as to not pollute the output
 rm -f ${tmp_dir}/*
@@ -112,18 +113,18 @@ rm -f ${output_img}
 rm -f ${output_dir}/${type}.typ
 rm -f ${output_dir}/*.tdb
 
+echo "-------------------------------------------------------"
 echo "Converting type file from ${type}.txt to ${type}.typ ..."
-java -Xmx1024m -jar tools/mkgmap-r*/mkgmap.jar --output-dir=type type/${type}.txt
+java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar --output-dir=type type/${type}.txt
 
+echo "-------------------------------------------------------"
 echo "Converting split OSM files into a Garmin Image file using style ${style}.style and applying type rules from ${type}.typ ..."
-
-
 # Combine all the split OSM files to a single Garmin gmapsupp image file, using specified style and applying the type rules
-java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar \
+java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar \
                      --country-name="New Zealand" \
                      --country-abbr="NZ" \
                      --series-name="${type}" \
-                     --family-name="OSM" \
+                     --family-name="OSM for Garmin" \
                      --index \
                      --housenumbers \
                     --route \
@@ -143,6 +144,7 @@ java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar \
                     ${inputs} \
                     type/${type}.typ
 
+echo "-------------------------------------------------------"
 echo "Copying outputs into ${output_dir}"
 # Move the resulting Garmin image file into the output directory
 mv ${tmp_dir}/gmapsupp.img ${output_img}
