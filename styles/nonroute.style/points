@@ -32,6 +32,7 @@ man_made=tower {name '${name}'} [0x6411 resolution 22 default_name 'Tower']
 man_made=lighthouse [0x1206 resolution 22]
 man_made=beacon [0x640c resolution 24]
 man_made=survey_point & ele=* {name '${ele}'} [0x6616 resolution 21]
+man_made=footwear_decontamination [0x6703 resolution 24]
 
 natural=peak & ele ~'[\d\s]*m' {name '${name} (${ele})' | '${ele}'} 	[0x6616 resolution 21] 
 natural=peak & ele ~'[\d\s]*ft' {name '${name} (${ele})'| '${ele}'} 	[0x6616 resolution 21]
