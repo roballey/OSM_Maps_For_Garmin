@@ -45,12 +45,20 @@ TBD
 ----------------
 1. Download an OSM extract as a PBF file and place it in the 'input' directory
 1. Split the PBF file into multiple parts with 'build/split.sh'
+
+   split.sh options:
+  
+     * -i=<INPUTFILE>  Specify the name of the input PBF file to split.  If not specified defaults to <REGION>.pbf
+     * -p=<POLY>       Specify the name of an optional polygon file that will be used to define the region to which the split data is clipped 
+     * -r=<REGION>     Specify the name of the region being split, defaults to oceania_nz_ni
+
 1. If including contours, perform the steps from '[Generating Contours](#generating-contours)' below
 1. Generate the Garmin image file with 'build/map.sh', by default this will build a routeable map without contours
 
    map.sh options:
 
      * -c    Add contour lines to map
+     * -r=<REGION>  Specify the region for which map is generated, defaults to oceania_nz_ni
      * -s=<STYLE>   Use <STYLE> style rules to convert OSM data to Garmin
      * -t=<TYPE>    Use <TYPE> type rules when rendering the Garmin map
 
@@ -81,5 +89,9 @@ during splitting to define the area extent for the contours.
 
 ## Generating For Other regions
 ----------------------------
-TBD
+1. Download a OSM data in PBF format for the area for which you wish to generate a map.  `http://download.geofabrik.de/` is one source.  Put the file in the `input` directory
+1. Create a .poly file defining the area for which you wish to generate the map.  Name the file <REGION>.poly and put it in the `input` directory.  This can be ommitted if you wish to generate for the whole downloaded area but this will probably be too big for most Garmin devices.
+1. Perform the generation steps as above
+
+See `build/nz.sh` for an example that downloads a PBF file for the whole of New Zealand and builds seperate routable and nonroutable maps for the North and South islands using two different poly files to specify the clipping area.
 
