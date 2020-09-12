@@ -11,8 +11,10 @@ build/split.sh -r oceania_nz_si -p oceania_nz_si.poly -i oceania_nz.pbf
 
 # Build Garmin img files from split PBFs
 echo "Building image files ..."
+echo "   Oceania NZ NI ..."
 build/map.sh -t nonroute -s nonroute -r oceania_nz_ni
 build/map.sh -t route -s route -r oceania_nz_ni
 
+echo "   Oceania NZ SI ..."
 build/map.sh -t nonroute -s nonroute -r oceania_nz_si
 build/map.sh -t route -s route -r oceania_nz_si
