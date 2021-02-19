@@ -10,7 +10,7 @@ show_help() {
   echo "Options:"
   echo "  -c  : Include contours in generated image"
   echo "  -h  : Show this help"
-  echo "  -r <REGION> : Specify the region to be generated, defaults to 'oceania_nz_ni'"
+  echo "  -r <REGION> : Specify the region to be generated, defaults to 'oceania_nz'"
   echo "  -s <STYLE> : Specify the style to be used to generate, defaults to 'route'"
   echo "  -t <TYPE> : Specify the type file to be used when rendering the image, defaults to 'route'"
 }
@@ -22,7 +22,7 @@ mem="2048m"
 #        Set the --country-name and --country-abbr passed to mkgmap based on <COUNTRY>
 
 # Set defaults (can be overridden with command line arguments)
-region="oceania_nz_ni"
+region="oceania_nz"
 style="route"
 type="route"
 contour=0
@@ -53,8 +53,8 @@ done
 tmp_dir="work/tmp"
 
 # Setup paths to the input files
-osm_dir="work/osmsplitmaps/${region}"
-contour_dir="work/contours/${region}"
+input_osm_dir="work/osmsplitmaps/${region}"
+input_contour_dir="work/contours/${region}"
 
 # Setup path to output files
 output_dir="maps/${style}/${region}"
@@ -85,15 +85,15 @@ fi
 
 if [ $contour = 1 ]
 then
-  if [ ! -d ${contour_dir} ]
+  if [ ! -d ${input_contour_dir} ]
   then
-    echo "Contour files directory '${contour_dir}' does not exist"
+    echo "Contour files directory '${input_contour_dir}' does not exist"
     exit 1
   fi
-  inputs="${osm_dir}/*.pbf ${contour_dir}/*.pbf"
+  inputs="${input_osm_dir}/*.pbf ${input_contour_dir}/*.pbf"
   output_img="${output_dir}/gmapsupp_contours.img"
 else
-  inputs="${osm_dir}/*.pbf"
+  inputs="${input_osm_dir}/*.pbf"
   output_img="${output_dir}/gmapsupp.img"
 fi
 

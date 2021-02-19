@@ -7,13 +7,13 @@ show_help() {
   echo "Split a single PBF file into multiple files for processing via mkgmap"
   echo "Options:"
   echo "  -h  : Show this help"
-  echo "  -r <REGION> : Specify the region to be split, defaults to 'oceania_nz_ni'"
+  echo "  -r <REGION> : Specify the region to be split, defaults to 'oceania_nz'"
   echo "  -i <FILE> : Specify the input to be split, if not specified uses <REGION>.pbf"
   echo "  -p <POLYGON_FILE> : Specify an optional polygon file"
 }
 
 # Set the name of the region being generated
-region="oceania_nz_ni"
+region="oceania_nz"
 
 options=""
 
