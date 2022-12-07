@@ -23,9 +23,9 @@ The following setup steps only need to be performed once:
 Only if you want to include contours built from SRTM data:
 
 1. Windows
-o Install phygtmap pre-reqs:
-	o pip install setuptools
-	o pip install matplotlib
+   * Install phygtmap pre-reqs:
+      * pip install setuptools
+      * pip install matplotlib
 	o pip install numpy
 	o pip install beautifulsoup
 	o pip install http
@@ -37,8 +37,10 @@ o Edit `build/contours.py` to set your username and password for Earthexplorer
 
 (NOTE: I'm currently, May-2019, not able to generate contours on Windows, might by a python version issue)
 
-1. Linux
-TBD
+1. Linux:
+   * Download debian package from `http://katze.tfiu.de/projects/phyghtmap/ and install
+   * ...(other steps?)
+
 
 
 ### Generation Steps
@@ -74,7 +76,7 @@ NOTE: On Windows currently not working with Python2.7, does this require Python3
 Use this step to download SRTM data and build a PBF file of contours from the data.
 
 1. Generate the contours with 'build/contours.sh'
-1. Build you maps as usual using the -c option to include contours
+1. Build your maps as usual using the -c option to include contours
 
 * NOTE: Generate contours after splitting the source OSM PBF file into multiple parts as phygtmap uses the polygon file generated
 during splitting to define the area extent for the contours.
@@ -82,10 +84,10 @@ during splitting to define the area extent for the contours.
 #### Building contours from LINZ data:
 
 1. Download LINZ contour data as a shapefile from https://data.linz.govt.nz/layer/50768-nz-contours-topo-150k
-1. Convert LINZ contour data by loading into JOSM (requires the XXX) plugin and then saving as an OSM file
+1. Convert LINZ contour data by loading into JOSM (requires the XXX plugin) and then saving as an OSM file
 1. Split the resulting OSM file into multiple pbf files with:
         java -Xmx1000m -jar tools/splitter-*/splitter.jar [osm_file] --output-dir=work/contours/[region]
-1. Build you maps as usual using the -c option to include contours
+1. Build your maps as usual using the -c option to include contours
 
 ## Generating For Other regions
 ----------------------------
