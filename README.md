@@ -20,25 +20,27 @@ The following setup steps only need to be performed once:
 1. Download mkgmap from http://www.mkgmap.org.uk/download/mkgmap.html and install in 'tools'
 1. Download sea.zip from http://www.mkgmap.org.uk/download/splitter.html and install in 'input'
 
+#### Optional
+-------------
+
 Only if you want to include contours built from SRTM data:
 
 1. Windows
    * Install phygtmap pre-reqs:
       * pip install setuptools
       * pip install matplotlib
-	o pip install numpy
-	o pip install beautifulsoup
-	o pip install http
-	o pip install cookiejar
-        o pip install bs4
-o Download phygtmap_2.21 from http://katze.tfiu.de/projects/phyghtmap/ and extract into /c/python27
-o In /c/Python27/phyghtmap-2.21 directory run `python setup.py install`
-o Edit `build/contours.py` to set your username and password for Earthexplorer
-
-(NOTE: I'm currently, May-2019, not able to generate contours on Windows, might by a python version issue)
+      * pip install numpy
+      * pip install beautifulsoup
+      * pip install http
+      * pip install cookiejar
+      * pip install bs4
+* Download phygtmap_2.21 from http://katze.tfiu.de/projects/phyghtmap/ and extract into /c/python27
+* In /c/Python27/phyghtmap-2.21 directory run `python setup.py install`
+* Edit `build/contours.py` to set your username and password for Earthexplorer
+* (NOTE: I'm currently, May-2019, not able to generate contours on Windows, might by a python version issue)
 
 1. Linux:
-   * Download debian package from `http://katze.tfiu.de/projects/phyghtmap/ and install
+   * Download debian package from http://katze.tfiu.de/projects/phyghtmap/ and install
    * ...(other steps?)
 
 
@@ -97,3 +99,6 @@ during splitting to define the area extent for the contours.
 
 See `build/nz.sh` for an example that downloads a PBF file for the whole of New Zealand and builds seperate routable and nonroutable maps for the North and South islands using two different poly files to specify the clipping area.
 
+## Previewing Garmin maps on PC
+-----------------------
+Under either Linux or Windows `QMapShack` may be installed and used to preview the Garmin map img files
