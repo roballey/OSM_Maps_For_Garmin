@@ -20,25 +20,29 @@ The following setup steps only need to be performed once:
 1. Download mkgmap from http://www.mkgmap.org.uk/download/mkgmap.html and install in 'tools'
 1. Download sea.zip from http://www.mkgmap.org.uk/download/splitter.html and install in 'input'
 
+#### Optional
+-------------
+
 Only if you want to include contours built from SRTM data:
 
 1. Windows
-o Install phygtmap pre-reqs:
-	o pip install setuptools
-	o pip install matplotlib
-	o pip install numpy
-	o pip install beautifulsoup
-	o pip install http
-	o pip install cookiejar
-        o pip install bs4
-o Download phygtmap_2.21 from http://katze.tfiu.de/projects/phyghtmap/ and extract into /c/python27
-o In /c/Python27/phyghtmap-2.21 directory run `python setup.py install`
-o Edit `build/contours.py` to set your username and password for Earthexplorer
+   * Install phygtmap pre-reqs:
+      * pip install setuptools
+      * pip install matplotlib
+      * pip install numpy
+      * pip install beautifulsoup
+      * pip install http
+      * pip install cookiejar
+      * pip install bs4
+* Download phygtmap_2.21 from http://katze.tfiu.de/projects/phyghtmap/ and extract into /c/python27
+* In /c/Python27/phyghtmap-2.21 directory run `python setup.py install`
+* Edit `build/contours.py` to set your username and password for Earthexplorer
+* (NOTE: I'm currently, May-2019, not able to generate contours on Windows, might by a python version issue)
 
-(NOTE: I'm currently, May-2019, not able to generate contours on Windows, might by a python version issue)
+1. Linux:
+   * Download debian package from http://katze.tfiu.de/projects/phyghtmap/ and install
+   * ...(other steps?)
 
-1. Linux
-TBD
 
 
 ### Generation Steps
@@ -74,7 +78,7 @@ NOTE: On Windows currently not working with Python2.7, does this require Python3
 Use this step to download SRTM data and build a PBF file of contours from the data.
 
 1. Generate the contours with 'build/contours.sh'
-1. Build you maps as usual using the -c option to include contours
+1. Build your maps as usual using the -c option to include contours
 
 * NOTE: Generate contours after splitting the source OSM PBF file into multiple parts as phygtmap uses the polygon file generated
 during splitting to define the area extent for the contours.
@@ -82,10 +86,10 @@ during splitting to define the area extent for the contours.
 #### Building contours from LINZ data:
 
 1. Download LINZ contour data as a shapefile from https://data.linz.govt.nz/layer/50768-nz-contours-topo-150k
-1. Convert LINZ contour data by loading into JOSM (requires the XXX) plugin and then saving as an OSM file
+1. Convert LINZ contour data by loading into JOSM (requires the XXX plugin) and then saving as an OSM file
 1. Split the resulting OSM file into multiple pbf files with:
         java -Xmx1000m -jar tools/splitter-*/splitter.jar [osm_file] --output-dir=work/contours/[region]
-1. Build you maps as usual using the -c option to include contours
+1. Build your maps as usual using the -c option to include contours
 
 ## Generating For Other regions
 ----------------------------
@@ -95,3 +99,6 @@ during splitting to define the area extent for the contours.
 
 See `build/nz.sh` for an example that downloads a PBF file for the whole of New Zealand and builds seperate routable and nonroutable maps for the North and South islands using two different poly files to specify the clipping area.
 
+## Previewing Garmin maps on PC
+-----------------------
+Under either Linux or Windows `QMapShack` may be installed and used to preview the Garmin map img files
