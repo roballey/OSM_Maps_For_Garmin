@@ -3,7 +3,7 @@ Maps for Garmin GPS units generated from OpenStreetMap data using mkgmap.  Inclu
 
 ## Using Pre-Generated Maps
 ------------------------
-The directories maps/nonroute/oceania_nz_ni and maps/route/oceania_nz_ni contain gmapsupp.img files for non-routeable and routable maps of the New Zealand North Island respectively.  These image files can be installed and used on a Garmin device.
+See the release zip files for routable and non-routable maps of the whole of NZ and the North Island and South Island seperately.
 
 ## Generating Your Own Maps
 ------------------------
