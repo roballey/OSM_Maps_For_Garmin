@@ -6,6 +6,7 @@
 
 # Set the name of the region being generated
 region="oceania_nz_ni"
+region="oceania_nz"
 
 contour_dir="work/contours/${region}"
 
