@@ -8,4 +8,6 @@ style="nonroute"
 # Setup path to output files
 output_dir="maps/${style}/${region}"
 
+echo "Installing map image file from ${output_dir}..."
 cp ${output_dir}/gmapsupp.img /media/rob/GARMIN/Garmin/gmapbmap.img
+echo "Done"

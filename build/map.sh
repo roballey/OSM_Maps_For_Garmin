@@ -15,7 +15,7 @@ show_help() {
   echo "  -t <TYPE> : Specify the type file to be used when rendering the image, defaults to 'route'"
 }
 
-mem="2048m"
+mem="4096m"
 
 # FIXME: Replace region with <CONTINENT>, <COUNTRY> and optional <REGION>.  
 #        Put output files in a hierarchical directory structure
@@ -121,12 +121,15 @@ echo "-------------------------------------------------------"
 echo "Converting split OSM files into a Garmin Image file using style ${style}.style and applying type rules from ${type}.typ ..."
 # Combine all the split OSM files to a single Garmin gmapsupp image file, using specified style and applying the type rules
 java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar \
-                     --country-name="New Zealand" \
-                     --country-abbr="NZ" \
-                     --series-name="${type}" \
-                     --family-name="OSM for Garmin" \
-                     --index \
-                     --housenumbers \
+                    --family-name="OSM for Garmin" \
+                    --series-name="${type}" \
+		    --description="Maps for Garmin devices generated from OSM data" \
+		    --product-version=101 \
+		    --region-name="Oceania" \
+                    --country-name="New Zealand" \
+                    --country-abbr="NZ" \
+                    --index \
+                    --housenumbers \
                     --route \
                     --adjust-turn-headings \
                     --add-pois-to-areas \
@@ -148,10 +151,6 @@ echo "-------------------------------------------------------"
 echo "Copying outputs into ${output_dir}"
 # Move the resulting Garmin image file into the output directory
 mv ${tmp_dir}/gmapsupp.img ${output_img}
-
-# Build the tdb file and copy in the typ file, both required if using QLANDKARTE to view maps on the PC
-java -jar tools/mkgmap-r*/mkgmap.jar --tdbfile --output-dir=${output_dir}/ ${output_img}
-cp type/${type}.typ ${output_dir}
 
 # Show size of resulting Garmin image file
 ls -lh ${output_img}
