@@ -15,7 +15,7 @@ show_help() {
   echo "  -t <TYPE> : Specify the type file to be used when rendering the image, defaults to 'route'"
 }
 
-mem="4096m"
+mem="8000m"
 
 # FIXME: Replace region with <CONTINENT>, <COUNTRY> and optional <REGION>.  
 #        Put output files in a hierarchical directory structure
