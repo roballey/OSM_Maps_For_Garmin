@@ -132,6 +132,8 @@ junction=roundabout & (highway=tertiary | highway=tertiary_link) [0x0c road_clas
 junction=roundabout & (highway=tertiary | highway=tertiary_link) [0x10804 resolution 21]
 
 junction=roundabout & (highway=unclassified | highway=minor ) [0x0c road_class=1 road_speed=1 resolution 21]
+
+junction=roundabout & highway=footway [0x0b road_class=0 road_speed=1 resolution 22]
 junction=roundabout & highway=* [0x0c road_class=0 road_speed=1 resolution 22]
 
 
@@ -179,10 +181,10 @@ highway=bridleway [0x07 road_class=0 road_speed=0 resolution 23]
 highway=byway [0x16 road_class=0 road_speed=0 resolution 23]
 
 highway=service & service=parking_aisle
-[0x07 road_class=0 road_speed=1 resolution 24]
+[0x12 road_class=0 road_speed=1 resolution 24]
 highway=service & (service=alley|service=driveway)
-[0x07 road_class=0 road_speed=0 resolution 23]
-highway=service [0x07 road_class=0 road_speed=2 resolution 22]
+[0x12 road_class=0 road_speed=0 resolution 23]
+highway=service [0x12 road_class=0 road_speed=2 resolution 22]
 
 highway=cycleway & access=no [0x10510 resolution 20]
 highway=cycleway & bridge=yes [0x1010a resolution 22 continue]

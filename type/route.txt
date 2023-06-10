@@ -113,7 +113,8 @@ ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
 Xpm="0 0 1 0"
-"1 c #CFCFCF"
+"1 c #FFFF00"
+; 10-Jun-2023 Changed to yellow
 [end]
 
 
@@ -358,13 +359,13 @@ Xpm="32 32 2 1"
 "                 !   !  !  !    "
 "                  !  ! !  !     "
 "                !!!!!!!!!!!!!   "
-"    !!!!!!!!!!!                 "
+"                                "
 "                  !!!!!!!!      "
 "                                "
 "      !                         "
 "      !   !                     "
 "   !  !   !                     "
-"   !   !  !  !      !!!!!!!!!!  "
+"   !   !  !  !                  "
 "    !  ! !  !                   "
 "  !!!!!!!!!!!!!                 "
 "                                "
@@ -373,7 +374,7 @@ Xpm="32 32 2 1"
 "                       !        "
 "                       !   !    "
 "                    !  !   !    "
-"      !!!!!!!       !   !  !  ! "
+"                    !   !  !  ! "
 "                     !  ! !  !  "
 "                   !!!!!!!!!!!!!"
 "                                "
@@ -381,10 +382,11 @@ Xpm="32 32 2 1"
 "    !                           "
 "    !   !                       "
 " !  !   !                       "
-" !   !  !  !    !!!!!!!!!!!     "
+" !   !  !  !                    "
 "  !  ! !  !                     "
 "!!!!!!!!!!!!!                   "
 ;12345678901234567890123456789012
+; 10-Jun-2023 Removed horizontal lines to make less dense
 [end]
 
 
@@ -620,13 +622,9 @@ String1=0x00,Mud
 String2=0x04,Mud
 ExtendedLabels=N
 Xpm="32 32 2 1"
-"! c #DADADA"
-"# c #1EAAF1"
+"# c #606060"
+"! c #72CEFF"
 "!!!!####!!!!!!!!!!!!####!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -634,15 +632,7 @@ Xpm="32 32 2 1"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!####!!!!!!!!!!!!####!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -650,11 +640,24 @@ Xpm="32 32 2 1"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!####!!!!!!!!!!!!####!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!####!!!!!!!!!!!!####"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!####!!!!!!!!!!!!####!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!####!!!!!!!!!!!!####"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 ;12345678901234567890123456789012
+; 10-Jun-2023, swap colours; make grey darker, blue lighter and more lines to make more dense
 [end]
 
 
@@ -993,6 +996,22 @@ String1=0x04,Steps
 ExtendedLabels=N
 [end]
 
+[_line]
+Type=0x12
+;GRMN_TYPE: ???
+UseOrientation=Y
+Xpm="32 4 2  1"
+"! c #c0c0c0"
+"# c #000000"
+"################################"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"################################"
+;12345678901234567890123456789012
+String1=0x04,Service
+ExtendedLabels=N
+; 10-Jun-2023 Added and used for highway=service
+[end]
 
 [_line]
 Type=0x14
@@ -1392,17 +1411,20 @@ ExtendedLabels=N
 Type=0x10510
 ;GRMN_TYPE: //
 UseOrientation=Y
-Xpm="32 5 2  1"
-"! c #E2202C"
+Xpm="32 7 2  1"
+"! c #FF0000"
 "  c none"
-"!   !   !   !   !   !   !   !   "
-" ! !     ! !     ! !     ! !    "
-"  !       !       !       !     "
-" ! !     ! !     ! !     ! !    "
-"!   !   !   !   !   !   !   !   "
+"!!    !!   !!    !!   !!    !!  "
+" !!  !!     !!  !!     !!  !!   "
+"  !!!!       !!!!       !!!!    "
+"   !!         !!         !!     "
+"  !!!!       !!!!       !!!!    "
+" !!  !!     !!  !!     !!  !!   "
+"!!    !!   !!    !!   !!    !!  "
 ;12345678901234567890123456789012
-String1=0x04,Track - Closed
-ExtendedLabels=N
+String1=0x04,Closed
+ExtendedLabels=Y
+; 10-Jun-2023, make bright red; make lines thicker
 [end]
 
 
@@ -2148,7 +2170,7 @@ Type=0x02f
 SubType=0x0b
 ;GRMN_TYPE: Business - Services/PARKING/Parking/Non NT
 String1=0x02,Parkplatz
-String2=0x04,parking
+String2=0x04,Parking
 ExtendedLabels=N
 DayXpm="11 11 8 1"   Colormode=16
 "!	c #1600FF"
@@ -2179,7 +2201,7 @@ Type=0x02f
 SubType=0x0c
 ;GRMN_TYPE: Business - Services/REST_AREA_TOURIST_INFO/Rest area, Tourist information/Non NT
 String1=0x02,Toilette
-String2=0x04,restroom
+String2=0x04,Restroom
 ExtendedLabels=N
 DayXpm="16 16 32 2"   Colormode=16
 "!!	c #FFFFFF"
@@ -2393,9 +2415,9 @@ DayXpm="10 10 3 1"   Colormode=16
 Type=0x04a
 SubType=0x00
 ;GRMN_TYPE: Misc. Points of Interest/PICNIC_AREA/Picnic area/Non NT, NT
-String1=0x00,picnic area
+String1=0x04,Picnic table
 ExtendedLabels=Y
-FontStyle=NoLabel (invisible)
+FontStyle=SmallFont
 CustomColor=No
 DayXpm="20 20 37 2"   Colormode=32
 "!!	c #000000"  alpha=15
@@ -2496,38 +2518,24 @@ String1=0x01,Toilettes
 String2=0x03,Toilet
 String3=0x04,Toilets
 ExtendedLabels=Y
-FontStyle=NoLabel (invisible)
+FontStyle=SmallFont
 CustomColor=No
-DayXpm="20 20 16 1"   Colormode=32
+DayXpm="20 20 2 1"   Colormode=32
 "!	c #000000"  alpha=15
-"#	c #734A08"  alpha=0
-"%	c #000000"  alpha=14
-"?	c #764807"  alpha=8
-"$	c #808000"  alpha=13
-"*	c #724A07"  alpha=9
-"=	c #804D00"  alpha=5
-"1	c #734A08"  alpha=2
-"2	c #734A08"  alpha=2
-"3	c #764E0A"  alpha=5
-"4	c #774D09"  alpha=1
-"5	c #805500"  alpha=9
-"6	c #734A08"  alpha=7
-"7	c #754907"  alpha=9
-"8	c #734A08"  alpha=15
-"9	c #6A4000"  alpha=3
+"#	c #000000"  alpha=0
 "!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!"
-"!!!!#!!!!!#!!!?#!!!!"
+"!!!!#!!!!!#!!!##!!!!"
 "!!!###!!!!#!!!###!!!"
-"!!!!#!!!!!#!!$*#!=!!"
+"!!!!#!!!!!#!!###!#!!"
 "!!!####!!!#!!#####!!"
-"!3######!!#!#######!"
-"!!####!#4!#!#!###!#!"
+"!#######!!#!#######!"
+"!!####!##!#!#!###!#!"
 "!#!###!#!!#!#!###!#!"
-"5#!####!#!#!#!###!#!"
-"!7#####!!!#!#!###!#!"
+"##!####!#!#!#!###!#!"
+"!######!!!#!#!###!#!"
 "!!#####!!!#!!!#!#!!!"
-"!9!#!#!!!!#!!!#!#!!!"
+"!#!#!#!!!!#!!!#!#!!!"
 "!!!#!#!!!!#!!!#!#!!!"
 "!!!#!#!!!!#!!!#!#!!!"
 "!!!#!#!!!!#!!!#!#!!!"
@@ -2547,16 +2555,12 @@ String1=0x01,Fontaine
 String2=0x03,Drinkwater
 String3=0x04,Drinking water
 ExtendedLabels=Y
-FontStyle=NoLabel (invisible)
+FontStyle=SmallFont
 CustomColor=No
-DayXpm="20 20 7 1"   Colormode=32
+DayXpm="20 20 3 1"   Colormode=32
 "!	c #000000"  alpha=15
-"#	c #734A08"  alpha=0
-"%	c #734A08"  alpha=7
-"?	c #734A08"  alpha=11
-"$	c #734A08"  alpha=3
-"*	c #734A08"  alpha=4
-"=	c #C6A878"  alpha=0
+"#	c #0000FF"  alpha=0
+"=	c #0080FF"  alpha=0
 "!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!####!!!"
 "!!!!!!!!!!!!!!#!!!!!"
@@ -2589,7 +2593,7 @@ String1=0x01,Point de vue
 String2=0x03,Uitzichtpunt
 String3=0x04,View point
 ExtendedLabels=Y
-FontStyle=NoLabel (invisible)
+FontStyle=Default
 CustomColor=No
 DayXpm="16 16 4 1"   Colormode=16
 "!	c #587BF8"
@@ -2753,48 +2757,6 @@ DayXpm="15 26 44 2"   Colormode=16
 "                              "
 "                              "
 ;123456789012345
-[end]
-
-
-[_point]
-Type=0x064
-SubType=0x14
-;GRMN_TYPE: Geographical Named Points of Interest/WELL/Well/Non NT, NT
-String1=0x02,Trinkwasser
-String2=0x04,drinking water
-ExtendedLabels=N
-DayXpm="13 14 16 1"   Colormode=16
-"!	c #FFFFFF"
-"#	c #000000"
-"%	c #D0D0A0"
-"?	c #E8E8A8"
-"$	c #F8F8B0"
-"*	c #D8D8A0"
-"=	c #C8C898"
-"1	c #B0B090"
-"2	c #A0A088"
-"3	c #888880"
-"4	c #C8C8A0"
-"5	c #E0E0A8"
-"6	c #00F8F8"
-"7	c #0080F8"
-"8	c #0000F8"
-"  	c none"
-"   !!!!      "
-"  !####!     "
-"  !!##!!!!!! "
-" !##########!"
-"!#%?$$*=123#!"
-"!#4*55######!"
-"!######!!!!! "
-" !!#!!!      "
-"  !#!        "
-" !#6#!       "
-"!#778#!      "
-"!#888#!      "
-" !###!       "
-"  !!!        "
-;1234567890123
 [end]
 
 

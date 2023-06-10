@@ -115,16 +115,18 @@ rm -f ${output_dir}/*.tdb
 
 echo "-------------------------------------------------------"
 echo "Converting type file from ${type}.txt to ${type}.typ ..."
+# TODO: Put output under work instead of type
 java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar --output-dir=type type/${type}.txt
 
 echo "-------------------------------------------------------"
 echo "Converting split OSM files into a Garmin Image file using style ${style}.style and applying type rules from ${type}.typ ..."
 # Combine all the split OSM files to a single Garmin gmapsupp image file, using specified style and applying the type rules
+# TODO: Automatically update product-version
 java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar \
                     --family-name="OSM for Garmin" \
                     --series-name="${type}" \
-		    --description="Maps for Garmin devices generated from OSM data" \
-		    --product-version=101 \
+		    --description="OSM maps for Garmin devices" \
+		    --product-version=102 \
 		    --region-name="Oceania" \
                     --country-name="New Zealand" \
                     --country-abbr="NZ" \

@@ -8,3 +8,8 @@ osmmap.tdb
 maps/**/*.typ
 build/x*.typ
 type/*.typ
+Routable.zip
+NonRoutable.zip
+test/maps
+test/split
+test/tmp
