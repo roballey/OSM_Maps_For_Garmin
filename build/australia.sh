@@ -1,6 +1,6 @@
 #! /bin/sh
 
-# Download latest OSM data and build Garmin GPS supplementary map images for South Africa
+# Download latest OSM data and build Garmin GPS supplementary map images for Australia
 
 # Download pbf
 echo "Downloading ..."
