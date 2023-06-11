@@ -983,14 +983,18 @@ ExtendedLabels=N
 Type=0x11
 ;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_ROUTE_LINE_5/Routable customizable line/Non NT, NT
 UseOrientation=N
-Xpm="32 5 2  1"
+Xpm="32 9 2  1"
 "! c #E2202C"
-"# c #FFFFFF"
-"!!##!!##!!##!!##!!##!!##!!##!!##"
-"!!##!!##!!##!!##!!##!!##!!##!!##"
-"!!##!!##!!##!!##!!##!!##!!##!!##"
-"!!##!!##!!##!!##!!##!!##!!##!!##"
-"!!##!!##!!##!!##!!##!!##!!##!!##"
+"  c none"
+"!!  !!  !!  !!  !!  !!  !!  !!  "
+"!!  !!  !!  !!  !!  !!  !!  !!  "
+"!!  !!  !!  !!  !!  !!  !!  !!  "
+"!!  !!  !!  !!  !!  !!  !!  !!  "
+"!!  !!  !!  !!  !!  !!  !!  !!  "
+"!!  !!  !!  !!  !!  !!  !!  !!  "
+"!!  !!  !!  !!  !!  !!  !!  !!  "
+"!!  !!  !!  !!  !!  !!  !!  !!  "
+"!!  !!  !!  !!  !!  !!  !!  !!  "
 ;12345678901234567890123456789012
 String1=0x04,Steps
 ExtendedLabels=N
@@ -1066,7 +1070,7 @@ ExtendedLabels=N
 Type=0x18
 ;GRMN_TYPE: Water Features/STREAM/Small stream or creek/Non NT
 UseOrientation=N
-LineWidth=1
+LineWidth=2
 Xpm="0 0 1 0"
 "1 c #72CEFF"
 String1=0x02,Bach
@@ -2359,29 +2363,28 @@ Type=0x02f
 SubType=0x17
 ;GRMN_TYPE: Business - Services/TRANSIT_SERVICES/Mass transit services/Non NT
 String1=0x02,Bushaltestelle
-String2=0x04,bus stop
+String2=0x04,Bus Stop
 ExtendedLabels=N
-DayXpm="9 9 11 1"   Colormode=16
-"!	c #FFFFFF"
-"#	c #E0F3E4"
-"%	c #ACDFB7"
-"?	c #18A736"
-"$	c #09A125"
-"*	c #25AB27"
-"=	c #AADB30"
-"1	c #FBF836"
-"2	c #45B629"
-"3	c #049F24"
-"  	c none"
-"  !!#!!  "
-" !%?$?%! "
-"!%*=1=2%!"
-"!?13131?!"
-"#$13331$#"
-"!?13131?!"
-"!%2=1=2%!"
-" !%?$?%! "
-"  !!#!!  "
+Xpm="16 16 2 1"  Coloemode=16
+"  c None"
+". c #0092DA"
+"                "
+"                "
+"    ........    "
+"   ..........   "
+"   ..      ..   "
+"   ..........   "
+"   .        .   "
+"   .        .   "
+"   .        .   "
+"   .        .   "
+"   ..........   "
+"   ..........   "
+"   . ...... .   "
+"   ..........   "
+"   ...    ...   "
+"    .      .    "
+
 ;123456789
 [end]
 
