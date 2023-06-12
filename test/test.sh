@@ -7,13 +7,18 @@ java -Xmx1000m -jar tools/splitter-*/splitter.jar test/test.osm --output-dir=tes
 echo "--- TEST: Generating type file from txt ..."
 java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar --output-dir=test/work type/route.txt
 
+version_file="test/map_version.txt"
+# Increment version number
+echo "--- TEST: Incrementing version number ..."
+awk '{$1=$1+1}'1 ${version_file} >test/tmp.txt && mv test/tmp.txt ${version_file}
+
 # Build Garmin img files from split files
 echo "--- TEST: Building image file ..."
 java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar \
                     --family-name="Test OSM for Garmin" \
                     --series-name="Route" \
 		    --description="Test OSM maps for Garmin devices" \
-		    --product-version=999 \
+		    --product-version=`cat ${version_file}` \
 		    --region-name="Oceania" \
                     --country-name="New Zealand" \
                     --country-abbr="NZ" \
@@ -38,3 +43,5 @@ java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar \
 
 echo "--- TEST: Moving image file ..."
 mv test/tmp/gmapsupp.img test/maps/test_route.img
+
+echo "--- TEST: Map version is "`cat ${version_file}`

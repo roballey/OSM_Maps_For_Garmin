@@ -2847,23 +2847,27 @@ String1=0x04,Waterfall
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-DayXpm="12 12 3 1"   Colormode=16
-"!	c #0065FF"
-"#	c #FFFFFF"
-"  	c none"
-"    ####    "
-"    #!!#    "
-"    #!!#    "
-"    ####    "
-" ########## "
-" #!!!!!!!!# "
-" #!!!!!!!!# "
-" ########## "
-"############"
-"#!!!!!!!!!!#"
-"#!!!!!!!!!!#"
-"############"
-;123456789012
+DayXpm="14 14 5 1"   Colormode=16
+"  c None"
+". c #4D80B2"
+"X c #4D80B3"
+"o c #4E80B3"
+"O c #4D80B4"
+"              "
+"XXXXXXXXo     "
+"XXXXXXXXoo    "
+"  XX XXXooo   "
+"   XX XX oo   "
+"   XX XX oo   "
+"   XX XX oo   "
+"   XX XX oo   "
+"   Xo Xo XX   "
+"    o  o  X   "
+"              "
+" X   oo  XXX  "
+" XooooooXXXXX "
+"  oXo  oX   o "
+;12345678901234
 [end]
 
 

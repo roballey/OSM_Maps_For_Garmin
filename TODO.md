@@ -1,6 +1,3 @@
-In Progress:
-   - Differentiate between service and residential roads on Garmin (see Changes.xlsx)
-
 Todo:
 
    - Look at modifying scripts to use external `getopt` instead of built-in getopts for parsing (and use long options).  
@@ -13,7 +10,6 @@ Todo:
    - Change draw order to match polygon changes above.
 
    Typ file:
-      - Improve waterfall icon (make bolder)
       - Make contour lines less prominent
 
 Done:   
