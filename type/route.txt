@@ -13,7 +13,7 @@ CodePage=1252
 
 
 
-;=========== POLYGONES : PRIORITE DANS L'AFFICHAGE ======
+;=========== Polygon Priority (draw order) ======
 [_drawOrder]
 Type=0x03f,0
 Type=0x000,1
@@ -49,20 +49,21 @@ Type=0x01a,6
 Type=0x051,6
 Type=0x10104,6
 Type=0x004,7
+Type=0x013,8
 [End]
 
 
 
 
 
-;===================== POLYGONES ========================
+;===================== Polygons ========================
 
 
 [_polygon]
 Type=0x04
 ;GRMN_TYPE: Large Manmade Areas/MILITARY_BASE/Military base area/Non NT
 String1=0x02,Sperrgebiet
-String2=0x04,exclusion zone
+String2=0x04,Exclusion Zone
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -205,7 +206,7 @@ Xpm="0 0 1 0"
 [_polygon]
 Type=0x10
 ;GRMN_TYPE: //
-String1=0x02,built-up area
+String1=0x02,Built-up area
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -218,7 +219,7 @@ Xpm="0 0 1 0"
 Type=0x13
 ;GRMN_TYPE: Large Manmade Areas/GENERIC_MANMADE/Other or generic manmade area, such as a building/Non NT
 String1=0x02,Gebäude
-String2=0x04,building
+String2=0x04,Building
 ExtendedLabels=N
 Xpm="0 0 1 0"
 "1 c #B9B9B9"
@@ -283,7 +284,7 @@ Xpm="32 32 2 1"
 Type=0x19
 ;GRMN_TYPE: Large Manmade Areas/SPORTS_COMPLEX/Sports arena or stadium/Non NT
 String1=0x02,Sportplatz
-String2=0x04,sports field
+String2=0x04,Sports Field
 ExtendedLabels=N
 Xpm="0 0 1 0"
 "1 c #BEFFBA"
@@ -294,7 +295,7 @@ Xpm="0 0 1 0"
 Type=0x1a
 ;GRMN_TYPE: Large Manmade Areas/CEMETARY/Cemetary/Non NT
 String1=0x02,Friedhof
-String2=0x04,cemetery
+String2=0x04,Cemetery
 ExtendedLabels=N
 Xpm="32 32 2 1"
 "! c #000000"
