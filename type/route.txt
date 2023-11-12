@@ -979,6 +979,17 @@ String1=0x04,Cyclepath
 ExtendedLabels=N
 [end]
 
+[_line]
+Type=0x0e
+UseOrientation=Y
+Xpm="32 1 2  1"
+"! c #FF2433"
+"  c none"
+"!!!!!!! !!!!!!! !!!!!!! !!!!!!! "
+;12345678901234567890123456789012
+String1=0x04,Sidewalk
+ExtendedLabels=N
+[end]
 
 [_line]
 Type=0x11

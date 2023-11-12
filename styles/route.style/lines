@@ -199,6 +199,8 @@ highway=path [0x0a road_class=0 road_speed=0 resolution 22]
 highway=footway & access=no [0x10510 resolution 20]
 highway=footway & bridge=yes [0x1010a resolution 22 continue]
 highway=footway & bridge=boardwalk [0x1010c resolution 22 continue]
+highway=footway & footway=sidewalk [0x0e road_class=0 road_speed=0 resolution 23]
+highway=footway & footway=crossing [0x0e road_class=0 road_speed=0 resolution 23]
 highway=footway [0x0b road_class=0 road_speed=0 resolution 22]
 
 highway=steps [0x11 road_class=0 road_speed=0 resolution 22]
