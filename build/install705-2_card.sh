@@ -14,7 +14,7 @@ region="oceania_nz"
 style="route"
 
 # Destination file on this device - assumes SD Card is mounted
-dest="/media/rob/HOCO64/Garmin/gmapsupp.img"
+dest="/media/rob/705-2/Garmin/gmapsupp.img"
 
 # Parse command line options
 while getopts hr: opt; do
