@@ -1,19 +1,22 @@
 #! /bin/sh
+version_file="test/map_version.txt"
 
 # Split input file
-echo "--- TEST: Splitting ..."
+echo "========================================================================================"
+echo "=== TEST: Splitting ..."
 java -Xmx1000m -jar tools/splitter-*/splitter.jar test/test.osm --output-dir=test/split
 
-echo "--- TEST: Generating type file from txt ..."
+echo "========================================================================================"
+echo "=== TEST: Generating type file from txt ..."
 java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar --output-dir=test/work type/route.txt
 
-version_file="test/map_version.txt"
-# Increment version number
-echo "--- TEST: Incrementing version number ..."
+echo "========================================================================================"
+echo "=== TEST: Incrementing version number ..."
 awk '{$1=$1+1}'1 ${version_file} >test/tmp.txt && mv test/tmp.txt ${version_file}
 
 # Build Garmin img files from split files
-echo "--- TEST: Building image file ..."
+echo "========================================================================================"
+echo "=== TEST: Building image file ..."
 java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar \
                     --family-name="Test OSM for Garmin" \
                     --series-name="Route" \
@@ -41,7 +44,9 @@ java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar \
                     test/split/*.pbf \
                     test/work/route.typ
 
-echo "--- TEST: Moving image file ..."
+echo "========================================================================================"
+echo "=== TEST: Moving image file ..."
 mv test/tmp/gmapsupp.img test/maps/test_route.img
 
-echo "--- TEST: Map version is "`cat ${version_file}`
+echo "========================================================================================"
+echo "=== TEST: Map version is "`cat ${version_file}`
