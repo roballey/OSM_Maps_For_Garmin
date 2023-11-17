@@ -11,8 +11,8 @@ echo "=== TEST: Generating type file from txt ..."
 java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar --output-dir=test/work type/route.txt
 
 echo "========================================================================================"
-echo "=== TEST: Incrementing version number ..."
-awk '{$1=$1+1}'1 ${version_file} >test/tmp.txt && mv test/tmp.txt ${version_file}
+echo "=== TEST: Setting version number ..."
+version=`date +%y%m`
 
 # Build Garmin img files from split files
 echo "========================================================================================"
@@ -21,7 +21,7 @@ java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar \
                     --family-name="Test OSM for Garmin" \
                     --series-name="Route" \
 		    --description="Test OSM maps for Garmin devices" \
-		    --product-version=`cat ${version_file}` \
+		    --product-version=$version \
 		    --region-name="Oceania" \
                     --country-name="New Zealand" \
                     --country-abbr="NZ" \
@@ -49,4 +49,4 @@ echo "=== TEST: Moving image file ..."
 mv test/tmp/gmapsupp.img test/maps/test_route.img
 
 echo "========================================================================================"
-echo "=== TEST: Map version is "`cat ${version_file}`
+echo "=== TEST: Map version is $version"

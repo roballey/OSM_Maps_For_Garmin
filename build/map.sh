@@ -59,8 +59,7 @@ input_contour_dir="work/contours/${region}"
 # Setup path to output files
 output_dir="maps/${style}/${region}"
 
-map_ver_file="${output_dir}/map_ver.txt"
-
+echo "=================================================================================================="
 echo "=================================================================================================="
 echo "Converting OSM to Garmin for region ${region} using style ${style} and type ${type} rendering rules"
 if [ $contour = 1 ]
@@ -69,6 +68,7 @@ then
 else
   echo "No contours..."
 fi
+echo "=================================================================================================="
 echo "=================================================================================================="
 
 # Check style files exist
@@ -85,20 +85,15 @@ then
   exit 1
 fi
 
-echo "-------------------------------------------------------"
-# Start at 0.00 if map version file doesnt exist
-if [ ! -f ${map_ver_file} ]
-then
-  echo "Starting version numbering in '${map_ver_file}'"
-  echo "000" > ${map_ver_file}
-# Other wise increment version
-else
-  echo "Incrementing version number in '${map_ver_file}'"
-  awk '{$1=$1+1}'1 ${map_ver_file} >${tmp_dir}/tmp.txt && mv ${tmp_dir}/tmp.txt ${map_ver_file}
-fi
+echo "=================================================================================================="
+version=`date +%y%m`
+echo "Set version ${version}"
 
 if [ $contour = 1 ]
 then
+  echo "=================================================================================================="
+  echo "Setting contour inputs"
+
   if [ ! -d ${input_contour_dir} ]
   then
     echo "Contour files directory '${input_contour_dir}' does not exist"
@@ -112,12 +107,12 @@ else
 fi
 
 # Create directories (including parent directories) if they dont exist
-echo "-------------------------------------------------------"
+echo "=================================================================================================="
 echo "Building directories"
 mkdir -p ${output_dir}
 mkdir -p ${tmp_dir}
 
-echo "-------------------------------------------------------"
+echo "=================================================================================================="
 echo "Cleaning old files"
 # Remove previously generated temporary files so as to not pollute the output
 rm -f ${tmp_dir}/*
@@ -127,18 +122,20 @@ rm -f ${output_img}
 rm -f ${output_dir}/${type}.typ
 rm -f ${output_dir}/*.tdb
 
-echo "-------------------------------------------------------"
+echo "=================================================================================================="
 echo "Converting type file from ${type}.txt to ${type}.typ ..."
 java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar --output-dir=${tmp_dir} type/${type}.txt
 
-echo "-------------------------------------------------------"
-echo "Converting split OSM files into a Garmin Image file using style ${style}.style and applying type rules from ${type}.typ ..."
+echo "=================================================================================================="
+echo "Converting split OSM files into a Garmin Image file:"
+echo "  Using style ${style}.style"
+echo "  Applying type rules from ${type}.typ ..."
 # Combine all the split OSM files to a single Garmin gmapsupp image file, using specified style and applying the type rules
 java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar \
                     --family-name="OSM for Garmin" \
                     --series-name="${type}" \
 		    --description="OSM maps for Garmin devices" \
-		    --product-version=`cat ${map_ver_file}` \
+		    --product-version=$version \
 		    --region-name="Oceania" \
                     --country-name="New Zealand" \
                     --country-abbr="NZ" \
@@ -161,12 +158,12 @@ java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar \
                     ${inputs} \
                     ${tmp_dir}/${type}.typ
 
-echo "-------------------------------------------------------"
-echo "Copying outputs into ${output_dir}"
+echo "=================================================================================================="
+echo "Moving output image files into ${output_dir}"
 # Move the resulting Garmin image file into the output directory
 mv ${tmp_dir}/gmapsupp.img ${output_img}
 
 # Show size of resulting Garmin image file
 ls -lh ${output_img}
 
-echo "Image file is '${output_img}' version "`cat ${map_ver_file}`
+echo "Image file is '${output_img}' version ${version}"
