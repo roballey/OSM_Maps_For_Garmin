@@ -3273,3 +3273,33 @@ DayXpm="16 16 5 1"   Colormode=16
 "     ......     "
 ;123456789012
 [end]
+
+[_point]
+Type=0x067
+SubType=0x05
+;GRMN_TYPE: ???
+String1=0x04,Bin
+ExtendedLabels=N
+DayXpm="16 16 2 1"   Colormode=16
+" 	c None"
+".	c #000000"
+"                "
+"                "
+"       ..       "
+"    ........    "
+"                "
+"    ........    "
+"    ........    "
+"    ........    "
+"    ........    "
+"     ......     "
+"     ......     "
+"     ......     "
+"     ......     "
+"     ......     "
+"                "
+"                "
+;1234567890123456
+; Waste/Trash/Garbage/Rubbish Bin adapted from rontgen_waste_disposal.svg
+[end]
+

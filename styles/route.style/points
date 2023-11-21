@@ -160,6 +160,8 @@ amenity=toilets & highway=rest_area [0x2f0c resolution 24]
 amenity=toilets [0x4e00 resolution 24]
 amenity=townhall [0x3003 resolution 24]
 amenity=university [0x2c05 resolution 24]
+# Added by RPA: Render waste/trash/rubbish bin/basket
+amenity=waste_basket [0x6705 resolution 22]
 # amenity=zoo is superceded by tourism=zoo
 amenity=zoo [0x2c07 resolution 24]
 amenity=bench [0x6605 resolution 24]
@@ -170,6 +172,7 @@ landuse=village_green & name=* [0x2c06 resolution 24]
 healthcare=hospital | amenity=hospital | amenity=clinic [0x3002 resolution 22]
 healthcare=* | amenity=dentist | amenity=doctors [0x3002 resolution 24]
 
+# Added by RPA: Render crossings with the crossing type tagged
 highway=crossing & crossing=* [0x6704 resolution 24]
 
 highway=services & mkgmap:area2poi!=true [0x210f resolution 24 default_name 'Services']
@@ -197,6 +200,8 @@ leisure=water_park [0x2d09 resolution 24]
 leisure=picnic_table [0x4a00 resolution 24]
 
 man_made=tower|man_made=mast|landmark=chimney [0x6411 resolution 24]
+
+# Added by RPA: Render footwear decontamination stations
 man_made=footwear_decontamination [0x6703 resolution 24]
 
 # Edge 705 displays 0x650a,0x6511,0x6512,0x6513,0x6603,0x6614 as hollow white circles, no menu
