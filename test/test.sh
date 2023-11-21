@@ -1,18 +1,24 @@
 #! /bin/sh
-version_file="test/map_version.txt"
+input_file="test/test.osm"
+type_txtfile="type/route.txt"
+root_dir="test"
+split_dir="${root_dir}/split"
+tmp_dir="${root_dir}/tmp"
+work_dir="${root_dir}/work"
+image_file="test_route.img"
 
 # Split input file
 echo "========================================================================================"
-echo "=== TEST: Splitting ..."
-java -Xmx1000m -jar tools/splitter-*/splitter.jar test/test.osm --output-dir=test/split
+echo "=== TEST: Splitting ${input_file} ..."
+java -Xmx1000m -jar tools/splitter-*/splitter.jar $input_file --output-dir=${split_dir}
 
 echo "========================================================================================"
-echo "=== TEST: Generating type file from txt ..."
-java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar --output-dir=test/work type/route.txt
-
+echo "=== TEST: Generating type file from txt ${type_txtfile} ..."
+java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar --output-dir=${work_dir} $type_txtfile
+echo
 echo "========================================================================================"
-echo "=== TEST: Setting version number ..."
 version=`date +%y%m`
+echo "=== TEST: Setting version number to ${version}..."
 
 # Build Garmin img files from split files
 echo "========================================================================================"
@@ -40,13 +46,13 @@ java -Xmx1000m -jar tools/mkgmap-r*/mkgmap.jar \
                     --style-file=styles/route.style \
                     --precomp-sea=input/sea.zip \
                     --generate-sea \
-                    --output-dir=test/tmp \
-                    test/split/*.pbf \
-                    test/work/route.typ
+                    --output-dir=${tmp_dir} \
+		    ${split_dir}/*.pbf \
+                    ${work_dir}/route.typ
 
 echo "========================================================================================"
-echo "=== TEST: Moving image file ..."
-mv test/tmp/gmapsupp.img test/maps/test_route.img
+echo "=== TEST: Moving image file ${image_file} ..."
+mv ${tmp_dir}/gmapsupp.img test/maps/${image_file}
 
 echo "========================================================================================"
 echo "=== TEST: Map version is $version"
