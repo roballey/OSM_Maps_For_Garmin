@@ -992,6 +992,18 @@ ExtendedLabels=N
 [end]
 
 [_line]
+Type=0x0f
+UseOrientation=Y
+Xpm="32 1 2  1"
+"! c #FF2433"
+"  c none"
+"!!!!!   !!!!!   !!!!!   !!!!!   "
+;12345678901234567890123456789012
+String1=0x04,Informal paths
+ExtendedLabels=N
+[end]
+
+[_line]
 Type=0x11
 ;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_ROUTE_LINE_5/Routable customizable line/Non NT, NT
 UseOrientation=N

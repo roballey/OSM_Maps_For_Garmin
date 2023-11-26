@@ -194,13 +194,20 @@ highway=cycleway [0x0d road_class=0 road_speed=1 resolution 22]
 highway=path & access=no [0x10510 resolution 20]
 highway=path & bridge=yes [0x1010a resolution 22 continue]
 highway=path & bridge=boardwalk [0x1010c resolution 22 continue]
+# Informal and hard to see paths are rendered less prominently
+highway=path & informal=yes [0x0f road_class=0 road_speed=0 resolution 22]
+highway=path & trail_visibility=horrible [0x0f road_class=0 road_speed=0 resolution 22]
+highway=path & trail_visibility=no [0x0f road_class=0 road_speed=0 resolution 22]
+# Normal paths
 highway=path [0x0a road_class=0 road_speed=0 resolution 22]
 
 highway=footway & access=no [0x10510 resolution 20]
 highway=footway & bridge=yes [0x1010a resolution 22 continue]
 highway=footway & bridge=boardwalk [0x1010c resolution 22 continue]
+# Sidewalks and crossings are rendered less prominently so as to not clutter road display
 highway=footway & footway=sidewalk [0x0e road_class=0 road_speed=0 resolution 23]
 highway=footway & footway=crossing [0x0e road_class=0 road_speed=0 resolution 23]
+# Normal footways
 highway=footway [0x0b road_class=0 road_speed=0 resolution 22]
 
 highway=steps [0x11 road_class=0 road_speed=0 resolution 22]
