@@ -102,7 +102,8 @@ then
   inputs="${input_osm_dir}/*.pbf ${input_contour_dir}/*.pbf"
   output_img="${output_dir}/gmapsupp_contours.img"
 else
-  inputs="${input_osm_dir}/*.pbf"
+# Note: hack, added mapillary sequences here
+  inputs="${input_osm_dir}/*.pbf mapillary/sequences.osm"
   output_img="${output_dir}/gmapsupp.img"
 fi
 
