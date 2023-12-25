@@ -3,14 +3,14 @@
 #
 # Generate a routeable Garmin gmapsupp.img file from (split) OSM pbf files
 # 
-# TODO: Make downloading and splitting part of this script
+# TODO: Make downloading and splitting part of this script for osm and mapillary files
 ##############################################################################
 
 show_help() {
   echo "Generate a Garmin image file from OSM pbf files"
   echo "Options:"
   echo "  -c  : Include contours in generated image"
-  echo "  -m  : Include Mapillary coverege in generated image"
+  echo "  -m  : Include Mapillary coverage in generated image"
   echo "  -h  : Show this help"
   echo "  -r <REGION> : Specify the region to be generated, defaults to 'oceania_nz'"
   echo "  -s <STYLE> : Specify the style to be used to generate, defaults to 'route'"
@@ -60,7 +60,7 @@ tmp_dir="work/tmp"
 # Setup paths to the input files
 input_osm_dir="work/osmsplitmaps/${region}"
 input_contour_dir="work/contours/${region}"
-input_mapillary_dir="mapillary"       # FIXME: Make this a region based directory within work
+input_mapillary_dir="work/mapillary/${region}"
 
 # Setup path to output files
 output_dir="maps/${style}/${region}"
@@ -132,7 +132,7 @@ then
   inputs="${inputs} ${input_mapillary_dir}/sequences.osm"
 fi
 
-# Create directories (including parent directories) if they dont exist
+# Create output and temp directories (including parent directories) if they dont exist
 echo "=================================================================================================="
 echo "Building directories"
 mkdir -p ${output_dir}
