@@ -1,4 +1,10 @@
 Todo:
+   - Mapillary covergae specific:
+     - After checking on 955 merge in changes from this brnach back to master (loaded on 955 3-Jan-2024)
+     - Include script from ../Mapillary_Coverage_Maps_For_Garmin/ to download from Mapillary
+     - Try again generating seperate map as per ../Mapillary_Coverage_Maps_For_Garmin/ (sepereate map didn't show up on 955)
+     - Address TODOs in build/map.sh
+
 
    - Look at modifying scripts to use external `getopt` instead of built-in getopts for parsing (and use long options).  
       - See:
