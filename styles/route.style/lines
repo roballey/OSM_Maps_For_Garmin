@@ -9,6 +9,10 @@
 # for more information.
 
 # RPA: Modified - Walkways, steps
+#      Added mapillary sequences
+
+# Mapillary sequences
+id=* { echo "Mapillary sequence ${id}" } [0x10a03 resolution 14]
 
 addr:housenumber=* {set mkgmap:execute_finalize_rules=true}
 

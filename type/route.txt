@@ -34,7 +34,6 @@ Type=0x050,4
 Type=0x055,4
 Type=0x005,5
 Type=0x01b,5
-Type=0x01d,5
 Type=0x038,5
 Type=0x039,5
 Type=0x03c,5
@@ -46,6 +45,7 @@ Type=0x053,5
 Type=0x013,6
 Type=0x018,6
 Type=0x01a,6
+Type=0x01d,6
 Type=0x051,6
 Type=0x10104,6
 Type=0x004,7
@@ -398,7 +398,7 @@ String1=0x02,Meer
 String2=0x04,sea
 ExtendedLabels=N
 Xpm="0 0 1 0"
-"1 c #72CEFF"
+"1 c #49BDFF"
 [end]
 
 
@@ -413,7 +413,7 @@ CustomColor=DayAndNight
 DaycustomColor:#1D4DFF
 NightcustomColor:#808080
 Xpm="0 0 1 0"
-"1 c #72CEFF"
+"1 c #49BDFF"
 [end]
 
 
@@ -426,7 +426,7 @@ ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
 Xpm="0 0 1 0"
-"1 c #72CEFF"
+"1 c #49BDFF"
 [end]
 
 
@@ -440,7 +440,7 @@ CustomColor=DayAndNight
 DaycustomColor:#1D4DFF
 NightcustomColor:#808080
 Xpm="0 0 1 0"
-"1 c #72CEFF"
+"1 c #49BDFF"
 [end]
 
 
@@ -455,7 +455,7 @@ CustomColor=DayAndNight
 DaycustomColor:#1D4DFF
 NightcustomColor:#808080
 Xpm="0 0 1 0"
-"1 c #72CEFF"
+"1 c #49BDFF"
 [end]
 
 
@@ -468,7 +468,7 @@ ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
 Xpm="0 0 1 0"
-"1 c #72CEFF"
+"1 c #49BDFF"
 [end]
 
 
@@ -624,7 +624,7 @@ String2=0x04,Mud
 ExtendedLabels=N
 Xpm="32 32 2 1"
 "# c #606060"
-"! c #72CEFF"
+"! c #49BDFF"
 "!!!!####!!!!!!!!!!!!####!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
@@ -1096,7 +1096,7 @@ Type=0x18
 UseOrientation=N
 LineWidth=2
 Xpm="0 0 1 0"
-"1 c #72CEFF"
+"1 c #49BDFF"
 String1=0x02,Bach
 String2=0x04,stream
 ExtendedLabels=N
@@ -1176,7 +1176,7 @@ Type=0x1f
 UseOrientation=N
 LineWidth=3
 Xpm="0 0 1 0"
-"1 c #72CEFF"
+"1 c #49BDFF"
 String1=0x02,Fluss
 String2=0x04,river
 ExtendedLabels=Y
@@ -1461,12 +1461,29 @@ Type=0x10a02
 ;GRMN_TYPE: Water Features/INTERMITTENT_STREAM(NT)/Intermittent or dry stream, creek, or ditch/NT
 UseOrientation=Y
 Xpm="32 1 2  1"
-"! c #72CEFF"
+"! c #49BDFF"
 "  c none"
 "!!!!!!! !!!!!!! !!!!!!! !!!!!!! "
 ;12345678901234567890123456789012
 String1=0x02,Bach
 String2=0x04,intermittent stream
+ExtendedLabels=N
+[end]
+
+[_line]
+Type=0x10a03
+;GRMN_TYPE: ???
+UseOrientation=N
+Xpm="32 5 2  1"
+"! c #00FF00"
+"  c none"
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+"                                "
+"                                "
+"                                "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+;12345678901234567890123456789012
+String1=0x04,Mapillary Sequence
 ExtendedLabels=N
 [end]
 
@@ -2933,47 +2950,31 @@ String2=0x04,Bench
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-DayXpm="20 20 19 2"   Colormode=32
-"!!	c #000000"  alpha=15
-"!#	c #FFFFFF"  alpha=0
-"!%	c #C6B59A"  alpha=0
-"!?	c #734A08"  alpha=0
-"!$	c #7A5415"  alpha=0
-"!*	c #D7CBB8"  alpha=0
-"!=	c #8E6D38"  alpha=0
-"!1	c #836026"  alpha=0
-"!2	c #754C0B"  alpha=0
-"!3	c #CBBBA2"  alpha=0
-"!4	c #BCA989"  alpha=0
-"!5	c #87642B"  alpha=0
-"!6	c #7C5518"  alpha=0
-"!7	c #764E0D"  alpha=0
-"!8	c #92723F"  alpha=0
-"!9	c #AE9771"  alpha=0
-"#!	c #A28659"  alpha=0
-"##	c #A28759"  alpha=0
-"#%	c #AD956E"  alpha=0
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!%!?!?!?!?!?!?!?!?!?!?!$!?!?!?!?!?!*!!"
-"!!!!!!!!!!!?!=!!!!!!!!!!!!!1!2!!!!!!!!!!"
-"!!!!!!!!!!!?!3!!!!!!!!!!!!!4!?!!!!!!!!!!"
-"!!!!!!!!!!!5!6!!!!!!!!!!!!!7!8!!!!!!!!!!"
-"!!!!!!!!!!!?!9!!!!!!!!!!!!#!!?!!!!!!!!!!"
-"!!!!!!!!!!##!?!!!!!!!!!!!!!?#%!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+DayXpm="20 20 2 1"   Colormode=32
+" 	c None"
+".	c #000000"
+"                    "
+"                    "
+"                    "
+"                    "
+"                    "
+"                    "
+"                    "
+"                    "
+"                    "
+" .................. "
+" .................. "
+"     ..      ..     "
+"     ..      ..     "
+"     ..      ..     "
+"     ..      ..     "
+"     ..      ..     "
+"                    "
+"                    "
+"                    "
+"                    "
 ;12345678901234567890
+; Bench, changed to bolder, black 24-Dec-2023
 [end]
 
 

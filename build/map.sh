@@ -3,12 +3,14 @@
 #
 # Generate a routeable Garmin gmapsupp.img file from (split) OSM pbf files
 # 
+# TODO: Make downloading and splitting part of this script for osm and mapillary files
 ##############################################################################
 
 show_help() {
   echo "Generate a Garmin image file from OSM pbf files"
   echo "Options:"
   echo "  -c  : Include contours in generated image"
+  echo "  -m  : Include Mapillary coverage in generated image"
   echo "  -h  : Show this help"
   echo "  -r <REGION> : Specify the region to be generated, defaults to 'oceania_nz'"
   echo "  -s <STYLE> : Specify the style to be used to generate, defaults to 'route'"
@@ -26,15 +28,18 @@ region="oceania_nz"
 style="route"
 type="route"
 contour=0
+mapillary=0
 
 # Parse command line options
-while getopts hcr:s:t: opt; do
+while getopts hcmr:s:t: opt; do
     case $opt in
         h)
             show_help
             exit 0
             ;;
         c)  contour=1
+            ;;
+        m)  mapillary=1
             ;;
         r)  region=$OPTARG
             ;;
@@ -55,6 +60,7 @@ tmp_dir="work/tmp"
 # Setup paths to the input files
 input_osm_dir="work/osmsplitmaps/${region}"
 input_contour_dir="work/contours/${region}"
+input_mapillary_dir="work/mapillary/${region}"
 
 # Setup path to output files
 output_dir="maps/${style}/${region}"
@@ -64,10 +70,18 @@ echo "==========================================================================
 echo "Converting OSM to Garmin for region ${region} using style ${style} and type ${type} rendering rules"
 if [ $contour = 1 ]
 then
-  echo "Including contours..."
+  echo "   Including contours..."
 else
-  echo "No contours..."
+  echo "   No contours..."
 fi
+
+if [ $mapillary = 1 ]
+then
+  echo "   Including Mapillary coverage..."
+else
+  echo "   No Mapillary coverage..."
+fi
+
 echo "=================================================================================================="
 echo "=================================================================================================="
 
@@ -105,8 +119,20 @@ else
   inputs="${input_osm_dir}/*.pbf"
   output_img="${output_dir}/gmapsupp.img"
 fi
+if [ $mapillary = 1 ]
+then
+  echo "=================================================================================================="
+  echo "Setting Mapillary inputs"
 
-# Create directories (including parent directories) if they dont exist
+  if [ ! -d ${input_mapillary_dir} ]
+  then
+    echo "Mapillary files directory '${input_mapillary_dir}' does not exist"
+    exit 1
+  fi
+  inputs="${inputs} ${input_mapillary_dir}/sequences.osm"
+fi
+
+# Create output and temp directories (including parent directories) if they dont exist
 echo "=================================================================================================="
 echo "Building directories"
 mkdir -p ${output_dir}
