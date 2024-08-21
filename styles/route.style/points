@@ -189,7 +189,7 @@ leisure=golf_course [0x2d05 resolution 24]
 leisure=ice_rink [0x2d08 resolution 24]
 leisure=marina [0x4300 resolution 24]
 leisure=nature_reserve & name=* [0x6612 resolution 24]
-#leisure=park [0x2c06 resolution 24]
+leisure=park [0x2c06 resolution 24]
 # RPA: Pitch, recreation_ground, track commented out, 29-06-2024 (still drawn as polygons)
 #leisure=pitch { name '${name} (${sport})' | '${name}' } [0x2c08 resolution 24]
 #leisure=playground [0x2c06 resolution 24]
