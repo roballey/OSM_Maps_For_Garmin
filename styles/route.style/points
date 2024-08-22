@@ -63,6 +63,10 @@ internet_access=* & internet_access!=no & internet_access!=yes { name 'Internet(
   set ref='${ref|def:}-';
 }
 
+# These are before'inc/name' to ensure name doesn't get oiperator pre-pended
+tourism=theme_park {name '${name}'} [0x2c01 resolution 24]
+amenity=police {name '${name}'} [0x3001 resolution 24]
+
 include 'inc/name';
 
 place=city & population > 999999 & name=*  {set cityxx=yes} [0x0100 resolution 12 continue with_actions]
@@ -138,7 +142,6 @@ amenity=parking [0x2f0b resolution 24]
 mkgmap:area2poi=true & amenity=parking [0x2f0b resolution 21]
 amenity=pharmacy [0x2e05 resolution 24]
 amenity=place_of_worship [0x2c0b resolution 24]
-amenity=police [0x3001 resolution 24]
 amenity=post_office [0x2f05 resolution 24]
 amenity=prison [0x3007 resolution 24]
 amenity=pub [0x2d02 resolution 24]
@@ -198,7 +201,7 @@ leisure=sports_center | leisure=sports_centre { name '${name} (${sport})' | '${n
 leisure=stadium { name '${name} (${sport})' | '${name}' } [0x2c08 resolution 24]
 #leisure=track { name '${name} (${sport})' | '${name}' } [0x2c08 resolution 24]
 leisure=water_park [0x2d09 resolution 24]
-leisure=picnic_table [0x4a00 resolution 24]
+leisure=picnic_table [0x6604 resolution 24]
 
 man_made=tower|man_made=mast|landmark=chimney [0x6411 resolution 24]
 
@@ -278,7 +281,6 @@ tourism=lean_to [0x2b06 resolution 24 default_name 'lean-to']
 tourism=wilderness_hut [0x2b06 resolution 24 default_name 'wilderness hut']
 tourism=museum [0x2c02 resolution 24]
 tourism=picnic_site [0x4a00 resolution 24]
-tourism=theme_park [0x2c01 resolution 24]
 tourism=viewpoint {name '${name} - ${description}' | '${name}'} [0x5200 resolution 24]
 tourism=wine_cellar [0x2c0a resolution 24]
 tourism=zoo [0x2c07 resolution 24]
