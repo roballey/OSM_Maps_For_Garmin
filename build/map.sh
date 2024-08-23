@@ -178,7 +178,7 @@ java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar \
                     --gmapsupp \
                     --product-id=1 \
                     --style-file=styles/${style}.style \
-                    --precomp-sea=input/sea.zip \
+                    --precomp-sea=input/sea-latest.zip \
                     --generate-sea \
                     --output-dir=${tmp_dir} \
                     ${inputs} \
