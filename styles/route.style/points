@@ -176,6 +176,9 @@ healthcare=hospital | amenity=hospital | amenity=clinic [0x3002 resolution 22]
 healthcare=* | amenity=dentist | amenity=doctors [0x3002 resolution 24]
 
 # Added by RPA: Render crossings with the crossing type tagged
+highway=crossing & crossing=traffic_signals [0x6707 resolution 24]
+# TODO: Reconise more variants of tagging used with marked crossings
+highway=crossing & (crossing=marked | crossing_ref=zebra) [0x6706 resolution 24]
 highway=crossing & crossing=* [0x6704 resolution 24]
 
 highway=services & mkgmap:area2poi!=true [0x210f resolution 24 default_name 'Services']
