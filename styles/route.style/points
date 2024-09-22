@@ -175,11 +175,17 @@ landuse=village_green & name=* [0x2c06 resolution 24]
 healthcare=hospital | amenity=hospital | amenity=clinic [0x3002 resolution 22]
 healthcare=* | amenity=dentist | amenity=doctors [0x3002 resolution 24]
 
-# Added by RPA: Render crossings with the crossing type tagged
+# Added by RPA: Render crossings with the differing symbols
+# With signals, render as a circle with red and green fill
 highway=crossing & crossing=traffic_signals [0x6707 resolution 24]
-# TODO: Reconise more variants of tagging used with marked crossings
-highway=crossing & (crossing=marked | crossing_ref=zebra) [0x6706 resolution 24]
+# With zebra markings, render as a circle with black and white stripes
+highway=crossing & (crossing=marked | crossing:markings=zebra | crossing_ref=zebra) [0x6706 resolution 24]
+# With tactile paving, render as a circle filled with yellow
+highway=crossing & (tactile_paving=yes) [0x6708 resolution 24]
+# Generic crossing, render as a circle filled with white
 highway=crossing & crossing=* [0x6704 resolution 24]
+# TODO: Recognise more variants of tagging used with marked crossings
+# Without crossing=* not rendered at all due to proliferation of generic road intersections tagged as crossings in NZ
 
 highway=services & mkgmap:area2poi!=true [0x210f resolution 24 default_name 'Services']
 
