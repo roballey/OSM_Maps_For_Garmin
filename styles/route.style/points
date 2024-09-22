@@ -180,6 +180,8 @@ healthcare=* | amenity=dentist | amenity=doctors [0x3002 resolution 24]
 highway=crossing & crossing=traffic_signals [0x6707 resolution 24]
 # With zebra markings, render as a circle with black and white stripes
 highway=crossing & (crossing=marked | crossing:markings=zebra | crossing_ref=zebra) [0x6706 resolution 24]
+# With island, render as a circle filled with brown
+highway=crossing & crossing:island=yes [0x6709 resolution 24]
 # With tactile paving, render as a circle filled with yellow
 highway=crossing & (tactile_paving=yes) [0x6708 resolution 24]
 # Generic crossing, render as a circle filled with white
