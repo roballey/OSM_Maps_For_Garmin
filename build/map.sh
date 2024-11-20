@@ -156,7 +156,7 @@ echo "==========================================================================
 echo "Converting split OSM files into a Garmin Image file:"
 echo "  Using style ${style}.style"
 echo "  Applying type rules from ${type}.typ ..."
-# Combine all the split OSM files to a single Garmin gmapsupp image file, using specified style and applying the type rules
+# Combine all the split OSM files and other inputs to a single Garmin gmapsupp image file, using specified style and applying the type rules
 java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar \
                     --family-name="OSM for Garmin" \
                     --series-name="${type}" \

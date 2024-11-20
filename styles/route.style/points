@@ -9,6 +9,10 @@
 # for more information.
 
 addr:housenumber=* {set mkgmap:execute_finalize_rules=true}
+
+# OSM notes
+id=* { echo "OSM note ${id}" } [0x6800 resolution 20]
+
 barrier=* & bicycle=*    { set mkgmap:bicycle='${bicycle|subst:private=>no}' }
 barrier=* & foot=*       { set mkgmap:foot='${foot|subst:private=>no}' }                  
 barrier=* & hgv=*        { set mkgmap:truck='${hgv|subst:private=>no}' }                  
