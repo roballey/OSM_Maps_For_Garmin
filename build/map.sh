@@ -11,6 +11,7 @@ show_help() {
   echo "Options:"
   echo "  -c  : Include contours in generated image"
   echo "  -m  : Include Mapillary coverage in generated image"
+  echo "  -n  : Include OSM notes in generated image"
   echo "  -h  : Show this help"
   echo "  -r <REGION> : Specify the region to be generated, defaults to 'oceania_nz'"
   echo "  -s <STYLE> : Specify the style to be used to generate, defaults to 'route'"
@@ -31,7 +32,7 @@ contour=0
 mapillary=0
 
 # Parse command line options
-while getopts hcmr:s:t: opt; do
+while getopts hcmnr:s:t: opt; do
     case $opt in
         h)
             show_help
@@ -40,6 +41,8 @@ while getopts hcmr:s:t: opt; do
         c)  contour=1
             ;;
         m)  mapillary=1
+            ;;
+        n)  notes=1
             ;;
         r)  region=$OPTARG
             ;;
@@ -61,6 +64,7 @@ tmp_dir="work/tmp"
 input_osm_dir="work/osmsplitmaps/${region}"
 input_contour_dir="work/contours/${region}"
 input_mapillary_dir="work/mapillary/${region}"
+input_notes_dir="work/notes/${region}"
 
 # Setup path to output files
 output_dir="maps/${style}/${region}"
@@ -119,6 +123,7 @@ else
   inputs="${input_osm_dir}/*.pbf"
   output_img="${output_dir}/gmapsupp.img"
 fi
+
 if [ $mapillary = 1 ]
 then
   echo "=================================================================================================="
@@ -130,6 +135,19 @@ then
     exit 1
   fi
   inputs="${inputs} ${input_mapillary_dir}/sequences.osm"
+fi
+
+if [ $notes = 1 ]
+then
+  echo "=================================================================================================="
+  echo "Setting OSM notes inputs"
+
+  if [ ! -d ${input_notes_dir} ]
+  then
+    echo "OSM Notes files directory '${input_notes_dir}' does not exist"
+    exit 1
+  fi
+  inputs="${inputs} ${input_notes_dir}/notes.osm"
 fi
 
 # Create output and temp directories (including parent directories) if they dont exist
