@@ -10,8 +10,12 @@
 
 addr:housenumber=* {set mkgmap:execute_finalize_rules=true}
 
-# OSM notes
+# OSM notes - downloaded seperately
 id=* { echo "OSM note ${id}" } [0x6800 resolution 20]
+
+# OSM continue fixme's
+# TODO: Make this optional via map.sh script?
+fixme~'[Cc]ontinue' { echo "OSM fixme ${fixme}"; name '${fixme}' } [0x6801 resolution 20]
 
 barrier=* & bicycle=*    { set mkgmap:bicycle='${bicycle|subst:private=>no}' }
 barrier=* & foot=*       { set mkgmap:foot='${foot|subst:private=>no}' }                  
@@ -67,7 +71,7 @@ internet_access=* & internet_access!=no & internet_access!=yes { name 'Internet(
   set ref='${ref|def:}-';
 }
 
-# These are before'inc/name' to ensure name doesn't get oiperator pre-pended
+# These are before'inc/name' to ensure name doesn't get operator pre-pended
 tourism=theme_park {name '${name}'} [0x2c01 resolution 24]
 amenity=police {name '${name}'} [0x3001 resolution 24]
 
