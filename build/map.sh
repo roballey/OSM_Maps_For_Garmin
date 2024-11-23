@@ -4,6 +4,7 @@
 # Generate a routeable Garmin gmapsupp.img file from (split) OSM pbf files
 # 
 # TODO: Make downloading and splitting part of this script for osm and mapillary files
+# TODO: Download OSM notes as part of this script
 ##############################################################################
 
 show_help() {
@@ -30,6 +31,7 @@ style="route"
 type="route"
 contour=0
 mapillary=0
+notes=0
 
 # Parse command line options
 while getopts hcmnr:s:t: opt; do
