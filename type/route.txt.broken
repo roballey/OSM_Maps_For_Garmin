@@ -25,7 +25,6 @@ Type=0x007,4
 Type=0x008,4
 Type=0x00a,4
 Type=0x00c,4
-Type=0x00d,4
 Type=0x010,4
 Type=0x017,4
 Type=0x04e,4
@@ -205,53 +204,9 @@ Xpm="0 0 1 0"
 
 
 [_polygon]
-Type=0x0d
-;GRMN_TYPE: Large Manmade Areas/RESERVATION/Reservation/Non NT
-String1=0x04,Construction
-ExtendedLabels=N
-Xpm="32 32 2 1"
-"! c #FFFF00"
-"# c #FF0000"
-"!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!#"
-"!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!#!"
-"!!!!!!!!!!!!!!#!!!!!!!!!!!!!!#!!"
-"!!!!!!!!!!!!!#!!!!!!!!!!!!!!#!!!"
-"!!!!!!!!!!!!#!!!!!!!!!!!!!!#!!!!"
-"!!!!!!!!!!!#!!!!!!!!!!!!!!#!!!!!"
-"!!!!!!!!!!#!!!!!!!!!!!!!!#!!!!!!"
-"!!!!!!!!!#!!!!!!!!!!!!!!#!!!!!!!"
-"!!!!!!!!#!!!!!!!!!!!!!!#!!!!!!!!"
-"!!!!!!!#!!!!!!!!!!!!!!#!!!!!!!!!"
-"!!!!!!#!!!!!!!!!!!!!!#!!!!!!!!!!"
-"!!!!!#!!!!!!!!!!!!!!#!!!!!!!!!!!"
-"!!!!#!!!!!!!!!!!!!!#!!!!!!!!!!!!"
-"!!!#!!!!!!!!!!!!!!#!!!!!!!!!!!!!"
-"!!#!!!!!!!!!!!!!!#!!!!!!!!!!!!!!"
-"!#!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!"
-"#!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!#"
-"!!!!!!!!!!!!!#!!!!!!!!!!!!!!!!#!"
-"!!!!!!!!!!!!#!!!!!!!!!!!!!!!!#!!"
-"!!!!!!!!!!!#!!!!!!!!!!!!!!!!#!!!"
-"!!!!!!!!!!#!!!!!!!!!!!!!!!!#!!!!"
-"!!!!!!!!!#!!!!!!!!!!!!!!!!#!!!!!"
-"!!!!!!!!#!!!!!!!!!!!!!!!!#!!!!!!"
-"!!!!!!!#!!!!!!!!!!!!!!!!#!!!!!!!"
-"!!!!!!#!!!!!!!!!!!!!!!!#!!!!!!!!"
-"!!!!!#!!!!!!!!!!!!!!!!#!!!!!!!!!"
-"!!!!#!!!!!!!!!!!!!!!!#!!!!!!!!!!"
-"!!!#!!!!!!!!!!!!!!!!#!!!!!!!!!!!"
-"!!#!!!!!!!!!!!!!!!!#!!!!!!!!!!!!"
-"!#!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!"
-"#!!!!!!!!!!!!!!!!#!!!!!!!!!!!!!!"
-;12345678901234567890123456789012
-[end]
-
-
-[_polygon]
 Type=0x10
 ;GRMN_TYPE: //
-String1=0x04,Residential/Farmyard
+String1=0x04,Built-up area
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
@@ -526,7 +481,7 @@ Xpm="0 0 1 0"
 [_polygon]
 Type=0x4e
 ;GRMN_TYPE: Surface Cover Areas/ORCHARD/Orchard or plantation area/Non NT
-String1=0x04,Vinyard/Orchard/Allotments
+String1=0x04,Orchard
 ExtendedLabels=N
 Xpm="32 32 2 1"
 "! c #00C000"
@@ -570,7 +525,7 @@ Xpm="32 32 2 1"
 [_polygon]
 Type=0x4f
 ;GRMN_TYPE: Surface Cover Areas/SCRUB/Scrub brush area/Non NT
-String1=0x04,Scrub
+String1=0x04,scrub
 ExtendedLabels=N
 Xpm="32 32 2 1"
 "! c #49C932"
@@ -661,8 +616,7 @@ Xpm="32 32 2 1"
 [_polygon]
 Type=0x51
 ;GRMN_TYPE: Surface Cover Areas/WETLAND/Wetland or swamp area/Non NT
-String1=0x00,Mud
-String2=0x04,Mud
+String1=0x04,Mud
 ExtendedLabels=N
 Xpm="32 32 2 1"
 "! c #606060"
@@ -716,8 +670,7 @@ Xpm="0 0 1 0"
 [_polygon]
 Type=0x55
 ;GRMN_TYPE: //
-String1=0x02,Sand/Strand
-String2=0x04,sand/beach
+String1=0x04,sand/beach
 ExtendedLabels=N
 Xpm="32 32 2 1"
 "! c #F5F500"
@@ -940,7 +893,7 @@ Xpm="32 4 2  1"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "################################"
 ;12345678901234567890123456789012
-String1=0x04,Ramp
+String1=0x04,Service road
 ExtendedLabels=N
 [end]
 
@@ -949,12 +902,10 @@ ExtendedLabels=N
 Type=0x09
 ;GRMN_TYPE: Roads/HIGH_SPEED_RAMP, RAMP/Highway ramp which is to be driven at high speeds/Non NT, NT
 UseOrientation=Y
-Xpm="32 5 2  1"
+Xpm="32 3 2  1"
 "! c #655300"
 "  c none"
 "!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
-"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
-"                                "
 "!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
 "!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
 ;12345678901234567890123456789012
@@ -970,9 +921,9 @@ UseOrientation=Y
 Xpm="32 3 2  1"
 "! c #FF0000"
 "  c none"
-"!!!!!   !!!!!   !!!!!   !!!!!   "
-"!!!!!   !!!!!   !!!!!   !!!!!   "
-"!!!!!   !!!!!   !!!!!   !!!!!   "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
 ;12345678901234567890123456789012
 String1=0x04,Path
 ExtendedLabels=N
@@ -1004,7 +955,6 @@ BorderWidth=1
 Xpm="0 0 2 0"
 "1 c #FFFFFF"
 "2 c #000000"
-String1=0x04,Roundabout
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
@@ -1037,7 +987,7 @@ Xpm="32 1 2  1"
 "  c none"
 "!!!!!!! !!!!!!! !!!!!!! !!!!!!! "
 ;12345678901234567890123456789012
-String1=0x04,Sidewalk/Crossing
+String1=0x04,Sidewalk
 ExtendedLabels=N
 [end]
 
@@ -1060,9 +1010,11 @@ ExtendedLabels=N
 Type=0x11
 ;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_ROUTE_LINE_5/Routable customizable line/Non NT, NT
 UseOrientation=Y
-Xpm="32 9 2  1"
+Xpm="32 11 2  1"
 "! c #E2202C"
 "# c #FFFFFF"
+"!!##!!##!!##!!##!!##!!##!!##!!##"
+"!!##!!##!!##!!##!!##!!##!!##!!##"
 "!!##!!##!!##!!##!!##!!##!!##!!##"
 "!!##!!##!!##!!##!!##!!##!!##!!##"
 "!!##!!##!!##!!##!!##!!##!!##!!##"
@@ -1096,19 +1048,6 @@ ExtendedLabels=N
 
 
 [_line]
-Type=0x13
-;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_ROUTE_LINE_7/Routable customizable line/Non NT, NT
-UseOrientation=Y
-LineWidth=2
-Xpm="0 0 2 0"
-"1 c #C0C0C0"
-"2 c #808080"
-String1=0x04,Driveway
-ExtendedLabels=N
-[end]
-
-
-[_line]
 Type=0x14
 ;GRMN_TYPE: Misc. Line Types/RAILROAD/Railroad/Non NT
 UseOrientation=N
@@ -1119,7 +1058,7 @@ Xpm="32 3 2  1"
 "########!!!!!!!!########!!!!!!!!"
 "################################"
 ;12345678901234567890123456789012
-String1=0x04,Rail
+String1=0x04,rail
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
@@ -1240,7 +1179,7 @@ ContourColor=No
 Type=0x1f
 ;GRMN_TYPE: Water Features/RIVER/Large stream or river/Non NT
 UseOrientation=N
-LineWidth=5
+LineWidth=4
 Xpm="0 0 1 0"
 "1 c #49BDFF"
 String1=0x04,River
@@ -1318,7 +1257,7 @@ Xpm="32 5 2  1"
 "                 !              "
 "                !               "
 ;12345678901234567890123456789012
-String1=0x04,power line
+String1=0x04,Power line
 ExtendedLabels=N
 [end]
 
@@ -1336,7 +1275,7 @@ Xpm="32 5 2  1"
 "       !                !       "
 "       !                !       "
 ;12345678901234567890123456789012
-String1=0x04,fence
+String1=0x04,Fence
 ExtendedLabels=N
 [end]
 
@@ -1425,15 +1364,15 @@ Type=0x1010c
 ;GRMN_TYPE: //
 UseOrientation=Y
 Xpm="32 7 2  1"
-"! c #626262"
+"! c #000000"
 "  c none"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"  !!!!!!  !!!!!!  !!!!!!  !!!!!!"
+"  !!!!!!  !!!!!!  !!!!!!  !!!!!!"
 "                                "
 "                                "
 "                                "
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"  !!!!!!  !!!!!!  !!!!!!  !!!!!!"
+"  !!!!!!  !!!!!!  !!!!!!  !!!!!!"
 ;12345678901234567890123456789012
 String1=0x04,Boardwalk
 ExtendedLabels=Y
@@ -1555,8 +1494,7 @@ DayXpm="16 16 3 1"   Colormode=16
 Type=0x02a
 SubType=0x07
 ;GRMN_TYPE: Business - Food and Drink/RESTAURANT_FAST_FOOD/Fast food establishment, i.e. McDonalds/Non NT
-String1=0x02,Fast food
-String2=0x04,fast food
+String1=0x04,Fast food
 ExtendedLabels=N
 DayXpm="16 15 10 1"   Colormode=16
 "!	c #FFFFFF"
@@ -1763,6 +1701,7 @@ DayXpm="9 9 4 1"   Colormode=16
 "!	c #FFFFFF"
 "#	c #000000"
 "%	c #1F1F1F"
+"?	c #3F3F3F"
 "  	c none"
 "   !!!   "
 "  !!#!!  "
@@ -1840,25 +1779,26 @@ SubType=0x0b
 ;GRMN_TYPE: Business - Attractions/PLACE_OF_WORSHIP/Religious place of worship/Non NT
 String1=0x04,church
 ExtendedLabels=N
-DayXpm="9 20 3 1"   Colormode=16
+DayXpm="9 20 4 1"   Colormode=16
 "!	c #000000"
-"#	c #FFFFFF"
+"#	c #707C7C"
+"%	c #FFFFFF"
 "  	c none"
-"   ###   "
-"   #!#   "
-" ###!### "
-" #!!!!!# "
-" ###!### "
-"  ##!##  "
-" ##!!!## "
-"##!###!##"
-"#!#####!#"
-"#!#####!#"
-"#!#####!#"
-"##!###!##"
-" ##!!!## "
-"  #####  "
 "         "
+"    %    "
+"   %!%   "
+"  %%!%%  "
+" %!!!!!% "
+"  %%!%%  "
+"   %!%   "
+"  %!#!%  "
+" %!%%%!% "
+"%!%%%%%!%"
+"%!%%%%%!%"
+"%!%%%%%!%"
+" %!%%%!% "
+"  %!!!%  "
+"   %%%   "
 "         "
 "         "
 "         "
@@ -2067,8 +2007,7 @@ DayXpm="11 12 38 2"   Colormode=16
 Type=0x02e
 SubType=0x06
 ;GRMN_TYPE: Business - Shopping/CONVENIENCE_STORE/Convenience store/Non NT
-String1=0x02,Kiosk
-String2=0x04,convenience
+String1=0x04,convenience
 ExtendedLabels=N
 DayXpm="16 16 18 2"   Colormode=16
 "!!	c #FFFFFF"
@@ -2113,8 +2052,7 @@ DayXpm="16 16 18 2"   Colormode=16
 Type=0x02f
 SubType=0x06
 ;GRMN_TYPE: Business - Services/BANK/Bank/Non NT
-String1=0x02,Bank
-String2=0x04,bank
+String1=0x04,bank
 ExtendedLabels=N
 DayXpm="9 11 17 1"   Colormode=16
 "!	c #000000"
@@ -2155,21 +2093,26 @@ SubType=0x0b
 ;GRMN_TYPE: Business - Services/PARKING/Parking/Non NT
 String1=0x04,Parking
 ExtendedLabels=N
-DayXpm="11 11 3 1"   Colormode=16
+DayXpm="11 11 8 1"   Colormode=16
 "!	c #1600FF"
 "#	c #1824F7"
-"%	c #FEFFFC"
-"%%%%%%%%%%%"
-"%!!!!!!!!!%"
-"%!!%%%%%#!%"
-"%!!%%!!%%!%"
-"%!!%%!!%%!%"
-"%!!%%!!%%!%"
-"%!!%%%%%#!%"
-"%!!%%!!!!!%"
-"%!!%%!!!!!%"
-"%!!!!!!!!!%"
-"%%%%%%%%%%%"
+"%	c #464DFF"
+"?	c #BABAFF"
+"$	c #BEC5F5"
+"*	c #EEF3F6"
+"=	c #FEFFFC"
+"  	c none"
+" ========= "
+"=!!!!!!!!!="
+"=!!====?#!="
+"=!!==!%=$!="
+"=!!==!!=*!="
+"=!!==!%=$!="
+"=!!====?#!="
+"=!!==!!!!!="
+"=!!==!!!!!="
+"=!!!!!!!!!="
+" ========= "
 ;12345678901
 [end]
 
@@ -2237,8 +2180,7 @@ DayXpm="16 16 32 2"   Colormode=16
 Type=0x02f
 SubType=0x12
 ;GRMN_TYPE: Business - Services/COMMUNICATION_SERVICES/Communication services/Non NT
-String1=0x02,Telefon
-String2=0x04,phone
+String1=0x04,phone
 ExtendedLabels=N
 DayXpm="7 11 15 1"   Colormode=16
 "!	c #000000"
@@ -2275,8 +2217,7 @@ DayXpm="7 11 15 1"   Colormode=16
 Type=0x02f
 SubType=0x15
 ;GRMN_TYPE: Business - Services/UTILITY/Utility (gas, electric, water) services/Non NT
-String1=0x02,Recycling
-String2=0x04,recycling
+String1=0x04,recycling
 ExtendedLabels=N
 DayXpm="12 12 36 2"   Colormode=16
 "!!	c #FFFFFF"
@@ -2388,25 +2329,26 @@ DayXpm="10 10 3 1"   Colormode=16
 Type=0x04c
 SubType=0x00
 ;GRMN_TYPE: Misc. Points of Interest/INFORMATION/Information/Non NT, NT
-String1=0x02,Information
-String2=0x04,information
+String1=0x04,information
 ExtendedLabels=N
-DayXpm="8 12 3 1"   Colormode=16
+DayXpm="8 12 5 1"   Colormode=16
 "!	c #FFFFFF"
 "#	c #4842D7"
+"%	c #8C88E5"
+"?	c #615BDC"
 "  	c none"
-"  !!!!  "
+"   !!   "
 "  !##!  "
 "  !##!  "
-" !!!!!  "
-"!!###!  "
+"  !!!   "
+" !%?#!  "
 "!####!  "
-"!!!##!  "
+" !!##!  "
 "  !##!  "
-" !!##!! "
-"!!####!!"
+"  !##!  "
+" !%##%! "
 "!######!"
-"!!!!!!!!"
+" !!!!!! "
 ;12345678
 [end]
 
@@ -2456,31 +2398,30 @@ ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
 ContourColor=No
-DayXpm="20 20 4 1"   Colormode=16
-"!	c #0000FF"
-"#	c #0080FF"
-"%	c #FFFFFF"
-"  	c none"
-"            %%%%%%  "
-"            %!!!!%  "
-"            %%!%%%  "
-"        %%%%%!!!%%%%"
-"        %!!!!!!!!!!%"
-"        %!!!!!!!!!!%"
-"        %!!%%%!%%%%%"
-"        %!!% %%%    "
-"     %%%%%%%%%%     "
-"     %!!!!!!!!%     "
-"     %!######!%     "
-"     %!######!%     "
-"     %!######!%     "
-"     %!!####!!%     "
-"     %%!####!%%     "
-"      %!####!%      "
-"      %!####!%      "
-"      %!####!%      "
-"      %!!!!!!%      "
-"      %%%%%%%%      "
+DayXpm="20 20 3 1"   Colormode=32
+"!	c #000000"  alpha=15
+"#	c #0000FF"  alpha=0
+"%	c #0080FF"  alpha=0
+"!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!!####!!!"
+"!!!!!!!!!!!!!!#!!!!!"
+"!!!!!!!!!!!!!###!!!!"
+"!!!!!!!!!##########!"
+"!!!!!!!!!##########!"
+"!!!!!!!!!##!!!#!!!!!"
+"!!!!!!!!!##!!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!########!!!!!!"
+"!!!!!!#%%%%%%#!!!!!!"
+"!!!!!!#%%%%%%#!!!!!!"
+"!!!!!!#%%%%%%#!!!!!!"
+"!!!!!!##%%%%##!!!!!!"
+"!!!!!!!#%%%%#!!!!!!!"
+"!!!!!!!#%%%%#!!!!!!!"
+"!!!!!!!#%%%%#!!!!!!!"
+"!!!!!!!#%%%%#!!!!!!!"
+"!!!!!!!######!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!"
 ;12345678901234567890
 [end]
 
@@ -2494,26 +2435,27 @@ ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
 ContourColor=No
-DayXpm="16 16 3 1"   Colormode=16
-"!	c #0000FF"
-"#	c #FFFFFF"
+DayXpm="16 16 4 1"   Colormode=16
+"!	c #587BF8"
+"#	c #0000FF"
+"%	c #FFFFFF"
 "  	c none"
-"   ####  ####   "
-"  ##!!####!!##  "
-"  #!!!!##!!!!#  "
-"  #!!!!##!!!!#  "
-"  ##!!!##!!!##  "
-" ####!!##!!#### "
-"##!!##!##!##!!##"
-"#!!!!!!##!!!!!!#"
-"#!!!!!!##!!!!!!#"
-"##!!##!##!##!!##"
-" ####!!##!!#### "
-"  #!!!!##!!!!#  "
-"  #!!!!##!!!!#  "
-"  #!!!!##!!!!#  "
-"  ##!!####!!##  "
-"   ####  ####   "
+"    %%    %%    "
+"   %!#%  %#!%   "
+"  %####%%####%  "
+"  %!###%%###!%  "
+"   %###%%###%   "
+" %%%%##%%##%%%% "
+" !#!%%#%%#%%!#!%"
+" %#####%%#####%%"
+" %####!%%!####%%"
+" !#!%%#%%#%%!#! "
+"  %%%##%%###%%  "
+"  %!###%%###!%  "
+"  %!###%%###!%  "
+"  %!###%%###!%  "
+"    !#%  %#!%   "
+"    %%    %%    "
 ;1234567890123456
 [end]
 
@@ -2524,29 +2466,28 @@ SubType=0x11
 ;GRMN_TYPE: Geographical Named Points of Interest/TOWER/Tower/Non NT, NT
 String1=0x04,Tower
 ExtendedLabels=N
-DayXpm="9 18 3 1"   Colormode=16
+DayXpm="7 16 4 1"   Colormode=16
 "!	c #313131"
-"#	c #FFFFFF"
+"#	c #C5C5C5"
+"%	c #FF0020"
 "  	c none"
-"   ###   "
-"####!####"
-"#!!!!!!!#"
-"####!####"
-" #!!!!!# "
-"  #!#!#  "
-"  #!!!#  "
-"  #! !#  "
-"  #! !#  "
-" ###!### "
-" #!!#!!# "
-" #!###!# "
-" #!!#!!# "
-" #!#!#!# "
-"##!!#!!##"
-"#!!# #!!#"
-"#!!# #!!#"
-"#########"
-;123456789
+"  #!#  "
+"!!!!%%%"
+"  #!#  "
+" !!!%% "
+" #!#%# "
+"  !!%  "
+"  !#%  "
+"  !#%  "
+" ##!## "
+" !!#%% "
+" !###% "
+" !!#%% "
+" !#!#% "
+"#!! %%#"
+"!!# #%%"
+"!!   %%"
+;1234567
 [end]
 
 
@@ -2804,7 +2745,6 @@ String1=0x04,Picnic table
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
-ContourColor=No
 DayXpm="20 14 3 1"   Colormode=16
 "!	c #000000"
 "#	c #FFFFFF"
@@ -2836,19 +2776,29 @@ ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
 ContourColor=No
-DayXpm="20 9 3 1"   Colormode=16
+DayXpm="20 20 2 1"   Colormode=16
 "!	c #000000"
-"#	c #FFFFFF"
 "  	c none"
-"####################"
-"#!!!!!!!!!!!!!!!!!!#"
-"#!!!!!!!!!!!!!!!!!!#"
-"#####!!######!!#####"
-"    #!!#    #!!#    "
-"    #!!#    #!!#    "
-"    #!!#    #!!#    "
-"    #!!#    #!!#    "
-"    ####    ####    "
+"                    "
+"                    "
+"                    "
+"                    "
+"                    "
+"                    "
+"                    "
+"                    "
+"                    "
+" !!!!!!!!!!!!!!!!!! "
+" !!!!!!!!!!!!!!!!!! "
+"     !!      !!     "
+"     !!      !!     "
+"     !!      !!     "
+"     !!      !!     "
+"     !!      !!     "
+"                    "
+"                    "
+"                    "
+"                    "
 ;12345678901234567890
 [end]
 
@@ -2906,20 +2856,18 @@ SubType=0x16
 ;GRMN_TYPE: Geographical Named Points of Interest - Land Related/SUMMIT/Summit, top of a hill or mountain/Non NT, NT
 String1=0x04,Peak
 ExtendedLabels=N
-DayXpm="10 9 3 1"   Colormode=16
-"!	c #FFFFFF"
-"#	c #D08F55"
-"  	c none"
-"   !!!!   "
-"   !##!   "
-"  !!##!!  "
-"  !####!  "
-" !!####!! "
-" !######! "
-"!!######!!"
-"!########!"
-"!!!!!!!!!!"
-;1234567890
+DayXpm="8 8 2 1"   Colormode=32
+"!	c #000000"  alpha=15
+"#	c #D08F55"  alpha=0
+"!!!!!!!!"
+"!!!##!!!"
+"!!!##!!!"
+"!!####!!"
+"!!####!!"
+"!######!"
+"!######!"
+"########"
+;12345678
 [end]
 
 
@@ -2929,22 +2877,21 @@ SubType=0x19
 ;GRMN_TYPE: //
 String1=0x04,Tree
 ExtendedLabels=N
-DayXpm="12 12 3 1"   Colormode=16
+DayXpm="12 12 2 1"   Colormode=16
 "!	c #239C45"
-"#	c #FFFFFF"
 "  	c none"
-"    ####    "
-"    #!!#    "
-"   ##!!##   "
-"   #!!!!#   "
-"  ##!!!!##  "
-"  #!!!!!!#  "
-" ##!!!!!!## "
-" #!!!!!!!!# "
-" #!!!!!!!!# "
-" ####!!#### "
-"    #!!#    "
-"    ####    "
+"            "
+"     !!     "
+"     !!     "
+"    !!!!    "
+"    !!!!    "
+"   !!!!!!   "
+"   !!!!!!   "
+"  !!!!!!!!  "
+"  !!!!!!!!  "
+"     !!     "
+"     !!     "
+"            "
 ;123456789012
 [end]
 
@@ -3098,31 +3045,30 @@ SubType=0x03
 ;GRMN_TYPE: //
 String1=0x04,Footwear decontamination
 ExtendedLabels=N
-DayXpm="23 20 4 1"   Colormode=16
+DayXpm="23 20 3 1"   Colormode=16
 "!	c #000000"
-"#	c #A04000"
-"%	c #FFFFFF"
+"#	c #663300"
 "  	c none"
 "                       "
-"           %%%%%%%%%%% "
-"           %#########% "
-"           %#########% "
-"           %#########% "
-"           %%########% "
-"           %%########% "
-"           %#########% "
-"   %%%%%%  %#########% "
-"  %%####%% %#########% "
-" %%######%%%#########% "
-"%%########%%#########% "
-"%####################% "
-"%####################% "
-"%####################% "
-"%%%%%%%%%%%%%%%%%%%%%% "
-"%!!%%!!%%!!%%!!%%!!%   "
-"%!!%%!!%%!!%%!!%%!!%%%%"
-"%!!!!!!!!!!!!!!!!!!!!!%"
-"%!!!!!!!!!!!!!!!!!!!!!%"
+"                       "
+"             ######### "
+"             ######### "
+"             ######### "
+"              ######## "
+"              ######## "
+"             ######### "
+"             ######### "
+"     ####    ######### "
+"    ######   ######### "
+"   ########  ######### "
+"  #################### "
+"  #################### "
+"  #################### "
+"                       "
+"  !!  !!  !!  !!  !!   "
+"  !!  !!  !!  !!  !!   "
+"  !!!!!!!!!!!!!!!!!!!!!"
+"  !!!!!!!!!!!!!!!!!!!!!"
 ;12345678901234567890123
 [end]
 
@@ -3167,24 +3113,25 @@ SubType=0x05
 ;GRMN_TYPE: //
 String1=0x04,Bin
 ExtendedLabels=N
-DayXpm="16 14 3 1"   Colormode=16
+DayXpm="16 16 2 1"   Colormode=16
 "!	c #000000"
-"#	c #FFFFFF"
 "  	c none"
-"      ####      "
-"   ####!!####   "
-"   #!!!!!!!!#   "
-"   ##########   "
-"   #!!!!!!!!#   "
-"   #!!!!!!!!#   "
-"   #!!!!!!!!#   "
-"   #!!!!!!!!#   "
-"   ##!!!!!!##   "
-"    #!!!!!!#    "
-"    #!!!!!!#    "
-"    #!!!!!!#    "
-"    #!!!!!!#    "
-"    ########    "
+"                "
+"                "
+"       !!       "
+"    !!!!!!!!    "
+"                "
+"    !!!!!!!!    "
+"    !!!!!!!!    "
+"    !!!!!!!!    "
+"    !!!!!!!!    "
+"     !!!!!!     "
+"     !!!!!!     "
+"     !!!!!!     "
+"     !!!!!!     "
+"     !!!!!!     "
+"                "
+"                "
 ;1234567890123456
 [end]
 
@@ -3340,7 +3287,6 @@ String1=0x04,OSM Note
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
-ContourColor=No
 DayXpm="20 20 4 1"   Colormode=16
 "!	c #000000"
 "#	c #FF0000"
@@ -3397,4 +3343,154 @@ DayXpm="16 16 3 1"   Colormode=16
 "!#############! "
 "!!!!!!!!!!!!!!! "
 ;1234567890123456
+[end]dLabels=Y
+FontStyle=Default
+CustomColor=No
+DayXpm="20 20 4 1"   Colormode=16
+"!	c #000000"
+"#	c #FF0000"
+"%	c #FFFFFF"
+"  	c none"
+"##!%            %!##"
+"###!%          %!###"
+"!###!%        %!###!"
+"%!###!%      %!###!%"
+" %!###!%    %!###!% "
+"  %!###!%  %!###!%  "
+"   %!###!%%!###!%   "
+"    %!###!!###!%    "
+"     %!######!%     "
+"      %!####!%      "
+"      %!####!%      "
+"     %!######!%     "
+"    %!###!!###!%    "
+"   %!###!%%!###!%   "
+"  %!###!%  %!###!%  "
+" %!###!%    %!###!% "
+"%!###!%      %!###!%"
+"!###!%        %!###!"
+"###!%          %!###"
+"##!%            %!##"
+;12345678901234567890
+[end]
+
+
+[_point]
+Type=0x068
+SubType=0x01
+;GRMN_TYPE: //
+String1=0x01,
+ExtendedLabels=N
+DayXpm="16 16 3 1"   Colormode=16
+"!	c #FFFFFF"
+"#	c #00FF00"
+"  	c none"
+"                "
+"      !!!       "
+"     !!#!!      "
+"     !###!      "
+"    !!###!!     "
+"    !#####!     "
+"   !!#####!!    "
+"   !#######!    "
+"  !!#######!!   "
+"  !#########!   "
+" !!#########!!  "
+" !###########!  "
+"!!###########!! "
+"!#############! "
+"!#############! "
+"!!!!!!!!!!!!!!! "
+;1234567890123456
+[end]!!###########!! "
+"!#############! "
+"!#############! "
+"!!!!!!!!!!!!!!! "
+;1234567890123456
+[end]890
+[end]
+
+
+[_point]
+Type=0x067
+SubType=0x09
+;GRMN_TYPE: //
+String1=0x04,Crossing Island
+ExtendedLabels=Y
+FontStyle=Default
+CustomColor=No
+DayXpm="20 20 4 1"   Colormode=16
+"!	c #000000"
+"#	c #BD3000"
+"%	c #FFFFFF"
+"  	c none"
+"       %%%%%%       "
+"     %%!!!!!!%%     "
+"    %!!!!!!!!!!%    "
+"   %!!!######!!!%   "
+"  %!!##########!!%  "
+" %!!############!!% "
+" %!!############!!% "
+"%!!##############!!%"
+"%!!##############!!%"
+"%!!##############!!%"
+"%!!##############!!%"
+"%!!##############!!%"
+"%!!##############!!%"
+" %!!############!!% "
+" %!!############!!% "
+"  %!!##########!!%  "
+"   %!!!######!!!%   "
+"    %!!!!!!!!!!%    "
+"     %%!!!!!!%%     "
+"       %%%%%%       "
+;12345678901234567890
+[end]
+
+
+[_point]
+Type=0x068
+SubType=0x00
+;GRMN_TYPE: //
+String1=0x04,OSM Note
+ExtendedLabels=Y
+FontStyle=Default
+CustomColor=No
+DayXpm="20 20 4 1"   Colormode=16
+"!	c #000000"
+"#	c #FF0000"
+"%	c #FFFFFF"
+"  	c none"
+"##!%            %!##"
+"###!%          %!###"
+"!###!%        %!###!"
+"%!###!%      %!###!%"
+" %!###!%    %!###!% "
+"  %!###!%  %!###!%  "
+"   %!###!%%!###!%   "
+"    %!###!!###!%    "
+"     %!######!%     "
+"      %!####!%      "
+"      %!####!%      "
+"     %!######!%     "
+"    %!###!!###!%    "
+"   %!###!%%!###!%   "
+"  %!###!%  %!###!%  "
+" %!###!%    %!###!% "
+"%!###!%      %!###!%"
+"!###!%        %!###!"
+"###!%          %!###"
+"##!%            %!##"
+;12345678901234567890
+[end]##############!!%"
+"%!!##############!!%"
+"%!!##############!!%"
+" %!!############!!% "
+" %!!############!!% "
+"  %!!##########!!%  "
+"   %!!!######!!!%   "
+"    %!!!!!!!!!!%    "
+"     %%!!!!!!%%     "
+"       %%%%%%       "
+;12345678901234567890
 [end]

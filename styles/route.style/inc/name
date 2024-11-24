@@ -12,6 +12,10 @@ operator=${brand} { delete operator; }
 operator=${name}  { delete operator; }
 brand=${name}     { delete brand; }
 
+# RPA 24-11-2024 
+# Remove operator from parks
+leisure=park { delete operator; }
+
 # None of operator, brand given
 ref=* & (operator!=* & brand!=*) & (highway=bus_stop | railway=tram_stop | railway=halt | railway=station) { name '${name} ${ref}' | '${ref}' }
 ref=* & (operator!=* & brand!=*) { name '${ref} ${name}' | '${ref}' }
