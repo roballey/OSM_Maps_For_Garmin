@@ -192,6 +192,7 @@ java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar \
 		    --region-name="Oceania" \
                     --country-name="New Zealand" \
                     --country-abbr="NZ" \
+		    --drive-on=left \
                     --index \
                     --housenumbers \
                     --route \
