@@ -7,7 +7,9 @@ region="oceania_nz"
 style="route"
 
 # Destination for Garmin 1050 mounted with MTP
-dest="/run/user/1000/gvfs/mtp:host=Garmin_E_0000cfbc4fce/Internal Storage/Garmin/Maps"
+#dest="/run/user/1000/gvfs/mtp:host=Garmin_E_0000cfbc4fce/Internal Storage/Garmin/Maps"
+# Changed 06-Apr-2025
+dest="/run/user/1000/gvfs/mtp:host=Garmin_Edge_1050_0000cfbc4fce/Internal Storage/Garmin/Maps"
 
 # Build source map directory
 map_dir="maps/${style}/${region}"
