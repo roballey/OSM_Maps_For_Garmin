@@ -14,7 +14,7 @@
     { "key": "barrier", "value": "bollard", "description": "FIXME: Tiny black and white square icon" },
     { "key": "barrier", "value": "cycle_barrier", "description": "FIXME: Tiny black and white square icon" },
     { "key": "barrier", "value": "stile", "description": "FIXME: Tiny back and white square icon" },
-    { "key": "natural", "value": "rock", "description": "FIXME: Name if it has one" },
+    { "key": "natural", "value": "rock", "description": "FIXME: Tiny red square, name" },
     { "key": "amenity", "value": "atm", "description": "FIXME: Euro icon" },
     { "key": "amenity", "value": "bank", "description": "FIXME: Euro icon" },
 

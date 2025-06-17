@@ -2824,16 +2824,17 @@ SubType=0x14
 ;GRMN_TYPE: Geographical Named Points of Interest - Land Related/ROCK/Rock/Non NT, NT
 String1=0x04,Rock
 ExtendedLabels=Y
-FontStyle=NormalFont
-CustomColor=Day
-DaycustomColor:#967757
-ContourColor=No
-DayXpm="1 1 2 1"   Colormode=16
-"!	c #009500"
+CustomColor=No
+DayXpm="3 3 2 1"   Colormode=16
+"!	c #FF0000"
 "  	c none"
-" "
-;1
+"!!!"
+"! !"
+"!!!"
+;123
 [end]
+
+
 
 
 [_point]
