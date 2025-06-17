@@ -1,6 +1,7 @@
 landuse=basin|landuse=reservoir [0x650f resolution 24]
 
-natural=beach [0x6604 resolution 24]
+# RPA 17-06-2025 Don't render beach points - ends up as a ppicnic table!
+#natural=beach [0x6604 resolution 24]
 natural=glacier [0x650a resolution 24]
 natural=spring [0x6511 resolution 24]
 natural=stream [0x6512 resolution 24]
