@@ -1307,6 +1307,24 @@ String1=0x04,Runway
 ExtendedLabels=N
 [end]
 
+[_line]
+type=0x28
+;GRMN_TYPE: Misc. Line Types/PIPELINE/Oil or water pipeline/Non NT
+UseOrientation=Y
+Xpm="32 6 2  1"
+"! c #B4B4B4"
+"  c none"
+"  !                          !  "
+"  !!!!!!!!!!!!!!!!!!!!!!!!!!!!  "
+"  !                          !  "
+"  !                          !  "
+"  !!!!!!!!!!!!!!!!!!!!!!!!!!!!  "
+"  !                          !  "
+;12345678901234567890123456789012
+String1=0x04,Pipeline
+ExtendedLabels=N
+CustomColor=No
+[end]
 
 [_line]
 Type=0x29
