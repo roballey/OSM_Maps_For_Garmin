@@ -221,6 +221,7 @@ leisure=stadium { name '${name} (${sport})' | '${name}' } [0x2c08 resolution 24]
 #leisure=track { name '${name} (${sport})' | '${name}' } [0x2c08 resolution 24]
 leisure=water_park [0x2d09 resolution 24]
 leisure=picnic_table [0x6604 resolution 24]
+leisure=slipway [0x6606 resolution 24]
 
 man_made=tower|man_made=mast|landmark=chimney [0x6411 resolution 24]
 

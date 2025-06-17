@@ -9,7 +9,7 @@
   },
   "tags": [
     { "key": "amenity", "value": "shower", "description": "FIXME: Not shown" },
-    { "key": "leisure", "value": "slipway", "description": "FIXME: Not shown" },
+    { "key": "leisure", "value": "slipway", "description": "White square with blue boat on a ramp" },
     { "key": "???", "value": "guidepost", "description": "FIXME: Not shown" },
     { "key": "barrier", "value": "bollard", "description": "FIXME: Tiny black and white square icon" },
     { "key": "barrier", "value": "cycle_barrier", "description": "FIXME: Tiny black and white square icon" },
