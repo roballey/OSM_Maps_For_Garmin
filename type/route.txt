@@ -15,10 +15,10 @@ CodePage=1252
 
 ;=========== POLYGONES : PRIORITE DANS L'AFFICHAGE ======
 [_drawOrder]
-Type=0x03f,0          ; Medium Lake
-Type=0x000,1          ; ???
-Type=0x04b,1          ; Map bounds
-Type=0x032,2          ; Sea
+Type=0x03f,0
+Type=0x000,1
+Type=0x04b,1
+Type=0x032,2
 Type=0x10100,3
 Type=0x002,4
 Type=0x007,4
@@ -34,15 +34,15 @@ Type=0x050,4
 Type=0x055,4
 Type=0x005,5
 Type=0x019,5
-Type=0x01b,5          ; Beach
+Type=0x01b,5
 Type=0x038,5
 Type=0x039,5
 Type=0x03c,5
-Type=0x03d,5          ; Large Lake
-Type=0x03f,5          ; Medium Lake
-Type=0x046,5          ; Large River
-Type=0x047,5          ; Major River/Waterfall
-Type=0x053,5          ; Sand
+Type=0x03d,5
+Type=0x03f,5
+Type=0x046,5
+Type=0x047,5
+Type=0x053,5
 Type=0x013,6
 Type=0x018,6
 Type=0x01a,6
