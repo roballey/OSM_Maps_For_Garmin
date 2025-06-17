@@ -39,7 +39,7 @@
     { "key": "amenity", "value": "telephone", "description": "Telephone icon" },
     { "key": "???", "value": "church", "description": "CONFIRM: Cross on circle icon" },
     { "key": "amenity", "value": "recycling", "description": "Green recycle circle icon" },
-    { "key": "amenity", "value": "pharmacy", "description": "FIXME: Red bell? icon" },
+    { "key": "amenity", "value": "pharmacy", "description": "Red box surrounding white cropss icon" },
     { "key": "amenity", "value": "atm", "description": "FIXME: Euro icon" },
     { "key": "amenity", "value": "bank", "description": "FIXME: Euro icon" },
     { "key": "natural", "value": "wood", "description": "Dark green area with triangle tree icons" },
