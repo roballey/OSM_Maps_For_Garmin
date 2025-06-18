@@ -2865,6 +2865,88 @@ DayXpm="11 9 3 1"   Colormode=16
 ;12345678901
 [end]
 
+[_point]
+Type=0x066
+SubType=0x11
+;GRMN_TYPE: Geographical Named Points of Interest - Land Related/RANGE/Range/Non NT, NT
+String1=0x01,Bollard
+ExtendedLabels=N
+DayXpm="8 15 4 1"   Colormode=16
+"!	c #626262"
+"#	c #FFFFFF"
+"%	c #FF0000"
+"  	c none"
+"        "
+"  ####  "
+"  #!!#  "
+"  #!!#  "
+"  #%%#  "
+"  #!!#  "
+"  #%%#  "
+"  #!!#  "
+"  #!!#  "
+"  #!!#  "
+"  #!!#  "
+"  #!!#  "
+"  #!!#  "
+"  #!!#  "
+"  ####  "
+;12345678
+[end]
+
+[_point]
+Type=0x066
+SubType=0x12
+;GRMN_TYPE: Geographical Named Points of Interest - Land Related/RESERVE/Reserve/Non NT, NT
+String1=0x01,Cycle barrier
+ExtendedLabels=N
+DayXpm="13 14 3 1"   Colormode=16
+"!	c #626262"
+"#	c #FFFFFF"
+"  	c none"
+"       ##### "
+"      ##!!!##"
+"      #!###!#"
+"      #!###!#"
+"      #!###!#"
+"      #!###!#"
+" ######!###!#"
+"##!!!########"
+"#!###!#      "
+"#!###!#      "
+"#!###!#      "
+"#!###!#      "
+"#!###!#      "
+"#######      "
+;1234567890123
+[end]
+
+[_point]
+Type=0x066
+SubType=0x13
+;GRMN_TYPE: Geographical Named Points of Interest - Land Related/RIDGE/Ridge/Non NT, NT
+String1=0x01,Stile
+ExtendedLabels=N
+DayXpm="9 14 3 1"   Colormode=16
+"!	c #000000"
+"#	c #FFFFFF"
+"  	c none"
+"         "
+"         "
+"         "
+"   ###   "
+"   #!#   "
+"####!#   "
+"#!!!!#   "
+"####!#   "
+"   #!####"
+"   #!!!!#"
+"   #!####"
+"   #!#   "
+"   #!#   "
+"   ###   "
+;123456789
+[end]
 
 [_point]
 Type=0x066

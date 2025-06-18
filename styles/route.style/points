@@ -305,9 +305,12 @@ tourism=viewpoint {name '${name} - ${description}' | '${name}'} [0x5200 resoluti
 tourism=wine_cellar [0x2c0a resolution 24]
 tourism=zoo [0x2c07 resolution 24]
 
-barrier=bollard | barrier=bus_trap [0x660f resolution 24]
-barrier=block | barrier=cycle_barrier | barrier=stile | barrier=kissing_gate [0x660f resolution 24]
+barrier=bus_trap [0x660f resolution 24]
+barrier=block | barrier=kissing_gate [0x660f resolution 24]
 barrier=gate [0x6610 resolution 24]
+barrier=bollard [0x6611 resolution 24]
+barrier=cycle_barrier [0x6612 resolution 24]
+barrier=stile [0x6613 resolution 24]
 
 ford=yes [0x6501 resolution 22]
 natural=waterfall [0x6508 resolution 22]
