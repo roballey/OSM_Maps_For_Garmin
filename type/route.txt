@@ -15,10 +15,15 @@ CodePage=1252
 
 ;=========== POLYGONES : PRIORITE DANS L'AFFICHAGE ======
 [_drawOrder]
+; Medium lake / reservoir
 Type=0x03f,0
+; 0x000 ???
 Type=0x000,1
+; Map bounds
 Type=0x04b,1
+; Sea
 Type=0x032,2
+; Background
 Type=0x10100,3
 Type=0x002,4
 Type=0x007,4
@@ -30,27 +35,38 @@ Type=0x010,4
 Type=0x017,4
 Type=0x04e,4
 Type=0x04f,4
+; Wood
 Type=0x050,4
+; Sand (not used by Route style)
 Type=0x055,4
+; Parking
 Type=0x005,5
 Type=0x019,5
+; Beach
 Type=0x01b,5
 Type=0x038,5
 Type=0x039,5
 Type=0x03c,5
 Type=0x03d,5
+; Medium lake / reservoir (FIXME: Multiple priorities)
 Type=0x03f,5
+; Large river
 Type=0x046,5
+; Large river / waterfall
 Type=0x047,5
+; Sand
 Type=0x053,5
 Type=0x013,6
 Type=0x018,6
 Type=0x01a,6
 Type=0x01d,6
+; Mud
 Type=0x051,6
 ; Bare Rock
 Type=0x10101,6
+; Playground
 Type=0x10104,6
+; Military base / Exclusion area
 Type=0x004,7
 Type=0x013,8
 [End]
@@ -663,8 +679,7 @@ Xpm="32 32 2 1"
 [_polygon]
 Type=0x51
 ;GRMN_TYPE: Surface Cover Areas/WETLAND/Wetland or swamp area/Non NT
-String1=0x00,Mud
-String2=0x04,Mud
+String1=0x04,Mud
 ExtendedLabels=N
 Xpm="32 32 2 1"
 "! c #606060"
@@ -718,8 +733,7 @@ Xpm="0 0 1 0"
 [_polygon]
 Type=0x55
 ;GRMN_TYPE: //
-String1=0x02,Sand/Strand
-String2=0x04,sand/beach
+String1=0x04,sand/beach
 ExtendedLabels=N
 Xpm="32 32 2 1"
 "! c #F5F500"

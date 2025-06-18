@@ -10,7 +10,7 @@
   "tags": [
     { "key": "amenity", "value": "shower", "description": "FIXME: Not shown" },
     { "key": "leisure", "value": "slipway", "description": "White square with blue boat on a ramp" },
-    { "key": "???", "value": "guidepost", "description": "FIXME: Not shown" },
+    { "key": "???", "value": "guidepost", "description": "FIXME: Rendered as generic information" },
     { "key": "barrier", "value": "bollard", "description": "FIXME: Tiny black and white square icon" },
     { "key": "barrier", "value": "cycle_barrier", "description": "FIXME: Tiny black and white square icon" },
     { "key": "barrier", "value": "stile", "description": "FIXME: Tiny back and white square icon" },
@@ -28,7 +28,7 @@
     { "key": "tourism", "value": "viewpoint", "description": "Blue star/flower" },
     { "key": "amenity", "value": "cafe", "description": "Cup and saucer icon" },
     { "key": "shop", "value": "supermarket", "description": "Shopping trolley icon" },
-    { "key": "tourism", "value": "information", "description": "Italic I icon" },
+    { "key": "tourism", "value": "information", "description": "Blue italic I icon" },
     { "key": "amenity", "value": "fast_food", "description": "Burger and shake icon" },
     { "key": "amenity", "value": "pub", "description": "Beer mug icon" },
     { "key": "highway", "value": "bus stop", "description": "Bus front icon" },
