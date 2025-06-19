@@ -2366,6 +2366,34 @@ DayXpm="16 15 3 1"   Colormode=16
 [end]
 
 [_point]
+Type=0x04c
+SubType=0x02
+;GRMN_TYPE: ???
+String1=0x04,Route marker
+ExtendedLabels=N
+DayXpm="16 15 3 1"   Colormode=16
+"!	c #000000"
+"#	c #FFFFFF"
+"  	c none"
+"  #######       "
+" #!!!!!!!#      "
+"#!!!!!!!!#      "
+"#!!!!!!!!#      "
+" #!!!!!!!#      "
+"  #####!!#      "
+"      #!!#      "
+"      #!!#      "
+"      #!!#      "
+"      #!!#      "
+"      #!!#      "
+"      #!!#      "
+"      #!!#      "
+"      #!!#      "
+"      ####      "
+;1234567890123456
+[end]
+
+[_point]
 Type=0x04e
 SubType=0x00
 ;GRMN_TYPE: Misc. Points of Interest/RESTROOMS/Restrooms/Non NT, NT

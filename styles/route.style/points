@@ -297,6 +297,7 @@ tourism=guest_house [0x2b02 resolution 24]
 tourism=hostel [0x2b02 resolution 24]
 tourism=hotel | tourism=motel [0x2b01 resolution 24]
 tourism=information & information=guidepost [0x4c01 resolution 24]
+tourism=information & information=route_marker [0x4c02 resolution 24]
 tourism=information [0x4c00 resolution 24]
 # tourism=lean_to replaces some uses of amenity=shelter
 tourism=lean_to [0x2b06 resolution 24 default_name 'lean-to']
