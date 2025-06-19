@@ -16,9 +16,8 @@
     { "key": "barrier", "value": "cycle_barrier", "description": "Black stile" },
     { "key": "barrier", "value": "stile", "description": "Two grey staples" },
     { "key": "natural", "value": "rock", "description": "Mottled grey rock icon" },
-    { "key": "amenity", "value": "atm", "description": "FIXME: Euro icon" },
-    { "key": "amenity", "value": "bank", "description": "FIXME: Euro icon" },
-
+    { "key": "amenity", "value": "atm", "description": "Dollar sign icon" },
+    { "key": "amenity", "value": "bank", "description": "Dollar sign icon" },
     { "key": "barrier", "value": "fence", "description": "Black line with short orthogonal lines" },
     { "key": "barrier", "value": "gate", "description": "Black and white || lines with a diagonal line through" },
     { "key": "ford", "value": "yes", "description": "Arrow and wave icon" },
