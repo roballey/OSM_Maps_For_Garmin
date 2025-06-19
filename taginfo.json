@@ -10,7 +10,7 @@
   "tags": [
     { "key": "amenity", "value": "shower", "description": "Blue and white shower icon" },
     { "key": "leisure", "value": "slipway", "description": "White square with blue boat on a ramp" },
-    { "key": "information", "value": "guidepost", "description": "FIXME: Rendered as generic information" },
+    { "key": "information", "value": "guidepost", "description": "Guidepost icon" },
     { "key": "barrier", "value": "bollard", "description": "Dark grey pole with red stripes" },
     { "key": "barrier", "value": "cycle_barrier", "description": "Black stile" },
     { "key": "barrier", "value": "stile", "description": "Two grey staples" },
