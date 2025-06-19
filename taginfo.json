@@ -3,9 +3,10 @@
   "data_url": "https://raw.githubusercontent.com/roballey/OSM_Maps_For_Garmin/refs/head/master/taginfo.json",
   "project": {
     "name": "OSM_Maps_For_Garmin",
-    "description": "Map style for OSM maps on Garmin devices emphasising outdoor (running, cycling, paddling) features and details",
+    "description": "Map style for NZ OSM maps on Garmin devices emphasising outdoor (running, cycling, paddling) features and details",
     "project_url": "https://github.com/roballey/OSM_Maps_For_Garmin",
     "contact_name": "Rob Alley"
+    "contact_email": "alley.rob@gmail.com"
   },
   "tags": [
     { "key": "amenity", "value": "shower", "description": "Blue and white shower icon" },
