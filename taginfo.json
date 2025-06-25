@@ -74,7 +74,7 @@
     { "key": "highway", "value": "cycleway", "description": "Dashed blue lines" },
     { "key": "highway", "value": "footway", "description": "Dashed red lines" },
     { "key": "highway", "value": "track", "description": "|| dashed brown lines" },
-    { "key": "highway", "value": "trail_head", "description": "Shown as red circle with name" },
+    { "key": "highway", "value": "trailhead", "description": "Shown as red circle with name" },
     { "key": "highway", "value": "steps", "description": "Rendered as red and yellow stripes" },
     { "key": "informal", "value": "yes", "description": "Rendered as alternating red and yellow dashed lines" },
     { "key": "leisure", "value": "picnic_table", "description": "Table icon" },
