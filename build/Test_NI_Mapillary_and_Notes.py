@@ -7,7 +7,6 @@
 #       Region is hardcoded as oceania_nz_ni
 # FIXME:
 #        Position of notes when Garmin image file is rendered (but notes.osm looks fine in JOSM, also ok if notes but not Mapillary included in Garmin img)
-#        Rendered with text "AAH"
 import os
 
 import Mapillary_Download
@@ -30,13 +29,13 @@ west, south, east, north = [174.68,-36.9,174.75,-36.85]  # Part of Auckland 20 M
 
 
 print( "==================================================================================================")
-print( "Downloading Mapillary sequences to '{mapillary_geojson_file}' ...")
+print(f"Downloading Mapillary sequences to '{mapillary_geojson_file}' ...")
 Mapillary_Download.download(mapillary_geojson_file, west, south, east, north)
 print(f"Converting '{mapillary_geojson_file}' to '{mapillary_osm_file}'...")
 Convert2OSM.convert(mapillary_geojson_file, mapillary_osm_file)
 
 print( "==================================================================================================")
-print( "Downloading OSM notes to '{notes_json_file}' ...")
+print(f"Downloading OSM notes to '{notes_json_file}' ...")
 OSM_Notes_Download.download(notes_json_file, west, south, east, north )
 print(f"Converting '{notes_json_file}' to '{notes_osm_file}'...")
 Convert2OSM.convert(notes_json_file, notes_osm_file)

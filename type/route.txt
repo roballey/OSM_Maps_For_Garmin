@@ -3521,7 +3521,7 @@ Type=0x068
 SubType=0x00
 ;GRMN_TYPE: //
 String1=0x04,OSM Note
-ExtendedLabels=Y
+ExtendedLabels=N
 FontStyle=Default
 CustomColor=No
 ContourColor=No
