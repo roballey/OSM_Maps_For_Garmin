@@ -15,59 +15,77 @@ CodePage=1252
 
 ;=========== POLYGONES : PRIORITE DANS L'AFFICHAGE ======
 [_drawOrder]
-; Medium lake / reservoir
-Type=0x03f,0
+; Medium lake / reservoir / basin
+Type=0x03f,0	
 ; 0x000 ???
-Type=0x000,1
+Type=0x000,1	
 ; Map bounds
-Type=0x04b,1
+Type=0x04b,1	
 ; Sea
-Type=0x032,2
+Type=0x032,2	
 ; Background
-Type=0x10100,3
-Type=0x002,4
-Type=0x007,4
-Type=0x008,4
-Type=0x00a,4
-Type=0x00c,4
-Type=0x00d,4
-Type=0x010,4
-Type=0x017,4
-Type=0x04e,4
-Type=0x04f,4
+Type=0x10100,3	
+; 0x002 ???
+Type=0x002,4    
+; Airport/Aerodrome
+Type=0x007,4    
+; Commercial/Foodcourt/Supermarket
+Type=0x008,4    
+; School/University
+Type=0x00a,4    
+; Quarry
+Type=0x00c,4    
+; Construction
+Type=0x00d,4    
+; Farmyard
+Type=0x010,4    
+; Park/Meadow
+Type=0x017,4    
+; Farm/Orchard
+Type=0x04e,4    
+; Scrub
+Type=0x04f,4    
 ; Wood
-Type=0x050,4
+Type=0x050,4	
 ; Sand (not used by Route style)
-Type=0x055,4
+Type=0x055,4	
 ; Parking
-Type=0x005,5
-Type=0x019,5
+Type=0x005,5	
+; Recreation ground
+Type=0x019,5    
 ; Beach
-Type=0x01b,5
+Type=0x01b,5	
 Type=0x038,5
 Type=0x039,5
-Type=0x03c,5
-Type=0x03d,5
+; Lake between 100 and 250 sq miles
+Type=0x03c,5    
+; Large lake
+Type=0x03d,5    
 ; Medium lake / reservoir (FIXME: Multiple priorities)
-Type=0x03f,5
+Type=0x03f,5	
 ; Large river
-Type=0x046,5
+Type=0x046,5	
 ; Large river / waterfall
-Type=0x047,5
+Type=0x047,5	
 ; Sand
-Type=0x053,5
-Type=0x013,6
-Type=0x018,6
-Type=0x01a,6
-Type=0x01d,6
+Type=0x053,5	
+; Large manmade area/building
+Type=0x013,6    
+; Golf course
+Type=0x018,6    
+; Cemetery/Graveyard
+Type=0x01a,6    
+; Marsh
+Type=0x01d,6    
 ; Mud
-Type=0x051,6
+Type=0x051,6	
 ; Bare Rock
-Type=0x10101,6
+Type=0x10101,6	
 ; Playground
-Type=0x10104,6
+Type=0x10104,6	
 ; Military base / Exclusion area
-Type=0x004,7
+Type=0x004,7	
+; 0x013 ???
 Type=0x013,8
 [End]
 
@@ -1552,6 +1570,22 @@ String1=0x04,Track - Closed
 ExtendedLabels=N
 [end]
 
+[_line]
+Type=0x10a03
+;GRMN_TYPE: ???
+UseOrientation=N
+Xpm="32 5 2  1"
+"! c #00FF00"
+"  c none"
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+"                                "
+"                                "
+"                                "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+;12345678901234567890123456789012
+String1=0x04,Mapillary Sequence
+ExtendedLabels=N
+[end]
 
 ;====================== POINTS ==========================
 
