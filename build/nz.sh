@@ -4,16 +4,22 @@
 # plus just NI and SI.  Builds routable and non-routeable versions
 
 # Download all of NZ pbf
-echo "Downloading ..."
+echo "=================================================================================================="
+echo "Downloading NZ PBF file ..."
 wget https://download.geofabrik.de/australia-oceania/new-zealand-latest.osm.pbf --output-document=input/oceania_nz.pbf
 
 # Split input file, for whole of NZ and also cropped to only NI and SI
-echo "Splitting ..."
+echo "=================================================================================================="
+echo "Splitting PBF files ..."
+echo "   Oceania NZ ..."
 build/split.sh -r oceania_nz -p oceania_nz.poly -i oceania_nz.pbf
+echo "   Oceania NZ NI ..."
 build/split.sh -r oceania_nz_ni -p oceania_nz_ni.poly -i oceania_nz.pbf
+echo "   Oceania NZ SI ..."
 build/split.sh -r oceania_nz_si -p oceania_nz_si.poly -i oceania_nz.pbf
 
 # Build Garmin img files from split PBFs
+echo "=================================================================================================="
 echo "Building image files ..."
 echo "   Oceania NZ ..."
 build/map.sh -t nonroute -s nonroute -r oceania_nz
