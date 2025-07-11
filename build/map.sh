@@ -181,6 +181,7 @@ java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar --output-dir=${tmp_dir} type/${t
 
 echo "=================================================================================================="
 echo "Converting split OSM files into a Garmin Image file:"
+echo "  Inputs from '${inputs}'"
 echo "  Using style ${style}.style"
 echo "  Applying type rules from ${type}.typ ..."
 # Combine all the split OSM files and other inputs to a single Garmin gmapsupp image file, using specified style and applying the type rules
@@ -213,7 +214,7 @@ java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar \
                     ${tmp_dir}/${type}.typ
 
 echo "=================================================================================================="
-echo "Moving output image files into ${output_dir}"
+echo "Moving output image files from ${tmp_dir} into ${output_dir}"
 # Move the resulting Garmin image file into the output directory
 mv ${tmp_dir}/gmapsupp.img ${output_img}
 
