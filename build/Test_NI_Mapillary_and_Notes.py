@@ -21,7 +21,8 @@ notes_json_file="work/notes/oceania_nz_ni/notes.json"
 notes_osm_file = "work/notes/oceania_nz_ni/notes.osm"
 
 west, south, east, north = [174.6999,-36.8795,174.7000,-36.87945]  # Waterview/Pt Chev, 1 Mapillary tile
-west, south, east, north = [174.65,-36.9,174.75,-36.8]  # Part of Auckland 42 Mapillary tiles
+west, south, east, north = [174.68,-36.9,174.75,-36.85]  # Part of Auckland 20 Mapillary tiles
+#west, south, east, north = [174.65,-36.9,174.75,-36.8]  # Part of Auckland 42 Mapillary tiles
 #west, south, east, north = [174.5,-36.9,174.8,-36.8]  # Part of Auckland 105 Mapillary tiles
 #west, south, east, north = [174.4,-37.1,174.9,-36.7]    # Most of Auckland, 552 Mapillary tiles
 #west, south, east, north = [171.721,-38.558,178.665,-34.189]    # North and Central NI
