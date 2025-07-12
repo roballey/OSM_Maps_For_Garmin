@@ -20,8 +20,11 @@ def download_osm(url, output_file):
 #------------------------------------------------------------------------------
 # WIP: split source PBF
 # TODO: Re-implement split.sh in python ISO using os.system
-# TODO: Make poly optional
 def split(region, poly, source_pbf):
+    if not poly:
+        print(f"    Splitting {source_pbf} for {region}")
+        os.system(f"build/split.sh -r {region} -i {source_pbf}")
+    else:
         print(f"    Splitting {source_pbf} for {region} limiting by {poly}")
         os.system(f"build/split.sh -r {region} -p {poly} -i {source_pbf}")
 
@@ -123,7 +126,7 @@ if not args.no_split:
         print( "==================================================================================================")
         print( "=== Splitting PBF files ...")
         for i in config['regions']:
-                split(i['region'], i['poly'], i['pbf'])
+            split(i['region'], i['poly'], i['pbf'])
 else:
     print( "==================================================================================================")
     print( "=== Skipping split step")
