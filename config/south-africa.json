@@ -1,0 +1,21 @@
+{
+	"downloads": [
+		{
+			"dl": "https://download.geofabrik.de/africa/south-africa-latest.osm.pbf",
+			"pbf": "south-africa.pbf"
+		}
+	],
+	"variants": [
+		{
+			"style": "route",
+			"type": "route"
+		}
+	],
+	"regions": [
+		{
+			"region": "africa-south-africa",
+			"pbf": "south-africa.pbf",
+			"poly": ""
+		}
+	]
+}

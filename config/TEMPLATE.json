@@ -1,0 +1,27 @@
+
+{
+	"downloads": [
+		{
+			"dl": "https://download.geofabrik.de/<PBF File>",
+			"pbf": "<Name for downloaded PBF file>"
+		}
+	],
+	"variants": [
+		{
+			"style": "route",
+			"type": "route"
+		}
+	],
+	"regions": [
+		{
+			"region": "<Name for region>",
+			"poly": "<Poly file with region bounding box>",
+			"pbf": "<Downloaded PBF file from which region is generated>"
+		},
+		{
+			"region": "<Name for region>",
+			"poly": "<Poly file with region bounding box, may be blank if region is the whole PBF>",
+			"pbf": "<Downloaded PBF file from which region is generated>"
+		}
+	]
+}

@@ -1,0 +1,21 @@
+{
+	"downloads": [
+		{
+			"dl": "https://download.geofabrik.de/australia-oceania/australia-latest.osm.pbf",
+			"pbf": "australia.pbf"
+		}
+	],
+	"variants": [
+		{
+			"style": "route",
+			"type": "route"
+		}
+	],
+	"regions": [
+		{
+			"region": "oceania/austalia",
+			"poly": "",
+			"pbf": "australia.pbf"
+		}
+	]
+}
