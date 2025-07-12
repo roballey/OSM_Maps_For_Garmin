@@ -12,7 +12,8 @@
 #      Added mapillary sequences
 
 # Mapillary sequences
-id=* { echo "Mapillary sequence ${id}" } [0x10a03 resolution 14]
+#id=* { echo "Mapillary sequence ${id}" } [0x10a03 resolution 14]
+id=* & image_id=* [0x10a03 resolution 14]
 
 addr:housenumber=* {set mkgmap:execute_finalize_rules=true}
 
