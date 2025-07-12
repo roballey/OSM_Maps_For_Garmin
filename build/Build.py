@@ -84,7 +84,7 @@ if args.mapillary:
         for i in config['regions']:
             # FIXME: Get bounding box from poly file ISO hardcoding
             west, south, east, north = [174.68,-36.9,174.75,-36.85]  # Part of Auckland, 20 Mapillary tiles
-            mapillary_dir = f"work/mapillary/{i['region']}"
+            mapillary_dir = f"downloads/mapillary/{i['region']}"
             if not os.path.exists(mapillary_dir):
                 os.makedirs(mapillary_dir);
                 print(f"    Mapillary directory '{mapillary_dir}' did not exist, created")
@@ -107,7 +107,7 @@ if args.notes:
         for i in config['regions']:
             # FIXME: Get bounding box from poly file ISO hardcoding
             west, south, east, north = [174.68,-36.9,174.75,-36.85]  # Part of Auckland
-            notes_dir = f"work/notes/{i['region']}"
+            notes_dir = f"downloads/notes/{i['region']}"
             if not os.path.exists(notes_dir):
                 os.makedirs(notes_dir);
                 print(f"    OSM notes directory '{notes_dir}' did not exist, created")

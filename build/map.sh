@@ -65,8 +65,8 @@ tmp_dir="work/tmp"
 # Setup paths to the input files
 input_osm_dir="work/osmsplitmaps/${region}"
 input_contour_dir="work/contours/${region}"
-input_mapillary_dir="work/mapillary/${region}"
-input_notes_dir="work/notes/${region}"
+input_mapillary_dir="downloads/mapillary/${region}"
+input_notes_dir="downloads/notes/${region}"
 
 # Setup path to output files
 output_dir="maps/${style}/${region}"
