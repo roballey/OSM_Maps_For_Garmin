@@ -49,6 +49,8 @@ parser.add_argument('-n', '--notes', help="Experimental: Include OSM notes",
                     action='store_true') 
 parser.add_argument('-nb', '--no-build', help="Don't build the Garmin IMG file",
                     action='store_true') 
+parser.add_argument('-nd', '--no-download', help="Don't download anything",
+                    action='store_true') 
 parser.add_argument('-ndm', '--no-download-mapillary', help="Don't download the Mapillary coverage",
                     action='store_true') 
 parser.add_argument('-ndn', '--no-download-notes', help="Don't download the OSM notes",
@@ -63,7 +65,7 @@ args = parser.parse_args()
 config = json.load(open(args.config_file, "r"))
 
 # Download OSM PBF files
-if not args.no_download_osm:
+if not (args.no_download_osm or args.no_download):
         print( "==================================================================================================")
         for i in config['downloads']:
                 download_osm(i['dl'], i['pbf'])
@@ -73,7 +75,7 @@ else:
 
 # Download Mapillary coverage if being included in map
 if args.mapillary:
-    if not args.no_download_mapillary:
+    if not (args.no_download_mapillary or args.no_download):
         print( "==================================================================================================")
         for i in config['regions']:
             # FIXME: Get bounding box from poly file ISO hardcoding
@@ -95,7 +97,7 @@ if args.mapillary:
 
 # Download OSM notes if being included in map
 if args.notes:
-    if not args.no_download_notes:
+    if not (args.no_download_notes or args.no_download):
         print( "==================================================================================================")
         print( "=== Downloading OSM notes ...")
         for i in config['regions']:
