@@ -1,0 +1,26 @@
+
+{
+	"downloads": [
+		{
+			"dl": "https://download.geofabrik.de/australia-oceania/new-zealand-latest.osm.pbf",
+			"pbf": "oceania_nz.pbf"
+		}
+	],
+	"variants": [
+		{
+			"style": "nonroute",
+			"type": "nonroute"
+		},
+		{
+			"style": "route",
+			"type": "route"
+		}
+	],
+	"regions": [
+		{
+			"region": "oceania/nz/ni/waitak",
+			"poly": "oceania_nz_ni_waitak.poly",
+			"pbf": "oceania_nz.pbf"
+		}
+	]
+}

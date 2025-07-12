@@ -18,7 +18,7 @@ def download_osm(url, output_file):
         os.system(f"wget {url} --output-document=downloads/{output_file}")
 
 #------------------------------------------------------------------------------
-# WIP: split source PBF
+# split source PBF
 def split(region, poly_file, source_pbf_file):
     options=""
     osm_work_dir=f"work/osmsplitmaps/{region}"

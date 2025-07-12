@@ -12,11 +12,11 @@ addr:housenumber=* {set mkgmap:execute_finalize_rules=true}
 
 # OSM notes - downloaded seperately
 # TODO: Put note text (from comments field) in name
-id=* & comments=* { echo "OSM note ${id}"; name 'NOTE' } [0x6800 resolution 20]
+id=* & comments=* { name 'NOTE' } [0x6800 resolution 20]
 
 # OSM continue fixme's
 # TODO: Make this optional via map.sh script?
-fixme~'.*[Cc]ontinue.*' { echo "OSM fixme ${fixme}"; name '${fixme}' } [0x6801 resolution 20]
+fixme~'.*[Cc]ontinue.*' { name '${fixme}' } [0x6801 resolution 20]
 
 barrier=* & bicycle=*    { set mkgmap:bicycle='${bicycle|subst:private=>no}' }
 barrier=* & foot=*       { set mkgmap:foot='${foot|subst:private=>no}' }                  
