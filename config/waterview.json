@@ -14,7 +14,7 @@
 	],
 	"regions": [
 		{
-			"region": "oceania_nz_ni_waterview",
+			"region": "oceania/nz/ni/waterview",
 			"poly": "oceania_nz_ni_waterview.poly",
 			"pbf": "oceania_nz.pbf"
 		}

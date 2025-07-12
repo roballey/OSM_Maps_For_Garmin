@@ -15,18 +15,19 @@ import Convert2OSM
 # TODO: Use python module to download ISO using wget via os.system?
 def download_osm(url, output_file):
         print(f"    Downloading OSM data from '{url}'...")
-        os.system(f"wget {url} --output-document=input/{output_file}")
+        os.system(f"wget {url} --output-document=downloads/{output_file}")
 
 #------------------------------------------------------------------------------
 # WIP: split source PBF
-# TODO: Re-implement split.sh in python ISO using os.system
-def split(region, poly, source_pbf):
-    if not poly:
-        print(f"    Splitting {source_pbf} for {region}")
-        os.system(f"build/split.sh -r {region} -i {source_pbf}")
+def split(region, poly_file, source_pbf_file):
+    options=""
+    osm_work_dir=f"work/osmsplitmaps/{region}"
+    if not poly_file:
+        print(f"    Splitting '{source_pbf_file}' for {region}")
     else:
-        print(f"    Splitting {source_pbf} for {region} limiting by {poly}")
-        os.system(f"build/split.sh -r {region} -p {poly} -i {source_pbf}")
+        options=options + f"--polygon-file=poly/{poly_file}";
+        print(f"    Splitting '{source_pbf_file}' for {region} limiting by '{poly_file}'")
+    os.system(f"java -Xmx8000m -jar tools/splitter-*/splitter.jar downloads/{source_pbf_file} {options} --output-dir={osm_work_dir} > logs/split.log")
 
 #------------------------------------------------------------------------------
 # WIP: Build Garmin IMG files

@@ -18,17 +18,17 @@
 	],
 	"regions": [
 		{
-			"region": "oceania_nz",
+			"region": "oceania/nz",
 			"poly": "oceania_nz.poly",
 			"pbf": "oceania_nz.pbf"
 		},
 		{
-			"region": "oceania_nz_ni",
+			"region": "oceania/nz/ni",
 			"poly": "oceania_nz_ni.poly",
 			"pbf": "oceania_nz.pbf"
 		},
 		{
-			"region": "oceania_nz_si",
+			"region": "oceania/nz/si",
 			"poly": "oceania_nz_si.poly",
 			"pbf": "oceania_nz.pbf"
 		}
