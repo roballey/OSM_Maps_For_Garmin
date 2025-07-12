@@ -7,6 +7,7 @@ import Convert2OSM
 
 def download(download_file, west, south, east, north):
   
+  print(f"    Downloading OSM notes to '{download_file}' ...")
   url = f'https://api.openstreetmap.org/api/0.6/notes.json?bbox={west},{south},{east},{north}&closed=0'
   response = requests.get(url)
          

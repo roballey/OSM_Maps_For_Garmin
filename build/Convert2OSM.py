@@ -8,6 +8,7 @@ import logging
 import ogr2osm
 
 def convert(in_file, out_file):
+  print(f"    Converting '{in_file}' to '{out_file}'...")
   # 1. Set the logging level of the logger object named 'ogr2osm' to the desired output level
   ogr2osmlogger = logging.getLogger('ogr2osm')
   ogr2osmlogger.setLevel(logging.ERROR)
