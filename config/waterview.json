@@ -1,0 +1,22 @@
+
+{
+	"downloads": [
+		{
+			"dl": "https://download.geofabrik.de/australia-oceania/new-zealand-latest.osm.pbf",
+			"pbf": "oceania_nz.pbf"
+		}
+	],
+	"variants": [
+		{
+			"style": "route",
+			"type": "route"
+		}
+	],
+	"regions": [
+		{
+			"region": "oceania_nz_ni_waterview",
+			"poly": "oceania_nz_ni_waterview.poly",
+			"pbf": "oceania_nz.pbf"
+		}
+	]
+}
