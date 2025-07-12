@@ -63,4 +63,4 @@ mkdir -p ${osm_work_dir}
 
 rm -f ${osm_work_dir}/*
 #echo "Command: input/${input}.pbf ${options} --output-dir=${osm_work_dir}"
-java -Xmx8000m -jar tools/splitter-*/splitter.jar ${input} ${options} --output-dir=${osm_work_dir}
+java -Xmx8000m -jar tools/splitter-*/splitter.jar ${input} ${options} --output-dir=${osm_work_dir} > logs/split.log
