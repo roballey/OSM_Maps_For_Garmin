@@ -71,36 +71,34 @@ input_notes_dir="work/notes/${region}"
 # Setup path to output files
 output_dir="maps/${style}/${region}"
 
-echo "=================================================================================================="
-echo "=================================================================================================="
+echo "--------------------------------------------------------------------------------------------------"
+echo "--------------------------------------------------------------------------------------------------"
 echo "Converting OSM to Garmin for region ${region} using style ${style} and type ${type} rendering rules"
 if [ $contour = 1 ]
 then
-  echo "   Including contours..."
+  echo "   +++ Including contours..."
 else
-  echo "   No contours..."
+  echo "   --- No contours..."
 fi
 
 if [ $mapillary = 1 ]
 then
-  echo "   Including Mapillary coverage..."
+  echo "   +++ Including Mapillary coverage..."
 else
-  echo "   No Mapillary coverage..."
+  echo "   --- No Mapillary coverage..."
 fi
 
 if [ $notes = 1 ]
 then
-  echo "   Including notes markers..."
+  echo "   +++ Including notes markers..."
 else
-  echo "   No notes markers..."
+  echo "   --- No notes markers..."
 fi
-
-echo "=================================================================================================="
-echo "=================================================================================================="
 
 # Check style files exist
 if [ ! -d styles/${style}.style ]
 then
+  echo "--------------------------------------------------------------------------------------------------"
   echo "Style files directory 'styles/${style}.style' does not exist"
   exit 1
 fi
@@ -108,17 +106,16 @@ fi
 # Check type file exists
 if [ ! -f type/${type}.txt ]
 then
+  echo "--------------------------------------------------------------------------------------------------"
   echo "Type file 'type/${type}.txt' does not exist"
   exit 1
 fi
 
-echo "=================================================================================================="
 version=`date +%y%m`
-echo "Set version ${version}"
 
 if [ $contour = 1 ]
 then
-  echo "=================================================================================================="
+  echo "--------------------------------------------------------------------------------------------------"
   echo "Setting contour inputs"
 
   if [ ! -d ${input_contour_dir} ]
@@ -135,7 +132,7 @@ fi
 
 if [ $mapillary = 1 ]
 then
-  echo "=================================================================================================="
+  echo "--------------------------------------------------------------------------------------------------"
   echo "Setting Mapillary inputs"
 
   if [ ! -d ${input_mapillary_dir} ]
@@ -148,7 +145,7 @@ fi
 
 if [ $notes = 1 ]
 then
-  echo "=================================================================================================="
+  echo "--------------------------------------------------------------------------------------------------"
   echo "Setting OSM notes inputs"
 
   if [ ! -d ${input_notes_dir} ]
@@ -160,12 +157,12 @@ then
 fi
 
 # Create output and temp directories (including parent directories) if they dont exist
-echo "=================================================================================================="
+echo "--------------------------------------------------------------------------------------------------"
 echo "Building directories"
 mkdir -p ${output_dir}
 mkdir -p ${tmp_dir}
 
-echo "=================================================================================================="
+echo "--------------------------------------------------------------------------------------------------"
 echo "Cleaning old files"
 # Remove previously generated temporary files so as to not pollute the output
 rm -f ${tmp_dir}/*
@@ -175,11 +172,11 @@ rm -f ${output_img}
 rm -f ${output_dir}/${type}.typ
 rm -f ${output_dir}/*.tdb
 
-echo "=================================================================================================="
+echo "--------------------------------------------------------------------------------------------------"
 echo "Converting type file from ${type}.txt to ${type}.typ ..."
 java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar --output-dir=${tmp_dir} type/${type}.txt
 
-echo "=================================================================================================="
+echo "--------------------------------------------------------------------------------------------------"
 echo "Converting split OSM files into a Garmin Image file:"
 echo "  Inputs from '${inputs}'"
 echo "  Using style ${style}.style"
@@ -213,7 +210,7 @@ java -Xmx${mem} -jar tools/mkgmap-r*/mkgmap.jar \
                     ${inputs} \
                     ${tmp_dir}/${type}.typ
 
-echo "=================================================================================================="
+echo "--------------------------------------------------------------------------------------------------"
 echo "Moving output image files from ${tmp_dir} into ${output_dir}"
 # Move the resulting Garmin image file into the output directory
 mv ${tmp_dir}/gmapsupp.img ${output_img}
