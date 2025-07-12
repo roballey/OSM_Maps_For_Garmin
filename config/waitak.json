@@ -18,18 +18,8 @@
 	],
 	"regions": [
 		{
-			"region": "oceania/nz",
-			"poly": "oceania_nz.poly",
-			"pbf": "oceania_nz.pbf"
-		},
-		{
-			"region": "oceania/nz/ni",
-			"poly": "oceania_nz_ni.poly",
-			"pbf": "oceania_nz.pbf"
-		},
-		{
-			"region": "oceania/nz/si",
-			"poly": "oceania_nz_si.poly",
+			"region": "oceania/nz/ni/waitak",
+			"poly": "oceania_nz_ni_waitak.poly",
 			"pbf": "oceania_nz.pbf"
 		}
 	]

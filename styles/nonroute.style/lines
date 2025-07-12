@@ -11,8 +11,8 @@ bicycle=impassable | bicycle:mtb=impassable | bicycle:hybrid=difficult | bicycle
 
 # -----	Route names
 
-# Build name with '(NO ACCESS)' appended if it is a path, track or cycleway with no access
-(highway=path | highway=track | highway=cycleway) & access=no { echo "${name} - ${highway}, No Access";
+# RPA: Build name with '(NO ACCESS)' appended if it is a path, track or cycleway with no access.  These also get rendered as 0x10510, see below
+(highway=path | highway=track | highway=cycleway) & access=no & (foot!=yes & foot!=designated & bicycle!=yes & bicycle!=designated) { echo "Non-route (${highway}) ${name}, NO ACCESS";
       name 
 	'${name} (${ref}) (NO ACCESS)' |
 	'${name} (NO ACCESS)' |

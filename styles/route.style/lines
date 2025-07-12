@@ -12,7 +12,6 @@
 #      Added mapillary sequences
 
 # Mapillary sequences
-#id=* { echo "Mapillary sequence ${id}" } [0x10a03 resolution 14]
 id=* & image_id=* [0x10a03 resolution 14]
 
 addr:housenumber=* {set mkgmap:execute_finalize_rules=true}
@@ -191,12 +190,12 @@ highway=service & (service=alley|service=driveway)
 [0x13 road_class=0 road_speed=0 resolution 23]
 highway=service [0x12 road_class=0 road_speed=2 resolution 22]
 
-highway=cycleway & access=no [0x10510 resolution 20]
+highway=cycleway & access=no & (foot!=yes & foot!=designated & bicycle!=yes & bicycle!=designated)[0x10510 resolution 20]
 highway=cycleway & bridge=yes [0x1010a resolution 22 continue]
 highway=cycleway & bridge=boardwalk [0x1010c resolution 22 continue]
 highway=cycleway [0x0d road_class=0 road_speed=1 resolution 22]
 
-highway=path & access=no [0x10510 resolution 20]
+highway=path & access=no & (foot!=yes & foot!=designated & bicycle!=yes & bicycle!=designated)[0x10510 resolution 20]
 highway=path & bridge=yes [0x1010a resolution 22 continue]
 highway=path & bridge=boardwalk [0x1010c resolution 22 continue]
 # Informal and hard to see paths are rendered less prominently
@@ -206,7 +205,7 @@ highway=path & trail_visibility=no [0x0f road_class=0 road_speed=0 resolution 22
 # Normal paths
 highway=path [0x0a road_class=0 road_speed=0 resolution 22]
 
-highway=footway & access=no [0x10510 resolution 20]
+highway=footway & access=no & (foot!=yes & foot!=designated & bicycle!=yes & bicycle!=designated)[0x10510 resolution 20]
 highway=footway & bridge=yes [0x1010a resolution 22 continue]
 highway=footway & bridge=boardwalk [0x1010c resolution 22 continue]
 # Sidewalks and crossings are rendered less prominently so as to not clutter road display
@@ -217,7 +216,7 @@ highway=footway [0x0b road_class=0 road_speed=0 resolution 22]
 
 highway=steps [0x11 road_class=0 road_speed=0 resolution 22]
 
-highway=track & access=no [0x10510 resolution 20]
+highway=track & access=no & (foot!=yes & foot!=designated & bicycle!=yes & bicycle!=designated)[0x10510 resolution 20]
 highway=track & bridge=yes [0x1010a resolution 22 continue]
 highway=track [0x09 road_class=0 road_speed=1 resolution 22]
 highway=unsurfaced [0x09 road_class=0 road_speed=1 resolution 22]
@@ -273,7 +272,7 @@ mkgmap:synthesised=yes & mkgmap:bicycle=yes { set mkgmap:highest-resolution-only
 # don't add house numbers to unnamed or artifical bicycle ways
 mkgmap:bicycle=yes & (mkgmap:foot=no & mkgmap:car=no & mkgmap:street!=* | mkgmap:synthesised=yes) {set mkgmap:numbers=false}
 
-name=* { name '${name}' }
+name=* { name '${name}'}
 
 highway=* & ref=* { addlabel '${ref}' }
 highway=* & int_ref=* { addlabel '${int_ref}' }
