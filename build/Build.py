@@ -82,8 +82,8 @@ if args.mapillary:
             west, south, east, north = [174.68,-36.9,174.75,-36.85]  # Part of Auckland, 20 Mapillary tiles
             mapillary_dir = f"work/mapillary/{i['region']}"
             if not os.path.exists(mapillary_dir):
-                # FIXME: Create directory ISO quitting
-                quit(f"Mapillary directory '{mapillary_dir}' does not exist")
+                os.makedirs(mapillary_dir);
+                print(f"    Mapillary directory '{mapillary_dir}' did not exist, created")
             mapillary_geojson_file = f"{mapillary_dir}/sequences.geojson"
             mapillary_osm_file = f"{mapillary_dir}/sequences.osm"
 
@@ -105,8 +105,8 @@ if args.notes:
             west, south, east, north = [174.68,-36.9,174.75,-36.85]  # Part of Auckland
             notes_dir = f"work/notes/{i['region']}"
             if not os.path.exists(notes_dir):
-                # FIXME: Create directory ISO quitting
-                quit(f"OSM Notes directory '{notes_dir}' does not exist")
+                os.makedirs(notes_dir);
+                print(f"    OSM notes directory '{notes_dir}' did not exist, created")
             notes_json_file = f"{notes_dir}/notes.json"
             notes_osm_file = f"{notes_dir}/notes.osm"
 

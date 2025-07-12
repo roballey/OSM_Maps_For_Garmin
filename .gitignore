@@ -1,12 +1,16 @@
 input
 hgt
+logs
+maps
 tools
 work
 *.swp
+*.swo
 osmmap.img
 osmmap.tdb
 maps/**/*.typ
 build/x*.typ
+build/__pycache__
 type/*.typ
 Routable.zip
 NonRoutable.zip

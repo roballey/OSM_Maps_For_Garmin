@@ -1,22 +1,20 @@
 # 11-Jul-2025
 # Based on code from https://gist.github.com/cbeddow `mapillary_sequence_download.py`
+# Requires a token from https://www.mapillary.com/dashboard/developers in JSON file ~/mapillary_token.json
 
 # Import modules from standard locations
 import os,sys
 import mercantile, mapbox_vector_tile, requests, json
 from vt2geojson.tools import vt_bytes_to_geojson
 from tqdm import tqdm
+from pathlib import Path
 
 # -----------------------------------------------------------------------------
 def download(download_file, west, south, east, north):
 
-  # Atleast 3.9 required for __file__ to be an absolute path
-  if not sys.version_info >= (3, 9):
-      quit("ERROR: Python >= 3.9 required")
-  
-  dir=os.path.dirname(__file__)
-  
-  authFile = os.path.join(dir, "mapillary_token.json")
+  authFile = os.path.join(Path.home(), "mapillary_token.json")
+  if not os.path.exists(authFile):
+      quit(f"Mapillary token file '{authFile}' not found")
   auth = json.load(open(authFile, "r"))
   
   # define an empty geojson as output
