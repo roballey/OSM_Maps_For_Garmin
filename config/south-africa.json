@@ -13,7 +13,7 @@
 	],
 	"regions": [
 		{
-			"region": "africa-south-africa",
+			"region": "africa/south-africa",
 			"pbf": "south-africa.pbf",
 			"poly": ""
 		}
