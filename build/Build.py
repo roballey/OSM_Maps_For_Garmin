@@ -1,14 +1,18 @@
 #! /usr/bin/python3
 
-# Python top level script to download inputs, split, and build images
+# Build Garmin IMG files from OSM data.
+# Download inputs (OSM data and optionally Mapillary sequences and OSM notes), splitis inputs, and builds IMG files
 
 import argparse
 import json
 import os
+from datetime import datetime
 
 import Mapillary_Download
 import OSM_Notes_Download
 import Convert2OSM
+
+java_memory="8000m"
 
 #------------------------------------------------------------------------------
 # Download PBF file
@@ -18,7 +22,7 @@ def download_osm(url, output_file):
         os.system(f"wget {url} --output-document=downloads/{output_file}")
 
 #------------------------------------------------------------------------------
-# split source PBF
+# Split source PBF
 def split(region, poly_file, source_pbf_file):
     options=""
     osm_work_dir=f"work/osmsplitmaps/{region}"
@@ -27,19 +31,63 @@ def split(region, poly_file, source_pbf_file):
     else:
         options=options + f"--polygon-file=poly/{poly_file}";
         print(f"    Splitting '{source_pbf_file}' for {region} limiting by '{poly_file}'")
-    os.system(f"java -Xmx8000m -jar tools/splitter-*/splitter.jar downloads/{source_pbf_file} {options} --output-dir={osm_work_dir} > logs/split.log")
+    os.system(f"java -Xmx{java_memory} -jar tools/splitter-*/splitter.jar downloads/{source_pbf_file} {options} --output-dir={osm_work_dir} > logs/split.log")
 
 #------------------------------------------------------------------------------
-# WIP: Build Garmin IMG files
-# TODO: Re-implement map.sh in python ISO using os.system
+# Build Garmin IMG files
 def build(region, map_type, map_style, args):
-    options=""
-    print(f"    Building Garmin IMG for {region} using style {map_style} and type {map_type}")
+    tmp_dir="work/tmp"
+    input_osm_dir=f"work/osmsplitmaps/{region}"
+    input_mapillary_dir=f"downloads/mapillary/{region}/sequences.osm"
+    input_notes_dir=f"downloads/notes/{region}/notes.osm"
+    output_dir=f"maps/{map_style}/{region}"
+    version=datetime.now().strftime('%y%m')
+
+    input_files=os.path.join(input_osm_dir, "*.pbf")
+
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir);
+        print(f"    Output directory '{output_dir}' did not exist, created")
+
+    print(f"    Building Garmin IMG version {version} for {region} using style {map_style} and type {map_type}")
     if args.mapillary:
-        options = options + " -m"
+        input_files = input_files + f" {input_mapillary_dir}"
     if args.notes:
-        options = options + " -n"
-    os.system(f"build/map.sh -t {map_type} -s {map_style} -r {region} {options}")
+        input_files = input_files + f" {input_notes_dir}"
+
+    print(f"      Converting TYP file from text...")
+    os.system(f"java -Xmx{java_memory} -jar tools/mkgmap-r*/mkgmap.jar --output-dir={tmp_dir} type/{map_type}.txt")
+
+    print(f"      Building IMG file '{output_dir}/gmapsupp.img'...")
+    os.system(f"java -Xmx{java_memory} -jar tools/mkgmap-r*/mkgmap.jar \
+                    --family-name='OSM for Garmin' \
+                    --series-name='{map_type}' \
+		            --description='OSM maps for Garmin devices' \
+		            --product-version=version \
+		            --region-name='Oceania' \
+                    --country-name='New Zealand' \
+                    --country-abbr='NZ' \
+		            --drive-on=left \
+                    --index \
+                    --housenumbers \
+                    --route \
+                    --adjust-turn-headings \
+                    --add-pois-to-areas \
+                    --make-opposite-cycleways \
+                    --link-pois-to-ways \
+                    --process-destination \
+                    --process-exits \
+                    --remove-short-arcs \
+                    --gmapsupp \
+                    --product-id=1 \
+                    --style-file=styles/{map_style}.style \
+                    --precomp-sea=downloads/sea-latest.zip \
+                    --generate-sea \
+                    --output-dir={output_dir} \
+                      {input_files} \
+                      {tmp_dir}/{map_type}.typ" )
+
+    # TODO: Clean up <num>.img; ovm*.img and osmmap.img files created in output_dir
 
 #==============================================================================
 parser = argparse.ArgumentParser(
@@ -138,7 +186,6 @@ if not args.no_build:
         print( "=== Building image files ...")
         for i in config['regions']:
                 for variant in config['variants']:
-                        # FIXME: Build options string here and pass that ISO args
                         build(i['region'], variant['style'], variant['type'], args)
 else:
     print( "==================================================================================================")
