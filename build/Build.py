@@ -25,13 +25,47 @@ def download_osm(url, output_file):
 # Split source PBF
 def split(region, poly_file, source_pbf_file):
     options=""
-    osm_work_dir=f"work/osmsplitmaps/{region}"
+    split_dir=f"work/osmsplitmaps/{region}"
     if not poly_file:
         print(f"    Splitting '{source_pbf_file}' for {region}")
     else:
         options=options + f"--polygon-file=poly/{poly_file}";
         print(f"    Splitting '{source_pbf_file}' for {region} limiting by '{poly_file}'")
-    os.system(f"java -Xmx{java_memory} -jar tools/splitter-*/splitter.jar downloads/{source_pbf_file} {options} --output-dir={osm_work_dir} > logs/split.log")
+    os.system(f"java -Xmx{java_memory} -jar tools/splitter-*/splitter.jar downloads/{source_pbf_file} {options} --output-dir={split_dir} > logs/split.log")
+
+#------------------------------------------------------------------------------
+# Get bounding pox from a POLY file (assumes only 1 area specified in POLY file)
+def Get_Bounding_Box(poly_file):
+  file=open(poly_file, "r")
+  
+  south=90.0
+  north=-90.0
+  west=180.0
+  east=-180.0
+  
+  in_section=False
+  for (index, line) in enumerate(file.readlines()):
+      #print(index, line)
+  
+      # Skip first line (name of file)
+      if index == 0:
+          pass
+      # Ignore END of section and file
+      elif line.strip() == "END":
+         in_section=False
+      # First line of section defines the section name
+      elif not in_section:
+          in_section=True
+      else:
+        (long, lat) = line.split()
+  
+        south=min(south,float(lat))
+        north=max(north,float(lat))
+        west=min(west,float(long))
+        east=max(east,float(long))
+  file.close()
+  print(f"West {west} South {south} East {east} North {north}")
+  return(west, south, east, north)
 
 #------------------------------------------------------------------------------
 # Build Garmin IMG files
@@ -125,13 +159,36 @@ else:
     print( "==================================================================================================")
     print( "=== Skipping OSM download step")
 
+# Split OSM PBF file for each region
+if not args.no_split:
+        print( "==================================================================================================")
+        print( "=== Splitting OSM PBF files ...")
+        for i in config['regions']:
+            split(i['region'], i['poly'], i['pbf'])
+else:
+    print( "==================================================================================================")
+    print( "=== Skipping split step")
+
 # Download Mapillary coverage if being included in map
 if args.mapillary:
     if not (args.no_download_mapillary or args.no_download):
         print( "==================================================================================================")
         for i in config['regions']:
-            # FIXME: Get bounding box from poly file ISO hardcoding
-            west, south, east, north = [174.68,-36.9,174.75,-36.85]  # Part of Auckland, 20 Mapillary tiles
+            #west, south, east, north = [174.68,-36.9,174.75,-36.85]  # Part of Auckland, 20 Mapillary tiles
+            split_dir=f"work/osmsplitmaps/{i['region']}"
+            if 'bbox' in i:
+                print(f"Bounding box for region {i['region']} from bbox section in config file")
+                (west, south, east, north) = i['bbox']
+                print(f"West {west} South {south} East {east} North {north}")
+            elif i['poly']:
+                print(f"Bounding box for region {i['region']} from POLY file '{i['poly']}'")
+                (west, south, east, north) = Get_Bounding_Box(os.path.join("poly",i['poly']))
+            elif os.path.exists(os.path.join(split_dir,"areas.poly")):
+                print(f"Bounding box for region {i['region']} from split areas POLY file")
+                (west, south, east, north) = Get_Bounding_Box(os.path.join(split_dir,"areas.poly"))
+            else:
+                quit("Must specify a bbox, a poly file or have performed split if including Mapillary coverage")
+
             mapillary_dir = f"downloads/mapillary/{i['region']}"
             if not os.path.exists(mapillary_dir):
                 os.makedirs(mapillary_dir);
@@ -168,17 +225,6 @@ if args.notes:
         print( "==================================================================================================")
         print( "=== Skipping OSM notes download")
 
-
-
-# Split PBF file for each region
-if not args.no_split:
-        print( "==================================================================================================")
-        print( "=== Splitting PBF files ...")
-        for i in config['regions']:
-            split(i['region'], i['poly'], i['pbf'])
-else:
-    print( "==================================================================================================")
-    print( "=== Skipping split step")
 
 # Build Garmin img files from split PBFs
 if not args.no_build:

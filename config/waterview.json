@@ -16,7 +16,13 @@
 		{
 			"region": "oceania/nz/ni/waterview",
 			"poly": "oceania_nz_ni_waterview.poly",
-			"pbf": "oceania_nz.pbf"
+			"pbf": "oceania_nz.pbf",
+			"bbox": [
+				174.679999,
+				-36.900008,
+				174.749994,
+				-36.84999
+			]
 		}
 	]
 }
