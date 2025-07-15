@@ -1,9 +1,6 @@
 # 11-Jul-2025
 # Based on example from https://github.com/roelderickx/ogr2osm
 
-# TODO: Bounds are hard coded for now
-#       Region is hardcoded as oceania_nz_ni
-
 import logging
 import ogr2osm
 

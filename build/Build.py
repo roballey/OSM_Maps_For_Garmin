@@ -205,13 +205,28 @@ if args.mapillary:
         print( "=== Skipping Mapillary coverage download")
 
 # Download OSM notes if being included in map
+# TODO: Add a translation to convert the comment tag and extract the text of the note from comments/text
+# see `https://github.com/roelderickx/ogr2osm-translations/tree/66fd75b6cf6ba18b790c885914a6db3785690fce`
 if args.notes:
     if not (args.no_download_notes or args.no_download):
         print( "==================================================================================================")
         print( "=== Downloading OSM notes ...")
         for i in config['regions']:
-            # FIXME: Get bounding box from poly file ISO hardcoding
-            west, south, east, north = [174.68,-36.9,174.75,-36.85]  # Part of Auckland
+            split_dir=f"work/osmsplitmaps/{i['region']}"
+            if 'bbox' in i:
+                print(f"Bounding box for region {i['region']} from bbox section in config file")
+                (west, south, east, north) = i['bbox']
+                print(f"West {west} South {south} East {east} North {north}")
+            elif i['poly']:
+                print(f"Bounding box for region {i['region']} from POLY file '{i['poly']}'")
+                (west, south, east, north) = Get_Bounding_Box(os.path.join("poly",i['poly']))
+            elif os.path.exists(os.path.join(split_dir,"areas.poly")):
+                print(f"Bounding box for region {i['region']} from split areas POLY file")
+                (west, south, east, north) = Get_Bounding_Box(os.path.join(split_dir,"areas.poly"))
+            else:
+                quit("Must specify a bbox, a poly file or have performed split if including OSM notes")
+
+
             notes_dir = f"downloads/notes/{i['region']}"
             if not os.path.exists(notes_dir):
                 os.makedirs(notes_dir);
