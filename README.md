@@ -19,7 +19,7 @@ The following setup steps only need to be performed once:
 1. Download splitter from http://www.mkgmap.org.uk/download/splitter.html and install in 'tools'
 1. Download mkgmap from http://www.mkgmap.org.uk/download/mkgmap.html and install in 'tools'
 1. ~~Download sea.zip from http://www.mkgmap.org.uk/download/ and install in 'input' named 'sea-latest.zip'~~ (No longer available there in 2025)
-2. Download a `sea*.zip` file from https://thkukuk.de/osm/data/ and install in 'input' named 'sea-latest.zip'
+2. Download a `sea*.zip` file from https://thkukuk.de/osm/data/ or http://develop.freizeitkarte-osm.de/boundaries/ and install in 'input' named 'sea-latest.zip'
 
 #### Optional
 -------------
