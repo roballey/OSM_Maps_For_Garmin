@@ -31,6 +31,7 @@ def split(region, poly_file, source_pbf_file):
     else:
         options=options + f"--polygon-file=poly/{poly_file}";
         print(f"    Splitting '{source_pbf_file}' for {region} limiting by '{poly_file}'")
+    print(f"    Output to {split_dir}")
     os.system(f"java -Xmx{java_memory} -jar tools/splitter-*/splitter.jar downloads/{source_pbf_file} {options} --output-dir={split_dir} > logs/split.log")
 
 #------------------------------------------------------------------------------
@@ -123,6 +124,14 @@ def build(region, map_type, map_style, args):
 
     # TODO: Clean up <num>.img; ovm*.img and osmmap.img files created in output_dir
 
+#------------------------------------------------------------------------------
+# Create hard links to image files for QMapShack
+def link(img_file, linked_file):
+   print(f"--- Link '{img_file}' to '{linked_file}'")
+   if os.path.exists(linked_file):
+       os.remove(linked_file)
+   os.link(img_file,linked_file)
+
 #==============================================================================
 parser = argparse.ArgumentParser(
                     prog='Build',
@@ -170,6 +179,8 @@ else:
     print( "=== Skipping split step")
 
 # Download Mapillary coverage if being included in map
+# TODO: Currently just draws Mapillary sequence lines over the top of OSM data.  Change to simplify Mapillary
+#       sequences to a single line each.  Re colour those OSM ways that have a corresponding Mapillary sequence line?
 if args.mapillary:
     if not (args.no_download_mapillary or args.no_download):
         print( "==================================================================================================")
@@ -251,3 +262,20 @@ if not args.no_build:
 else:
     print( "==================================================================================================")
     print( "=== Skipping build step")
+
+print( "==================================================================================================")
+print( "=== Linking image files ...")
+link_dir="links"
+if not os.path.exists(link_dir):
+    os.makedirs(link_dir);
+for i in config['regions']:
+        region=i['region']
+        for variant in config['variants']:
+            map_style=variant['style']
+            img_file=f"maps/{map_style}/{region}/gmapsupp.img"
+
+            if os.path.exists(img_file):
+                linked_file=link_dir+"/"+f"{map_style}/{region}".replace("/","-")+".img"
+                link(img_file,linked_file)
+            else:
+                print(f"--- Image file '{img_file}' does not exist")
