@@ -5,6 +5,7 @@
 
 import argparse
 import json
+from xml.dom import minidom
 import os
 from datetime import datetime
 
@@ -15,10 +16,9 @@ import Convert2OSM
 java_memory="8000m"
 
 #------------------------------------------------------------------------------
-# Download PBF file
-# TODO: Use python module to download ISO using wget via os.system?
+# Download OSM map data PBF file
 def download_osm(url, output_file):
-        print(f"    Downloading OSM data from '{url}'...")
+        print(f"    Downloading OSM map data from '{url}'...")
         os.system(f"wget {url} --output-document=downloads/{output_file}")
 
 #------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ def split(region, poly_file, source_pbf_file):
     os.system(f"java -Xmx{java_memory} -jar tools/splitter-*/splitter.jar downloads/{source_pbf_file} {options} --output-dir={split_dir} > logs/split.log")
 
 #------------------------------------------------------------------------------
-# Get bounding pox from a POLY file (assumes only 1 area specified in POLY file)
+# Get bounding box from a POLY file (assumes only 1 area specified in POLY file)
 def Get_Bounding_Box(poly_file):
   file=open(poly_file, "r")
   
@@ -65,8 +65,43 @@ def Get_Bounding_Box(poly_file):
         west=min(west,float(long))
         east=max(east,float(long))
   file.close()
-  print(f"West {west} South {south} East {east} North {north}")
   return(west, south, east, north)
+
+#------------------------------------------------------------------------------
+# Convert OSM notes data JSON file to OSM file (XML)
+def convert_json_notes_to_osm(json_filename, osm_filename):
+  notes = json.load(open(json_filename, "r"))
+  
+  # Create XML using minidom
+  xml = minidom.Document()
+  osm = xml.createElement('osm')
+  osm.setAttribute('version', '0.6')
+  osm.setAttribute('generator', 'OSM_for_garmin')
+  osm.setAttribute('upload', 'false')
+  xml.appendChild(osm )
+  
+  id=0
+  for note in notes['features']:
+      for comment in note['properties']['comments']:
+          id = id - 1
+          node = xml.createElement('node')
+          node.setAttribute('visible', 'true')
+          node.setAttribute('id', f"{id}")
+          node.setAttribute('lat', f"{note['geometry']['coordinates'][1]}")
+          node.setAttribute('lon', f"{note['geometry']['coordinates'][0]}")
+          osm.appendChild(node)
+          tag = xml.createElement('tag')
+          tag.setAttribute('k', 'id')
+          tag.setAttribute('v', f"{note['properties']['id']}")
+          node.appendChild(tag)
+          tag = xml.createElement('tag')
+          tag.setAttribute('k', 'comments')
+          tag.setAttribute('v', f"{comment['text'].splitlines()[0]}")
+          node.appendChild(tag)
+  
+  xml_str = xml.toprettyxml(indent ="  ") 
+  with open(osm_filename, "w") as f:
+      f.write(xml_str)
 
 #------------------------------------------------------------------------------
 # Build Garmin IMG files
@@ -78,22 +113,25 @@ def build(region, map_type, map_style, args):
     output_dir=f"maps/{map_style}/{region}"
     version=datetime.now().strftime('%y%m')
 
-    input_files=os.path.join(input_osm_dir, "*.pbf")
-
     if not os.path.exists(output_dir):
         os.makedirs(output_dir);
         print(f"    Output directory '{output_dir}' did not exist, created")
 
+    input_files=os.path.join(input_osm_dir, "*.pbf")
     print(f"    Building Garmin IMG version {version} for {region} using style {map_style} and type {map_type}")
+    print(f"      Using OSM data from '{input_osm_dir}'")
+
     if args.mapillary:
+        print(f"      Including Mapillary coverage data from '{input_mapillary_dir}'")
         input_files = input_files + f" {input_mapillary_dir}"
     if args.notes:
+        print(f"      Including OSM notes data from '{input_notes_dir}'")
         input_files = input_files + f" {input_notes_dir}"
 
-    print(f"      Converting TYP file from text...")
+    print(f"\n      Converting TYP file from text...")
     os.system(f"java -Xmx{java_memory} -jar tools/mkgmap-r*/mkgmap.jar --output-dir={tmp_dir} type/{map_type}.txt")
 
-    print(f"      Building IMG file '{output_dir}/gmapsupp.img'...")
+    print(f"\n      Building IMG file '{output_dir}/gmapsupp.img'...")
     os.system(f"java -Xmx{java_memory} -jar tools/mkgmap-r*/mkgmap.jar \
                     --family-name='OSM for Garmin' \
                     --series-name='{map_type}' \
@@ -246,7 +284,8 @@ if args.notes:
             notes_osm_file = f"{notes_dir}/notes.osm"
 
             OSM_Notes_Download.download(notes_json_file, west, south, east, north)
-            Convert2OSM.convert(notes_json_file, notes_osm_file)
+            print(f"Converting '{notes_json_file}' to '{notes_osm_file}'...")
+            convert_json_notes_to_osm(notes_json_file, notes_osm_file)
     else:
         print( "==================================================================================================")
         print( "=== Skipping OSM notes download")

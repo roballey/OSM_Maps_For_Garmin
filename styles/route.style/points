@@ -11,11 +11,10 @@
 addr:housenumber=* {set mkgmap:execute_finalize_rules=true}
 
 # OSM notes - downloaded seperately
-# TODO: Put note text (from comments field) in name
-id=* & comments=* { name 'NOTE' } [0x6800 resolution 20]
+id=* & comments=* { name '${comments}' } [0x6800 resolution 20]
 
 # OSM continue fixme's
-# TODO: Make this optional via map.sh script?
+# TODO: Make this optional via Build.py?
 fixme~'.*[Cc]ontinue.*' { name '${fixme}' } [0x6801 resolution 20]
 
 barrier=* & bicycle=*    { set mkgmap:bicycle='${bicycle|subst:private=>no}' }
