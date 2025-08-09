@@ -55,7 +55,7 @@ def download(download_file, west, south, east, north):
 # Use ogr2osm to convert Mapillary coverage data JSON file to OSM format
 # Based on example from https://github.com/roelderickx/ogr2osm
 # FIXME: ogr2osm seems a bit heavy weight (handles projection etc), reimplement
-# as a simple JSON to OSM (XML) coversion as per XXX.convertr
+# as a simple JSON to OSM (XML) coversion as per OSM_Notes.convert_json_notes_to_osm
 def convert(in_file, out_file):
   print(f"    Converting '{in_file}' to '{out_file}'...")
   # 1. Set the logging level of the logger object named 'ogr2osm' to the desired output level
