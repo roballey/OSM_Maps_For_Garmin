@@ -5,13 +5,12 @@
 
 import argparse
 import json
-from xml.dom import minidom
 import os
 from datetime import datetime
 
 import Mapillary_Download
-import OSM_Notes_Download
 import Convert2OSM
+import OSM_Notes
 
 java_memory="8000m"
 
@@ -66,42 +65,6 @@ def Get_Bounding_Box(poly_file):
         east=max(east,float(long))
   file.close()
   return(west, south, east, north)
-
-#------------------------------------------------------------------------------
-# Convert OSM notes data JSON file to OSM file (XML)
-def convert_json_notes_to_osm(json_filename, osm_filename):
-  notes = json.load(open(json_filename, "r"))
-  
-  # Create XML using minidom
-  xml = minidom.Document()
-  osm = xml.createElement('osm')
-  osm.setAttribute('version', '0.6')
-  osm.setAttribute('generator', 'OSM_for_garmin')
-  osm.setAttribute('upload', 'false')
-  xml.appendChild(osm )
-  
-  id=0
-  for note in notes['features']:
-      for comment in note['properties']['comments']:
-          id = id - 1
-          node = xml.createElement('node')
-          node.setAttribute('visible', 'true')
-          node.setAttribute('id', f"{id}")
-          node.setAttribute('lat', f"{note['geometry']['coordinates'][1]}")
-          node.setAttribute('lon', f"{note['geometry']['coordinates'][0]}")
-          osm.appendChild(node)
-          tag = xml.createElement('tag')
-          tag.setAttribute('k', 'id')
-          tag.setAttribute('v', f"{note['properties']['id']}")
-          node.appendChild(tag)
-          tag = xml.createElement('tag')
-          tag.setAttribute('k', 'comments')
-          tag.setAttribute('v', f"{comment['text'].splitlines()[0]}")
-          node.appendChild(tag)
-  
-  xml_str = xml.toprettyxml(indent ="  ") 
-  with open(osm_filename, "w") as f:
-      f.write(xml_str)
 
 #------------------------------------------------------------------------------
 # Build Garmin IMG files
@@ -222,13 +185,13 @@ else:
 if args.mapillary:
     if not (args.no_download_mapillary or args.no_download):
         print( "==================================================================================================")
+        print( "=== Downloading Mapillary coverage data ...")
         for i in config['regions']:
             #west, south, east, north = [174.68,-36.9,174.75,-36.85]  # Part of Auckland, 20 Mapillary tiles
             split_dir=f"work/osmsplitmaps/{i['region']}"
             if 'bbox' in i:
                 print(f"Bounding box for region {i['region']} from bbox section in config file")
                 (west, south, east, north) = i['bbox']
-                print(f"West {west} South {south} East {east} North {north}")
             elif i['poly']:
                 print(f"Bounding box for region {i['region']} from POLY file '{i['poly']}'")
                 (west, south, east, north) = Get_Bounding_Box(os.path.join("poly",i['poly']))
@@ -259,13 +222,12 @@ if args.mapillary:
 if args.notes:
     if not (args.no_download_notes or args.no_download):
         print( "==================================================================================================")
-        print( "=== Downloading OSM notes ...")
+        print( "=== Downloading OSM notes data ...")
         for i in config['regions']:
             split_dir=f"work/osmsplitmaps/{i['region']}"
             if 'bbox' in i:
                 print(f"Bounding box for region {i['region']} from bbox section in config file")
                 (west, south, east, north) = i['bbox']
-                print(f"West {west} South {south} East {east} North {north}")
             elif i['poly']:
                 print(f"Bounding box for region {i['region']} from POLY file '{i['poly']}'")
                 (west, south, east, north) = Get_Bounding_Box(os.path.join("poly",i['poly']))
@@ -283,9 +245,10 @@ if args.notes:
             notes_json_file = f"{notes_dir}/notes.json"
             notes_osm_file = f"{notes_dir}/notes.osm"
 
-            OSM_Notes_Download.download(notes_json_file, west, south, east, north)
-            print(f"Converting '{notes_json_file}' to '{notes_osm_file}'...")
-            convert_json_notes_to_osm(notes_json_file, notes_osm_file)
+            print(f"    Downloading OSM notes data as '{notes_json_file}' ...")
+            OSM_Notes.download(notes_json_file, west, south, east, north)
+            print(f"    Converting OSM notes data from '{notes_json_file}' to '{notes_osm_file}'...")
+            OSM_Notes.convert_json_notes_to_osm(notes_json_file, notes_osm_file)
     else:
         print( "==================================================================================================")
         print( "=== Skipping OSM notes download")
