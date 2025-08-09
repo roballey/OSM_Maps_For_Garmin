@@ -1,15 +1,17 @@
 #! /usr/bin/python3
 
 # Build Garmin IMG files from OSM data.
-# Download inputs (OSM data and optionally Mapillary sequences and OSM notes), splitis inputs, and builds IMG files
+# Download inputs (OSM data and optionally Mapillary sequences and OSM notes), splits inputs, and builds IMG files
+#
+# FIXME: Lots of functions are building path names, pass in instead
+# FIXME: Only get bounding box once
 
 import argparse
 import json
 import os
 from datetime import datetime
 
-import Mapillary_Download
-import Convert2OSM
+import Mapillary_Coverage
 import OSM_Notes
 
 java_memory="8000m"
@@ -35,7 +37,7 @@ def split(region, poly_file, source_pbf_file):
 
 #------------------------------------------------------------------------------
 # Get bounding box from a POLY file (assumes only 1 area specified in POLY file)
-def Get_Bounding_Box(poly_file):
+def get_bounding_box(poly_file):
   file=open(poly_file, "r")
   
   south=90.0
@@ -71,8 +73,8 @@ def Get_Bounding_Box(poly_file):
 def build(region, map_type, map_style, args):
     tmp_dir="work/tmp"
     input_osm_dir=f"work/osmsplitmaps/{region}"
-    input_mapillary_dir=f"downloads/mapillary/{region}/sequences.osm"
-    input_notes_dir=f"downloads/notes/{region}/notes.osm"
+    input_mapillary_filename=f"downloads/mapillary/{region}/sequences.osm"
+    input_notes_filename=f"downloads/notes/{region}/notes.osm"
     output_dir=f"maps/{map_style}/{region}"
     version=datetime.now().strftime('%y%m')
 
@@ -85,11 +87,11 @@ def build(region, map_type, map_style, args):
     print(f"      Using OSM data from '{input_osm_dir}'")
 
     if args.mapillary:
-        print(f"      Including Mapillary coverage data from '{input_mapillary_dir}'")
-        input_files = input_files + f" {input_mapillary_dir}"
+        print(f"      Including Mapillary coverage data from '{input_mapillary_filename}'")
+        input_files = input_files + f" {input_mapillary_filename}"
     if args.notes:
-        print(f"      Including OSM notes data from '{input_notes_dir}'")
-        input_files = input_files + f" {input_notes_dir}"
+        print(f"      Including OSM notes data from '{input_notes_filename}'")
+        input_files = input_files + f" {input_notes_filename}"
 
     print(f"\n      Converting TYP file from text...")
     os.system(f"java -Xmx{java_memory} -jar tools/mkgmap-r*/mkgmap.jar --output-dir={tmp_dir} type/{map_type}.txt")
@@ -127,8 +129,8 @@ def build(region, map_type, map_style, args):
 
 #------------------------------------------------------------------------------
 # Create hard links to image files for QMapShack
-def link(img_file, linked_file):
-   print(f"--- Link '{img_file}' to '{linked_file}'")
+def create_link(img_file, linked_file):
+   print(f"    Link '{img_file}' to '{linked_file}'")
    if os.path.exists(linked_file):
        os.remove(linked_file)
    os.link(img_file,linked_file)
@@ -163,21 +165,22 @@ config = json.load(open(args.config_file, "r"))
 # Download OSM PBF files
 if not (args.no_download_osm or args.no_download):
         print( "==================================================================================================")
+        print( "=== Download OSM map data ...")
         for i in config['downloads']:
                 download_osm(i['dl'], i['pbf'])
 else:
     print( "==================================================================================================")
-    print( "=== Skipping OSM download step")
+    print( "--- Skipping OSM map data download step")
 
 # Split OSM PBF file for each region
 if not args.no_split:
         print( "==================================================================================================")
-        print( "=== Splitting OSM PBF files ...")
+        print( "=== Splitting OSM map data PBF files ...")
         for i in config['regions']:
             split(i['region'], i['poly'], i['pbf'])
 else:
     print( "==================================================================================================")
-    print( "=== Skipping split step")
+    print( "--- Skipping split step")
 
 # Download Mapillary coverage if being included in map
 # TODO: Currently just draws Mapillary sequence lines over the top of OSM data.  Change to simplify Mapillary
@@ -194,10 +197,10 @@ if args.mapillary:
                 (west, south, east, north) = i['bbox']
             elif i['poly']:
                 print(f"Bounding box for region {i['region']} from POLY file '{i['poly']}'")
-                (west, south, east, north) = Get_Bounding_Box(os.path.join("poly",i['poly']))
+                (west, south, east, north) = get_bounding_box(os.path.join("poly",i['poly']))
             elif os.path.exists(os.path.join(split_dir,"areas.poly")):
                 print(f"Bounding box for region {i['region']} from split areas POLY file")
-                (west, south, east, north) = Get_Bounding_Box(os.path.join(split_dir,"areas.poly"))
+                (west, south, east, north) = get_bounding_box(os.path.join(split_dir,"areas.poly"))
             else:
                 quit("Must specify a bbox, a poly file or have performed split if including Mapillary coverage")
 
@@ -209,16 +212,14 @@ if args.mapillary:
             mapillary_osm_file = f"{mapillary_dir}/sequences.osm"
 
             print(f"Downloading Mapillary sequences to '{mapillary_geojson_file}' ...")
-            Mapillary_Download.download(mapillary_geojson_file, west, south, east, north)
+            Mapillary_Coverage.download(mapillary_geojson_file, west, south, east, north)
             print(f"Converting '{mapillary_geojson_file}' to '{mapillary_osm_file}'...")
-            Convert2OSM.convert(mapillary_geojson_file, mapillary_osm_file)
+            Mapillary_Coverage.convert(mapillary_geojson_file, mapillary_osm_file)
     else:
         print( "==================================================================================================")
-        print( "=== Skipping Mapillary coverage download")
+        print( "--- Skipping Mapillary coverage download")
 
 # Download OSM notes if being included in map
-# TODO: Add a translation to convert the comment tag and extract the text of the note from comments/text
-# see `https://github.com/roelderickx/ogr2osm-translations/tree/66fd75b6cf6ba18b790c885914a6db3785690fce`
 if args.notes:
     if not (args.no_download_notes or args.no_download):
         print( "==================================================================================================")
@@ -230,18 +231,18 @@ if args.notes:
                 (west, south, east, north) = i['bbox']
             elif i['poly']:
                 print(f"Bounding box for region {i['region']} from POLY file '{i['poly']}'")
-                (west, south, east, north) = Get_Bounding_Box(os.path.join("poly",i['poly']))
+                (west, south, east, north) = get_bounding_box(os.path.join("poly",i['poly']))
             elif os.path.exists(os.path.join(split_dir,"areas.poly")):
                 print(f"Bounding box for region {i['region']} from split areas POLY file")
-                (west, south, east, north) = Get_Bounding_Box(os.path.join(split_dir,"areas.poly"))
+                (west, south, east, north) = get_bounding_box(os.path.join(split_dir,"areas.poly"))
             else:
-                quit("Must specify a bbox, a poly file or have performed split if including OSM notes")
+                quit("Must specify a bbox, a poly file or have performed split if including OSM notes data")
 
 
             notes_dir = f"downloads/notes/{i['region']}"
             if not os.path.exists(notes_dir):
                 os.makedirs(notes_dir);
-                print(f"    OSM notes directory '{notes_dir}' did not exist, created")
+                print(f"    OSM notes data directory '{notes_dir}' did not exist, created")
             notes_json_file = f"{notes_dir}/notes.json"
             notes_osm_file = f"{notes_dir}/notes.osm"
 
@@ -251,7 +252,7 @@ if args.notes:
             OSM_Notes.convert_json_notes_to_osm(notes_json_file, notes_osm_file)
     else:
         print( "==================================================================================================")
-        print( "=== Skipping OSM notes download")
+        print( "--- Skipping OSM notes download")
 
 
 # Build Garmin img files from split PBFs
@@ -263,10 +264,10 @@ if not args.no_build:
                         build(i['region'], variant['style'], variant['type'], args)
 else:
     print( "==================================================================================================")
-    print( "=== Skipping build step")
+    print( "--- Skipping build step")
 
 print( "==================================================================================================")
-print( "=== Linking image files ...")
+print( "=== Creating links to image files ...")
 link_dir="links"
 if not os.path.exists(link_dir):
     os.makedirs(link_dir);
@@ -278,6 +279,6 @@ for i in config['regions']:
 
             if os.path.exists(img_file):
                 linked_file=link_dir+"/"+f"{map_style}/{region}".replace("/","-")+".img"
-                link(img_file,linked_file)
+                create_link(img_file,linked_file)
             else:
                 print(f"--- Image file '{img_file}' does not exist")
