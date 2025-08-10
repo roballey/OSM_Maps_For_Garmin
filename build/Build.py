@@ -5,10 +5,12 @@
 #
 # FIXME: Lots of functions are building path names, pass in instead
 # FIXME: Only get bounding box once
+# FIXME: Add options so contours can be included but not downloaded or PBFs built (downloading actually does both)
 
 import argparse
 import json
 import os
+import shutil
 from datetime import datetime
 
 import Mapillary_Coverage
@@ -18,22 +20,25 @@ java_memory="8000m"
 
 #------------------------------------------------------------------------------
 # Download OSM map data PBF file
-def download_osm(url, output_file):
+def download_osm(url, output_filename):
         print(f"    Downloading OSM map data from '{url}'...")
-        os.system(f"wget {url} --output-document=downloads/{output_file}")
+        os.system(f"wget {url} --output-document=downloads/{output_filename}")
 
 #------------------------------------------------------------------------------
 # Split source PBF
 def split(region, poly_file, source_pbf_file):
     options=""
-    split_dir=f"work/osmsplitmaps/{region}"
+    output_split_dir=f"work/osmsplitmaps/{region}"
+    if os.path.exists(output_split_dir):
+        print(f"    Removing existing split directory '{output_split_dir}'")
+        shutil.rmtree(output_split_dir)
     if not poly_file:
         print(f"    Splitting '{source_pbf_file}' for {region}")
     else:
         options=options + f"--polygon-file=poly/{poly_file}";
         print(f"    Splitting '{source_pbf_file}' for {region} limiting by '{poly_file}'")
-    print(f"    Output to {split_dir}")
-    os.system(f"java -Xmx{java_memory} -jar tools/splitter-*/splitter.jar downloads/{source_pbf_file} {options} --output-dir={split_dir} > logs/split.log")
+    print(f"    Output to {output_split_dir}")
+    os.system(f"java -Xmx{java_memory} -jar tools/splitter-*/splitter.jar downloads/{source_pbf_file} {options} --output-dir={output_split_dir} > logs/split.log")
 
 #------------------------------------------------------------------------------
 # Get bounding box from a POLY file (assumes only 1 area specified in POLY file)
@@ -69,10 +74,32 @@ def get_bounding_box(poly_file):
   return(west, south, east, north)
 
 #------------------------------------------------------------------------------
+# Build contours PBF file for a region
+def contours(region, poly_filename):
+    output_contour_dir=f"work/contours/{region}"
+    if not os.path.exists(output_contour_dir):
+        os.makedirs(output_contour_dir);
+        print(f"    Output contour directory '{output_contour_dir}' did not exist, created")
+
+    import warnings,numpy as np
+    warnings.filterwarnings("ignore", category=np.VisibleDeprecationWarning) 
+
+    # FIXME: pyhgtmap gives warnings but seems to work
+    os.system(f"pyhgtmap \
+                  --source=view1,view3 \
+                  --step=20 \
+                  --line-cat=200,100 \
+                  --polygon={poly_filename} \
+                  --hgtdir=hgt \
+                  --pbf \
+                  --output-prefix={output_contour_dir}/contour")
+
+#------------------------------------------------------------------------------
 # Build Garmin IMG files
 def build(region, map_type, map_style, args):
     tmp_dir="work/tmp"
     input_osm_dir=f"work/osmsplitmaps/{region}"
+    input_contours_dir=f"work/contours/{region}"
     input_mapillary_filename=f"downloads/mapillary/{region}/sequences.osm"
     input_notes_filename=f"downloads/notes/{region}/notes.osm"
     output_dir=f"maps/{map_style}/{region}"
@@ -82,10 +109,16 @@ def build(region, map_type, map_style, args):
         os.makedirs(output_dir);
         print(f"    Output directory '{output_dir}' did not exist, created")
 
+    if not os.path.exists(input_osm_dir):
+        quit(f"Input directory '{input_osm_dir}' does not exist, must have performed a split")
+
     input_files=os.path.join(input_osm_dir, "*.pbf")
     print(f"    Building Garmin IMG version {version} for {region} using style {map_style} and type {map_type}")
     print(f"      Using OSM data from '{input_osm_dir}'")
 
+    if args.contours:
+        print(f"      Including contour data from '{input_contours_dir}'")
+        input_files = input_files + " " + os.path.join(input_contours_dir, "*.pbf")
     if args.mapillary:
         print(f"      Including Mapillary coverage data from '{input_mapillary_filename}'")
         input_files = input_files + f" {input_mapillary_filename}"
@@ -141,28 +174,32 @@ parser = argparse.ArgumentParser(
                     description='Build Garmin IMG files from OSM data')
 
 parser.add_argument('config_file', help="Name of JSON config file")
+parser.add_argument('-c', '--contours', help="Experimental: Include contours",
+                    action='store_true') 
 parser.add_argument('-m', '--mapillary', help="Experimental: Include Mapillary coverage",
                     action='store_true') 
-parser.add_argument('-n', '--notes', help="Experimental: Include OSM notes",
+parser.add_argument('-n', '--notes', help="Include OSM notes",
                     action='store_true') 
 parser.add_argument('-nb', '--no-build', help="Don't build the Garmin IMG file",
                     action='store_true') 
 parser.add_argument('-nd', '--no-download', help="Don't download anything",
                     action='store_true') 
+parser.add_argument('-ndc', '--no-download-contours', help="Don't download the contour data",
+                    action='store_true') 
 parser.add_argument('-ndm', '--no-download-mapillary', help="Don't download the Mapillary coverage",
                     action='store_true') 
 parser.add_argument('-ndn', '--no-download-notes', help="Don't download the OSM notes",
                     action='store_true') 
-parser.add_argument('-ndo', '--no-download-osm', help="Don't download the OSM source data",
+parser.add_argument('-ndo', '--no-download-osm', help="Don't download the OSM source map data",
                     action='store_true') 
-parser.add_argument('-ns', '--no-split', help="don't split the osm source data pbf file",
+parser.add_argument('-ns', '--no-split', help="don't split the OSM source map data pbf file",
                     action='store_true') 
 
 args = parser.parse_args()
 
 config = json.load(open(args.config_file, "r"))
 
-# Download OSM PBF files
+# Download OSM map data PBF files
 if not (args.no_download_osm or args.no_download):
         print( "==================================================================================================")
         print( "=== Download OSM map data ...")
@@ -196,7 +233,7 @@ if args.mapillary:
                 print(f"Bounding box for region {i['region']} from bbox section in config file")
                 (west, south, east, north) = i['bbox']
             elif i['poly']:
-                print(f"Bounding box for region {i['region']} from POLY file '{i['poly']}'")
+                print(f"Bounding box for region {i['region']} from POLY file '{i['poly']}' specified in config file")
                 (west, south, east, north) = get_bounding_box(os.path.join("poly",i['poly']))
             elif os.path.exists(os.path.join(split_dir,"areas.poly")):
                 print(f"Bounding box for region {i['region']} from split areas POLY file")
@@ -230,7 +267,7 @@ if args.notes:
                 print(f"Bounding box for region {i['region']} from bbox section in config file")
                 (west, south, east, north) = i['bbox']
             elif i['poly']:
-                print(f"Bounding box for region {i['region']} from POLY file '{i['poly']}'")
+                print(f"Bounding box for region {i['region']} from POLY file '{i['poly']}' specified in config file")
                 (west, south, east, north) = get_bounding_box(os.path.join("poly",i['poly']))
             elif os.path.exists(os.path.join(split_dir,"areas.poly")):
                 print(f"Bounding box for region {i['region']} from split areas POLY file")
@@ -254,6 +291,25 @@ if args.notes:
         print( "==================================================================================================")
         print( "--- Skipping OSM notes download")
 
+
+# Download contours if being included in map
+if args.contours:
+    if not (args.no_download_contours or args.no_download):
+        print( "==================================================================================================")
+        print( "=== Downloading contour data ...")
+        for i in config['regions']:
+            split_dir=f"work/osmsplitmaps/{i['region']}"
+            if i['poly']:
+                poly_filename = os.path.join("poly",i['poly'])
+                print(f"POLY file '{poly_filename}' for region {i['region']} specified in config file")
+            elif os.path.exists(os.path.join(split_dir,"areas.poly")):
+                poly_filename = os.path.join(split_dir,"areas.poly")
+                print(f"Using POLY file '{poly_filename}' for region {i['region']} from split")
+            else:
+                quit("Must specify a poly file or have performed split if including contour data")
+
+            print(f"    Downloading contour data for region '{i['region']}' ...")
+            contours(i['region'], poly_filename)
 
 # Build Garmin img files from split PBFs
 if not args.no_build:
