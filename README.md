@@ -50,26 +50,27 @@ The following options may be specified on the command line:
 The download control options are handy when experimenting and allow different configurations and options to be exeprimented with without continually downloading data (which is slow and stresses the servers that provide the data)
 instead data previously downloaded will be used if available
 
-o  -nd | --no-download   : Don't download anything
-o  -ndo | --no-download-osm : Don't download OSM map data
-o  -ndm | --no-download-mapillary : Don't download Mapillary data
+-  -nd | --no-download   : Don't download anything
+-  -nc | --no-download-contours : Don't donwload contour data (if including contours in map)
+-  -ndo | --no-download-osm : Don't download OSM map data
+-  -ndm | --no-download-mapillary : Don't download Mapillary data (if including Mapillary coverage in map)
+-  -ndn | --no-download-notes : Don't download OSM notes (if including OSM notes in map)
 
 #### Splitting Control
 
-o  -ns | --no-split : Don't split the donwloaded OSM map data
+-  -ns | --no-split : Don't split the donwloaded OSM map data
 
 #### Build Control
 
-o  -nb | --no-build : Don't build the Garmin IMG file map
+-  -nb | --no-build : Don't build the Garmin IMG file map
 
 #### Extra Data
 
 As well as the OSM Map data the generated Garmin IMG file map may also include optional extra data:
 
-o  -c | --contours : Include contours in the map
-o  -m | --mapillary : Include Mapillary coverage in the map (Experimental)
-o  -n | --notes : Include OSM notes in the map
-
+-  -c | --contours : Include contours in the map
+-  -m | --mapillary : Include Mapillary coverage in the map (Experimental)
+-  -n | --notes : Include OSM notes in the map
 
 ## Previewing Garmin maps on PC
 -----------------------
