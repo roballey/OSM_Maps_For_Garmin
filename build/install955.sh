@@ -4,7 +4,7 @@
 # FIXME: ls -lh sometimes reports size of 0, seems ok in Nautilus file explorer
 
 # Default the region and type of image to install
-region="oceania_nz"
+region="oceania/nz"
 style="route"
 
 # Destination for Garmin 955 mounted with MTP
