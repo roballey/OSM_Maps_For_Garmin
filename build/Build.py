@@ -1,5 +1,3 @@
-#! /usr/bin/python3
-
 # Build Garmin IMG files from OSM data.
 # Download inputs (OSM data and optionally Mapillary sequences and OSM notes), splits inputs, and builds IMG files
 #
@@ -13,7 +11,7 @@ import os
 import shutil
 from datetime import datetime
 
-import Mapillary_Coverage
+# import Mapillary_Coverage   FIXME: Disabled whilst ogr2osm is not working
 import OSM_Notes
 
 java_memory="8000m"
@@ -225,33 +223,35 @@ else:
 if args.mapillary:
     if not (args.no_download_mapillary or args.no_download):
         print( "==================================================================================================")
-        print( "=== Downloading Mapillary coverage data ...")
-        for i in config['regions']:
-            #west, south, east, north = [174.68,-36.9,174.75,-36.85]  # Part of Auckland, 20 Mapillary tiles
-            split_dir=f"work/osmsplitmaps/{i['region']}"
-            if 'bbox' in i:
-                print(f"Bounding box for region {i['region']} from bbox section in config file")
-                (west, south, east, north) = i['bbox']
-            elif i['poly']:
-                print(f"Bounding box for region {i['region']} from POLY file '{i['poly']}' specified in config file")
-                (west, south, east, north) = get_bounding_box(os.path.join("poly",i['poly']))
-            elif os.path.exists(os.path.join(split_dir,"areas.poly")):
-                print(f"Bounding box for region {i['region']} from split areas POLY file")
-                (west, south, east, north) = get_bounding_box(os.path.join(split_dir,"areas.poly"))
-            else:
-                quit("Must specify a bbox, a poly file or have performed split if including Mapillary coverage")
+        print( "=== FIXME: Mapillary coverage WIP ...")
+        #print( "==================================================================================================")
+        #print( "=== Downloading Mapillary coverage data ...")
+        #for i in config['regions']:
+        #    #west, south, east, north = [174.68,-36.9,174.75,-36.85]  # Part of Auckland, 20 Mapillary tiles
+        #    split_dir=f"work/osmsplitmaps/{i['region']}"
+        #    if 'bbox' in i:
+        #        print(f"Bounding box for region {i['region']} from bbox section in config file")
+        #        (west, south, east, north) = i['bbox']
+        #    elif i['poly']:
+        #        print(f"Bounding box for region {i['region']} from POLY file '{i['poly']}' specified in config file")
+        #        (west, south, east, north) = get_bounding_box(os.path.join("poly",i['poly']))
+        #    elif os.path.exists(os.path.join(split_dir,"areas.poly")):
+        #        print(f"Bounding box for region {i['region']} from split areas POLY file")
+        #        (west, south, east, north) = get_bounding_box(os.path.join(split_dir,"areas.poly"))
+        #    else:
+        #        quit("Must specify a bbox, a poly file or have performed split if including Mapillary coverage")
 
-            mapillary_dir = f"downloads/mapillary/{i['region']}"
-            if not os.path.exists(mapillary_dir):
-                os.makedirs(mapillary_dir);
-                print(f"    Mapillary directory '{mapillary_dir}' did not exist, created")
-            mapillary_geojson_file = f"{mapillary_dir}/sequences.geojson"
-            mapillary_osm_file = f"{mapillary_dir}/sequences.osm"
+        #    mapillary_dir = f"downloads/mapillary/{i['region']}"
+        #    if not os.path.exists(mapillary_dir):
+        #        os.makedirs(mapillary_dir);
+        #        print(f"    Mapillary directory '{mapillary_dir}' did not exist, created")
+        #    mapillary_geojson_file = f"{mapillary_dir}/sequences.geojson"
+        #    mapillary_osm_file = f"{mapillary_dir}/sequences.osm"
 
-            print(f"Downloading Mapillary sequences to '{mapillary_geojson_file}' ...")
-            Mapillary_Coverage.download(mapillary_geojson_file, west, south, east, north)
-            print(f"Converting '{mapillary_geojson_file}' to '{mapillary_osm_file}'...")
-            Mapillary_Coverage.convert(mapillary_geojson_file, mapillary_osm_file)
+        #    print(f"Downloading Mapillary sequences to '{mapillary_geojson_file}' ...")
+        #    Mapillary_Coverage.download(mapillary_geojson_file, west, south, east, north)
+        #    print(f"Converting '{mapillary_geojson_file}' to '{mapillary_osm_file}'...")
+        #    Mapillary_Coverage.convert(mapillary_geojson_file, mapillary_osm_file)
     else:
         print( "==================================================================================================")
         print( "--- Skipping Mapillary coverage download")

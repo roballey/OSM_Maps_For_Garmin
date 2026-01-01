@@ -1,0 +1,14 @@
+certifi==2025.11.12
+charset-normalizer==3.4.4
+click==8.3.1
+idna==3.11
+mapbox-vector-tile==2.2.0
+mercantile==1.2.1
+numpy==2.4.0
+protobuf==6.33.2
+pyclipper==1.4.0
+requests==2.32.5
+shapely==2.1.2
+tqdm==4.67.1
+urllib3==2.6.2
+vt2geojson==0.2.1
