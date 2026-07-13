@@ -1,5 +1,5 @@
 # -------------------------------------------------------------------
-# This is the default mkgmap style file for converting closed OSM ways
+# Based on the default mkgmap style file for converting closed OSM ways
 # into Garmin polygons.
 # Any line prefaced with # is a comment and will not be applied.
 # Each line is a rule, of the generalised format:

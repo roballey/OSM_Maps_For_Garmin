@@ -801,7 +801,7 @@ FontStyle=NoLabel (invisible)
 CustomColor=No
 ContourColor=No
 Xpm="0 0 1 0"
-"1 c #EFEFEF"
+"1 c #DDDDDD"
 [end]
 
 
@@ -910,7 +910,7 @@ Type=0x04
 UseOrientation=N
 LineWidth=4
 Xpm="0 0 1 0"
-"1 c #FEE94E"
+"1 c #FF9541"
 String1=0x04,Secondary
 ExtendedLabels=N
 [end]
@@ -932,15 +932,15 @@ ExtendedLabels=N
 Type=0x06
 ;GRMN_TYPE: Roads/RESIDENTIAL/Residential street, these are typically the most numerous roads in a detailed city map and do not show up until the user is zoomed in quite far/Non NT, NT
 UseOrientation=Y
-Xpm="32 4 2  1"
+Xpm="32 5 2  1"
 "! c #FFFFFF"
 "# c #000000"
 "################################"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "################################"
-;12345678901234567890123456789012
-String1=0x04,Minor road
+String1=0x04,Residential Road
 ExtendedLabels=N
 [end]
 
@@ -949,15 +949,12 @@ ExtendedLabels=N
 Type=0x07
 ;GRMN_TYPE: Roads/ALLEY, DRIVEWAY/Alleyway, private driveway to residence/Non NT, NT
 UseOrientation=Y
-Xpm="32 4 2  1"
-"! c #FFFFFF"
-"# c #000000"
+Xpm="32 2 1  1"
+"# c #CCCCCC"
 "################################"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "################################"
 ;12345678901234567890123456789012
-String1=0x04,Residential
+String1=0x04,Driveway/Alleyway
 ExtendedLabels=N
 [end]
 
@@ -1090,6 +1087,21 @@ String1=0x04,Informal paths
 ExtendedLabels=N
 [end]
 
+[_line]
+Type=0x11
+;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_ROUTE_LINE_4/Routable customizable line/Non NT, NT
+UseOrientation=Y
+Xpm="32 4 2  1"
+"! c #655300"
+"  c none"
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+;12345678901234567890123456789012
+String1=0x04,bridleways
+ExtendedLabels=N
+[end]
 
 [_line]
 Type=0x11
