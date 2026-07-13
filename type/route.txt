@@ -1088,6 +1088,21 @@ ExtendedLabels=N
 [end]
 
 [_line]
+Type=0x10
+;GRMN_TYPE: ???
+UseOrientation=Y
+Xpm="32 4 2  1"
+"! c #655300"
+"  c none"
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+;12345678901234567890123456789012
+String1=0x04,Bridleway
+ExtendedLabels=N
+[end]
+[_line]
 Type=0x11
 ;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_ROUTE_LINE_4/Routable customizable line/Non NT, NT
 UseOrientation=Y
