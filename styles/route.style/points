@@ -17,6 +17,9 @@ id=* & comments=* { name '${comments}' } [0x6800 resolution 20]
 # TODO: Make this optional via Build.py?
 fixme~'.*[Cc]ontinue.*' { name '${fixme}' } [0x6801 resolution 20]
 
+# Hazards
+hazard=* { name '${hazard}' } [0x6802 resolution 20]
+
 barrier=* & bicycle=*    { set mkgmap:bicycle='${bicycle|subst:private=>no}' }
 barrier=* & foot=*       { set mkgmap:foot='${foot|subst:private=>no}' }                  
 barrier=* & hgv=*        { set mkgmap:truck='${hgv|subst:private=>no}' }                  

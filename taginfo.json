@@ -70,6 +70,7 @@
     { "key": "fixme", "description": "Fixme's containing `continue` shown as green triangle with 'CONTINUE'" },
     { "key": "footway", "value": "crossing", "description": "Rendered less prominently than other footways" },
     { "key": "footway", "value": "sidewalk", "description": "Rendered less prominently than other footways" },
+    { "key": "hazard", "description": "Render as a yellow triangle with an exclamation mark and text of the hazard type" },
     { "key": "highway", "value": "crossing", "description": "Render as a circle filled based on other characteristics" },
     { "key": "highway", "value": "cycleway", "description": "Dashed blue lines" },
     { "key": "highway", "value": "footway", "description": "Dashed red lines" },
