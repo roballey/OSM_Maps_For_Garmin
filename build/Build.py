@@ -137,6 +137,7 @@ def build(region, map_type, map_style, args):
                     --country-name='New Zealand' \
                     --country-abbr='NZ' \
 		            --drive-on=left \
+                    --charset=utf8 \
                     --index \
                     --housenumbers \
                     --route \
