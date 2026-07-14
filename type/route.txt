@@ -958,27 +958,36 @@ String1=0x04,Driveway/Alleyway
 ExtendedLabels=N
 [end]
 
-
 [_line]
 Type=0x08
 ;GRMN_TYPE: Roads/LOW_SPEED_RAMP/Highway ramp which is to be driven at low speeds/Non NT, NT
-UseOrientation=Y
-Xpm="32 4 2  1"
-"! c #C1C1C1"
-"# c #000000"
-"################################"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"################################"
-;12345678901234567890123456789012
-String1=0x04,Ramp
+UseOrientation=N
+LineWidth=4
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #FC5830"
+"2 c #525252"
+String1=0x04,Primary link
+ExtendedLabels=N
+[end]
+
+[_line]
+Type=0x09
+;GRMN_TYPE: Roads/HIGH_SPEED_RAMP, RAMP/Highway ramp which is to be driven at high speeds/Non NT, NT
+UseOrientation=N
+LineWidth=2
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #39CA6A"
+"2 c #525252"
+String1=0x04,Trunk link
 ExtendedLabels=N
 [end]
 
 
 [_line]
-Type=0x09
-;GRMN_TYPE: Roads/HIGH_SPEED_RAMP, RAMP/Highway ramp which is to be driven at high speeds/Non NT, NT
+Type=0x0a
+;GRMN_TYPE: Roads/UNPAVED_ROAD/Gravel or dirt road/Non NT, NT
 UseOrientation=Y
 Xpm="32 5 2  1"
 "! c #655300"
@@ -995,34 +1004,18 @@ ExtendedLabels=N
 
 
 [_line]
-Type=0x0a
-;GRMN_TYPE: Roads/UNPAVED_ROAD/Gravel or dirt road/Non NT, NT
-UseOrientation=Y
-Xpm="32 3 2  1"
-"! c #FF0000"
-"  c none"
-"!!!!!   !!!!!   !!!!!   !!!!!   "
-"!!!!!   !!!!!   !!!!!   !!!!!   "
-"!!!!!   !!!!!   !!!!!   !!!!!   "
-;12345678901234567890123456789012
-String1=0x04,Path
-ExtendedLabels=N
-[end]
-
-
-[_line]
 Type=0x0b
 ;GRMN_TYPE: Roads/MAJOR_CONNECTOR/Major highway connector/Non NT, NT
-UseOrientation=Y
-Xpm="32 3 2  1"
-"! c #FF0000"
-"  c none"
-"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
-"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
-"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
-;12345678901234567890123456789012
-String1=0x04,Footway
-ExtendedLabels=N
+UseOrientation=N
+LineWidth=5
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #F9B29C"
+"2 c #D87559"
+String=Naming Link
+ExtendedLabels=Y
+FontStyle=NoLabel (invisible)
+CustomColor=No
 [end]
 
 
@@ -1089,21 +1082,6 @@ ExtendedLabels=N
 
 [_line]
 Type=0x10
-;GRMN_TYPE: ???
-UseOrientation=Y
-Xpm="32 4 2  1"
-"! c #655300"
-"  c none"
-"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
-"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
-"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
-"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
-;12345678901234567890123456789012
-String1=0x04,Bridleway
-ExtendedLabels=N
-[end]
-[_line]
-Type=0x11
 ;GRMN_TYPE: Customizable Line Types/CUSTOMIZABLE_ROUTE_LINE_4/Routable customizable line/Non NT, NT
 UseOrientation=Y
 Xpm="32 4 2  1"
@@ -1114,7 +1092,7 @@ Xpm="32 4 2  1"
 "!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
 "!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
 ;12345678901234567890123456789012
-String1=0x04,bridleways
+String1=0x04,Bridleway
 ExtendedLabels=N
 [end]
 
@@ -1138,7 +1116,6 @@ Xpm="32 9 2  1"
 String1=0x04,Steps
 ExtendedLabels=N
 [end]
-
 
 [_line]
 Type=0x12
@@ -1188,10 +1165,39 @@ CustomColor=No
 ContourColor=No
 [end]
 
-
 [_line]
+Type=0x15
+;GRMN_TYPE: ???
+UseOrientation=Y
+Xpm="32 3 2  1"
+"! c #FF0000"
+"  c none"
+"!!!!!   !!!!!   !!!!!   !!!!!   "
+"!!!!!   !!!!!   !!!!!   !!!!!   "
+"!!!!!   !!!!!   !!!!!   !!!!!   "
+;12345678901234567890123456789012
+String1=0x04,Path
+ExtendedLabels=N
+[end]
+[_line]
+
 Type=0x16
 ;GRMN_TYPE: Roads/TRAIL/Walkway or trail/Non NT, NT
+UseOrientation=Y
+Xpm="32 3 2  1"
+"! c #FF0000"
+"  c none"
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+"!!!!!!  !!!!!!  !!!!!!  !!!!!!  "
+;12345678901234567890123456789012
+String1=0x04,Footway
+ExtendedLabels=N
+[end]
+
+[_line]
+Type=0x17
+;GRMN_TYPE: ???
 UseOrientation=N
 Xpm="32 1 2  1"
 "! c #000000"
@@ -1203,20 +1209,6 @@ ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
 ContourColor=No
-[end]
-
-
-[_line]
-Type=0x17
-;GRMN_TYPE: //
-UseOrientation=N
-LineWidth=1
-BorderWidth=1
-Xpm="0 0 2 0"
-"1 c #7BCAFF"
-"2 c #4054B2"
-String1=0x04,Coastline
-ExtendedLabels=N
 [end]
 
 
@@ -1431,51 +1423,6 @@ Xpm="0 0 2 0"
 "1 c #E2202C"
 "2 c #525252"
 String1=0x04,Motorway link
-ExtendedLabels=N
-[end]
-
-
-[_line]
-Type=0x1000a
-;GRMN_TYPE: //
-UseOrientation=N
-LineWidth=2
-BorderWidth=1
-Xpm="0 0 2 0"
-"1 c #39CA6A"
-"2 c #525252"
-String1=0x04,Trunk link
-ExtendedLabels=N
-[end]
-
-
-[_line]
-Type=0x1000c
-;GRMN_TYPE: //
-UseOrientation=N
-LineWidth=4
-BorderWidth=0
-Xpm="0 0 2 0"
-"1 c #FC5830"
-"2 c #525252"
-String1=0x04,Primary link
-ExtendedLabels=N
-[end]
-
-
-[_line]
-Type=0x10100
-;GRMN_TYPE: //
-UseOrientation=N
-Xpm="32 4 2  1"
-"! c #A4A4A4"
-"# c #FFFFFF"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-"!!!!!!!!########!!!!!!!!########"
-"!!!!!!!!########!!!!!!!!########"
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-;12345678901234567890123456789012
-String1=0x04,Railway tunnel
 ExtendedLabels=N
 [end]
 
