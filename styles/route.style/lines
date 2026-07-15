@@ -225,8 +225,7 @@ highway=road { add mkgmap:dead-end-check = false} [0x06 road_class=0 road_speed=
 # Mop up any unrecognised highway types
 highway=* & area!=yes [0x07 road_class=0 road_speed=0 resolution 23] 
 
-# RPA Commented out 14-Jul-2026 as per mkgmap example
-# natural=coastline [0x17 resolution 12]
+natural=coastline [0x17 resolution 12]
 power=line [0x29 resolution 21]
 
 # FIXME: Render differently to path (0x15)

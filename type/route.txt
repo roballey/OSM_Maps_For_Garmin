@@ -950,7 +950,7 @@ Type=0x07
 ;GRMN_TYPE: Roads/ALLEY, DRIVEWAY/Alleyway, private driveway to residence/Non NT, NT
 UseOrientation=Y
 Xpm="32 2 1  1"
-"# c #CCCCCC"
+"# c #949494"
 "################################"
 "################################"
 ;12345678901234567890123456789012
