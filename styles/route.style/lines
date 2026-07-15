@@ -1,4 +1,4 @@
- -------------------------------------------------------------------
+# -------------------------------------------------------------------
 # This is the default mkgmap style file for converting OSM ways
 # into Garmin lines.
 # Any line prefaced with # is a comment and will not be applied.
@@ -10,6 +10,7 @@
 
 # RPA: Modified - Walkways, steps
 #      Added mapillary sequences
+#      Updated to more closely match Garmin
 
 # Mapillary sequences
 id=* & image_id=* [0x10a03 resolution 14]
@@ -145,7 +146,7 @@ junction=roundabout & highway=* [0x0c road_class=0 road_speed=1 resolution 22]
 
 # Treat ways under construction almost as highway=path, see also extra rule in inc/access
 highway=construction { add mkgmap:dead-end-check = false; }
-[0x17 road_class=0 road_speed=0 resolution 23]
+[0x15 road_class=0 road_speed=0 resolution 23]
 
 # Lower the road speed of ways under some construction.
 highway=* & construction=* & maxspeed!=* { add mkgmap:road-speed = '-1' }
@@ -178,11 +179,11 @@ highway=unclassified [0x06 road_class=0 road_speed=3 resolution 21]
 
 # Some countries allow, others disallow bicycling on pedestrian streets.
 # To allow bicycling, add 'add bicycle=yes'
-highway=pedestrian & area!=yes [0x17 road_class=0 road_speed=0 resolution 22]
+highway=pedestrian & area!=yes [0x16 road_class=0 road_speed=0 resolution 22]
 highway=living_street [0x06 road_class=0 road_speed=1 resolution 22]
 highway=residential [0x06 road_class=0 road_speed=2 resolution 22]
 highway=bridleway [0x10 road_class=0 road_speed=0 resolution 23]
-highway=byway [0x17 road_class=0 road_speed=0 resolution 23]
+highway=byway [0x15 road_class=0 road_speed=0 resolution 23]
 
 highway=service & service=parking_aisle
 [0x12 road_class=0 road_speed=1 resolution 24]
@@ -228,9 +229,9 @@ highway=* & area!=yes [0x07 road_class=0 road_speed=0 resolution 23]
 natural=coastline [0x17 resolution 12]
 power=line [0x29 resolution 21]
 
-# FIXME: Render differently to path (0x15)
+# Treat abandoned railways like a path
 railway=abandoned [0x15 road_class=0 road_speed=1 resolution 22]
-railway=platform [0x17 road_class=0 road_speed=0 resolution 23]
+railway=platform [0x16 road_class=0 road_speed=0 resolution 23]
 railway=* & tunnel=yes [0x10406 resolution 22]
 # Railway lines, note that many devices display type 0x14 only at resolution 24 
 (railway=rail | railway=tram | railway=disused | railway=subway | railway=narrow_gauge | railway=light_rail | railway=preserved) & !(tunnel=yes) [0x14 resolution 22]

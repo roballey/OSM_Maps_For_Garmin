@@ -1197,18 +1197,15 @@ ExtendedLabels=N
 
 [_line]
 Type=0x17
-;GRMN_TYPE: ???
+;GRMN_TYPE: //
 UseOrientation=N
-Xpm="32 1 2  1"
-"! c #000000"
-"  c none"
-"!!!!    !!!!    !!!!    !!!!    "
-;12345678901234567890123456789012
-String1=0x04,Platform, construction etc
-ExtendedLabels=Y
-FontStyle=SmallFont
-CustomColor=No
-ContourColor=No
+LineWidth=1
+BorderWidth=1
+Xpm="0 0 2 0"
+"1 c #7BCAFF"
+"2 c #4054B2"
+String1=0x04,Coastline
+ExtendedLabels=N
 [end]
 
 
