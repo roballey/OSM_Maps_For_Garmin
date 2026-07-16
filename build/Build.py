@@ -124,7 +124,7 @@ def build(region, map_type, map_style, args):
         print(f"      Including OSM notes data from '{input_notes_filename}'")
         input_files = input_files + f" {input_notes_filename}"
 
-    print(f"\n      Converting TYP file from text...")
+    print(f"\n      Converting '{map_type}' TYP file from text...")
     os.system(f"java -Xmx{java_memory} -jar tools/mkgmap-r*/mkgmap.jar --output-dir={tmp_dir} type/{map_type}.txt")
 
     print(f"\n      Building IMG file '{output_dir}/gmapsupp.img'...")
@@ -137,6 +137,7 @@ def build(region, map_type, map_style, args):
                     --country-name='New Zealand' \
                     --country-abbr='NZ' \
 		            --drive-on=left \
+                    --charset=utf8 \
                     --index \
                     --housenumbers \
                     --route \
