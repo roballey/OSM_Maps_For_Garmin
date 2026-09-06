@@ -2392,6 +2392,29 @@ DayXpm="16 15 3 1"   Colormode=16
 [end]
 
 [_point]
+Type=0x04c
+SubType=0x03
+;GRMN_TYPE: ???
+String1=0x04,Streetlamp
+ExtendedLabels=N
+DayXpm="9 9 4 1"   Colormode=16
+"!	c #000000"
+"#	c #FFFFFF"
+"%	c #FFFF00"
+"  	c none"
+"  #####  "
+" ##!!!## "
+"##!%%%!##"
+"#!%%%%%!#"
+"#!%%%%%!#"
+"#!%%%%%!#"
+"##!%%%!##"
+" ##!!!## "
+"  #####  "
+;123456789
+[end]
+
+[_point]
 Type=0x04e
 SubType=0x00
 ;GRMN_TYPE: Misc. Points of Interest/RESTROOMS/Restrooms/Non NT, NT
