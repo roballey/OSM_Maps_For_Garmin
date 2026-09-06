@@ -15,7 +15,7 @@ dest="/run/user/1000/gvfs/mtp:host=Garmin_Edge_1050_0000cfbc4fce/Internal Storag
 map_dir="maps/${style}/${region}"
 
 echo "Installing from '${map_dir}' to '${dest}' ..."
-echo "(takes ~ 15 seconds)..."
-gio copy ${map_dir}/gmapsupp.img "${dest}"
+echo "(takes minutes)..."
+time gio copy ${map_dir}/gmapsupp.img "${dest}"
 echo "On Garmin:"
 ls -lrth "${dest}"
