@@ -205,6 +205,9 @@ highway=services & mkgmap:area2poi!=true [0x210f resolution 24 default_name 'Ser
 
 highway=trailhead [0x6412 resolution 18 default_name "Trailhead"]
 
+# RPA: 06-Sep-2026, render street lamp icon
+highway=street_lamp [0x4a00 resolution 24]
+
 historic=museum [0x2c02 resolution 24]
 historic=archaeological_site | historic=ruins [0x2c02 resolution 24]
 historic=memorial [0x2c02 resolution 24]
@@ -230,7 +233,7 @@ leisure=slipway [0x6606 resolution 24]
 man_made=tower|man_made=mast|landmark=chimney [0x6411 resolution 24]
 
 # Added by RPA: Render footwear decontamination stations
-man_made=footwear_decontamination [0x6703 resolution 24]
+man_made=footwear_decontamination [0x6403 resolution 24]
 
 # Edge 705 displays 0x650a,0x6511,0x6512,0x6513,0x6603,0x6614 as hollow white circles, no menu
 natural=cave_entrance [0x6601 resolution 24]
@@ -306,7 +309,8 @@ tourism=information [0x4c00 resolution 24]
 tourism=lean_to [0x2b06 resolution 24 default_name 'lean-to']
 tourism=wilderness_hut [0x2b06 resolution 24 default_name 'wilderness hut']
 tourism=museum [0x2c02 resolution 24]
-tourism=picnic_site [0x4a00 resolution 24]
+# RPA Trying to use 4a00 for streetlamp
+#tourism=picnic_site [0x4a00 resolution 24]
 tourism=viewpoint {name '${name} - ${description}' | '${name}'} [0x5200 resolution 24]
 tourism=wine_cellar [0x2c0a resolution 24]
 tourism=zoo [0x2c07 resolution 24]
