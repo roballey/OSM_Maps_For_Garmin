@@ -15,7 +15,7 @@ map_dir="maps/${style}/${region}"
 
 echo "Installing from '${map_dir}' to '${dest}' ..."
 echo "(takes ~ 15 seconds)..."
-gio copy ${map_dir}/gmapsupp.img "${dest}"
+gio copy -p ${map_dir}/gmapsupp.img "${dest}"
 echo "On Garmin:"
 ls -lh "${dest}"
 echo "(Size reports as 0 sometimes)"
