@@ -103,7 +103,6 @@ String=Exclusion Zone
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 Xpm="32 32 2 1"
 "! c #FF4040"
 "  c none"
@@ -150,7 +149,6 @@ String=Parking
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 Xpm="0 0 1 0"
 "1 c #FFFF00"
 [end]
@@ -291,7 +289,6 @@ String=Residential/Farmyard
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 Xpm="0 0 1 0"
 "1 c #DFDFDF"
 [end]
@@ -488,7 +485,6 @@ FontStyle=SmallFont
 CustomColor=DayAndNight
 DaycustomColor:#1D4DFF
 NightcustomColor:#808080
-ContourColor=No
 Xpm="0 0 1 0"
 "1 c #49BDFF"
 [end]
@@ -501,7 +497,6 @@ String=bay
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 Xpm="0 0 1 0"
 "1 c #49BDFF"
 [end]
@@ -516,7 +511,6 @@ FontStyle=SmallFont
 CustomColor=DayAndNight
 DaycustomColor:#1D4DFF
 NightcustomColor:#808080
-ContourColor=No
 Xpm="0 0 1 0"
 "1 c #49BDFF"
 [end]
@@ -531,7 +525,6 @@ FontStyle=SmallFont
 CustomColor=DayAndNight
 DaycustomColor:#1D4DFF
 NightcustomColor:#808080
-ContourColor=No
 Xpm="0 0 1 0"
 "1 c #49BDFF"
 [end]
@@ -544,7 +537,6 @@ String=waterfall
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 Xpm="0 0 1 0"
 "1 c #49BDFF"
 [end]
@@ -654,7 +646,6 @@ String=Forest/Wood
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 Xpm="32 32 2 1"
 "! c #3C9E2B"
 "# c #3B7001"
@@ -799,7 +790,6 @@ String=Background
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 Xpm="0 0 1 0"
 "1 c #DDDDDD"
 [end]
@@ -812,7 +802,6 @@ String=Bare Rock
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
-ContourColor=No
 Xpm="32 32 2 1"
 "! c #DADADA"
 "# c #9E9E9E"
@@ -876,7 +865,6 @@ String=Motorway
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
-ContourColor=No
 [end]
 
 
@@ -958,7 +946,6 @@ String=Driveway/Alleyway
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 [end]
 
 [_line]
@@ -1035,7 +1022,6 @@ String=Roundabout
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
-ContourColor=No
 [end]
 
 
@@ -1165,7 +1151,6 @@ String=Rail
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
-ContourColor=No
 [end]
 
 [_line]
@@ -1251,7 +1236,6 @@ String=border
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 [end]
 
 
@@ -1268,7 +1252,6 @@ String=border
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 [end]
 
 
@@ -1286,7 +1269,6 @@ String=border
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 [end]
 
 
@@ -1303,7 +1285,6 @@ FontStyle=SmallFont
 CustomColor=DayAndNight
 DaycustomColor:#1D4DFF
 NightcustomColor:#808080
-ContourColor=No
 [end]
 
 
@@ -1408,11 +1389,10 @@ Xpm="32 5 2  1"
 "       !                !       "
 "       !                !       "
 ;12345678901234567890123456789012
-String=fence
+String=Fence
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 [end]
 
 
@@ -1469,7 +1449,6 @@ String=Boardwalk
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
-ContourColor=No
 [end]
 
 
@@ -1489,7 +1468,6 @@ String=Motorway Tunnel
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
-ContourColor=No
 [end]
 
 
@@ -2416,7 +2394,6 @@ String=Toilets
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
-ContourColor=No
 DayXpm="16 16 8 1"   Colormode=16
 "!	c #000000"
 "#	c #1820C8"
@@ -2478,11 +2455,10 @@ DayXpm="10 16 3 1"   Colormode=16
 Type=0x050
 SubType=0x00
 ;GRMN_TYPE: Misc. Points of Interest/DRINKING_WATER/Drinking water/Non NT, NT
-String=Drinking water
+String=Drinking Water
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
-ContourColor=No
 DayXpm="20 20 4 1"   Colormode=16
 "!	c #0000FF"
 "#	c #0080FF"
@@ -2520,7 +2496,6 @@ String=View point
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
-ContourColor=No
 DayXpm="16 16 3 1"   Colormode=16
 "!	c #0000FF"
 "#	c #FFFFFF"
@@ -2790,7 +2765,6 @@ String=Ford
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 DayXpm="14 16 4 1"   Colormode=16
 "!	c #0065FF"
 "#	c #000000"
@@ -2824,7 +2798,6 @@ String=Waterfall
 ExtendedLabels=Y
 FontStyle=NoLabel (invisible)
 CustomColor=No
-ContourColor=No
 DayXpm="15 15 3 1"   Colormode=16
 "!	c #0000FF"
 "#	c #FFFFFF"
@@ -2886,7 +2859,6 @@ String=Picnic table
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
-ContourColor=No
 DayXpm="20 20 3 1"   Colormode=16
 "!	c #000000"
 "#	c #FFFFFF"
@@ -2923,7 +2895,6 @@ String=Bench
 ExtendedLabels=Y
 FontStyle=SmallFont
 CustomColor=No
-ContourColor=No
 DayXpm="20 9 3 1"   Colormode=16
 "!	c #000000"
 "#	c #FFFFFF"
@@ -2947,7 +2918,6 @@ SubType=0x06
 String=Slipway
 ExtendedLabels=Y
 CustomColor=No
-ContourColor=No
 DayXpm="20 20 2 1"   Colormode=16
 " 	c #FFFFFF"
 ".	c #0000FF"
@@ -3004,7 +2974,6 @@ String=Gate
 ExtendedLabels=N
 FontStyle=SmallFont
 CustomColor=No
-ContourColor=No
 DayXpm="11 9 3 1"   Colormode=16
 "!	c #0C0D0D"
 "#	c #FFFFFF"
@@ -3425,7 +3394,7 @@ DayXpm="20 20 3 1"   Colormode=16
 [_point]
 Type=0x067
 SubType=0x07
-RMN_TYPE: //
+;GRMN_TYPE: //
 String=Crossing Lights
 ExtendedLabels=N
 DayXpm="20 20 5 1"   Colormode=16
@@ -3501,7 +3470,6 @@ String=Crossing Island
 ExtendedLabels=Y
 FontStyle=Default
 CustomColor=No
-ContourColor=No
 DayXpm="20 20 4 1"   Colormode=16
 "!	c #000000"
 "#	c #BD3000"
@@ -3539,7 +3507,6 @@ String=OSM Note
 ExtendedLabels=N
 FontStyle=Default
 CustomColor=No
-ContourColor=No
 DayXpm="20 20 4 1"   Colormode=16
 "!	c #000000"
 "#	c #FF0000"
