@@ -1050,7 +1050,7 @@ Xpm="32 1 2  1"
 "  c none"
 "!!!!!!! !!!!!!! !!!!!!! !!!!!!! "
 ;12345678901234567890123456789012
-String=Sidewalk/Crossing
+String=Sidewalk
 ExtendedLabels=N
 [end]
 
@@ -1065,7 +1065,7 @@ Xpm="32 2 2  1"
 "!!!!####!!!!####!!!!####!!!!####"
 "!!!!####!!!!####!!!!####!!!!####"
 ;12345678901234567890123456789012
-String=Informal paths
+String=Informal path
 ExtendedLabels=N
 [end]
 
@@ -1118,7 +1118,7 @@ Xpm="32 4 2  1"
 "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
 "################################"
 ;12345678901234567890123456789012
-String=Service
+String=Service Road
 ExtendedLabels=N
 [end]
 
@@ -1205,6 +1205,19 @@ LineWidth=3
 Xpm="0 0 1 0"
 "1 c #49BDFF"
 String=Stream
+ExtendedLabels=N
+[end]
+
+[_line]
+Type=0x1a
+;GRMN_TYPE: ???
+UseOrientation=Y
+Xpm="32 1 2  1"
+"! c #FF2433"
+"  c none"
+"!!!!!!! !!!!!!! !!!!!!! !!!!!!! "
+;12345678901234567890123456789012
+String=Crossing
 ExtendedLabels=N
 [end]
 
