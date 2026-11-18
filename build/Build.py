@@ -132,7 +132,7 @@ def build(region, map_type, map_style, args):
                     --family-name='OSM for Garmin' \
                     --series-name='{map_type}' \
 		            --description='OSM maps for Garmin devices' \
-		            --product-version=version \
+		            --product-version={version} \
 		            --region-name='Oceania' \
                     --country-name='New Zealand' \
                     --country-abbr='NZ' \
